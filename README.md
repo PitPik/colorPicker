@@ -1,4 +1,4 @@
-colorPicker_1.0
-===============
+colorPicker
+===========
 
-advanced color picker for desktop use
+An advanced color picker (desktop use) using Colors for color conversion / calculation...
