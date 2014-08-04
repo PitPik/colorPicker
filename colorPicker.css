@@ -1,0 +1,646 @@
+/* -------- main app -------- */
+
+.cp-app {
+	color: #bbb;
+	font-family: "Courier New", Courier, mono; /* "Courier New", */
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: bold;
+	cursor: default;
+
+	width: 412px;
+	height: 323px;
+	background-color: #444;
+	border-radius: 7px;
+}
+.S {
+	width: 266px;
+	height: 177px;
+}
+.XS {
+	width: 158px;
+	height: 173px;
+}
+.XXS {
+	height: 105px;
+	width: 154px;
+}
+.no-alpha {
+	height: 308px;
+}
+.no-alpha .cp-opacity, .no-alpha .cp-alpha {
+	display: none;
+}
+.S.no-alpha { /* IE6 */
+	height: 162px;
+}
+.XS.no-alpha {
+	height: 158px;
+}
+.XXS.no-alpha {
+	height: 90px;
+}
+
+
+.cp-app,
+.cp-app div { /* reset for all children */
+	border: none;
+	padding: 0;
+	float: none;
+	margin: 0;
+	outline: none;
+	/* to be IE <7 compatible */
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-ms-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.cp-app div {
+	position: absolute;
+}
+
+/* -------- images -------- */
+
+.cp-slds .cp-curm,
+.cp-panel .cp-disp,
+.cp-panel .cp-nsarrow,
+.cp-app .cp-exit,
+.cp-app .cp-memo-cursor,
+.cp-app .cp-resize {
+	background-image: url(_icons.png);
+}
+.cp-app .do-drag div {
+	cursor: url(_blank.png), auto;
+}
+.cp-app .cp-opacity,
+.cp-memo .cp-raster-bg,
+.cp-app .cp-raster {
+	background-image: url(_bgs.png);
+}
+
+/* -------- left sliders -------- */
+
+.cp-app .cp-slds {
+	width: 287px;
+	height: 256px;
+	top: 10px;
+	left: 10px;
+	overflow: hidden;
+	cursor: crosshair;
+}
+.S .cp-slds {
+	width: 143px;
+	height: 128px;
+	left: 9px;
+	top: 9px;
+}
+.XS .cp-slds {
+	left: 7px;
+	top: 7px;
+}
+.XXS .cp-slds {
+	left: 5px;
+	top: 5px;
+}
+
+/* .cp-slds .cp-sldl-1,
+.cp-slds .cp-sldl-2,
+.cp-slds .cp-sldl-3,
+.cp-slds .cp-sldl-4 { */
+.cp-slds div {
+	width: 256px;
+	height: 256px;
+	left: 0;
+}
+.S .cp-sldl-1,
+.S .cp-sldl-2,
+.S .cp-sldl-3,
+.S .cp-sldl-4 {
+	width: 128px;
+	height: 128px;
+}
+.XXS .cp-slds,
+.XXS .cp-slds .cp-sldl-1,
+.XXS .cp-slds .cp-sldl-2,
+.XXS .cp-slds .cp-sldl-3,
+.XXS .cp-slds .cp-sldl-4 {
+	height: 64px;
+}
+
+/* -------- right sliders -------- */
+
+.cp-slds .cp-sldr-1,
+.cp-slds .cp-sldr-2,
+.cp-slds .cp-sldr-3,
+.cp-slds .cp-sldr-4 {
+	width: 31px;
+	/* height: 256px; */
+	left: 256px;
+	cursor: default;
+}
+.S .cp-sldr-1,
+.S .cp-sldr-2,
+.S .cp-sldr-3,
+.S .cp-sldr-4 {
+	width: 15px;
+	height: 128px;
+	left: 128px;
+}
+
+/* -------- Cursors -------- */
+
+.cp-slds .cp-curm {
+	margin: -5px;
+	width: 11px;
+	height: 11px;
+	background-position: -36px -30px;
+	/* cursor: crosshair; */
+}
+.light .cp-curm {
+	background-position: -7px -30px;
+}
+
+.cp-slds .cp-curl,
+.cp-slds .cp-curr {
+	width: 0px;
+	height: 0px;
+	margin: -3px -4px;
+	border: 4px solid;
+	background-image: none;
+	cursor: default;
+	left: auto; /* due to .cp-slds div */
+}
+
+.cp-slds .cp-curl,
+.cp-app .cp-slds .cp-curl-dark,
+.hue-dark div.cp-curl {
+	right: 27px;
+	border-color: transparent transparent transparent #fff;
+}
+.light .cp-curl,
+.cp-app .cp-slds .cp-curl-light,
+.hue-light .cp-curl {
+	border-color: transparent transparent transparent #000;
+}
+.S .cp-slds .cp-curl,
+.S .cp-slds .cp-curr {
+	border-width: 3px;
+}
+.S .cp-slds .cp-curl-light,
+.S .cp-slds .cp-curl {
+	right: 13px;
+}
+
+.cp-slds .cp-curr,
+.cp-app .cp-slds .cp-curr-dark {
+	right: 4px;
+	border-color: transparent #fff transparent transparent;
+}
+.light .cp-curr,
+.cp-app .cp-slds .cp-curr-light {
+	border-color: transparent #000 transparent transparent;
+}
+
+/* -------- alpha bar -------- */
+
+.cp-app .cp-opacity {
+	bottom: 44px;
+	left: 10px;
+	height: 10px;
+	width: 287px;
+	background-position: 0 -87px;
+}
+.S .cp-opacity {
+	bottom: 27px;
+	left: 9px;
+	width: 143px;
+	background-position: 0 -100px;
+}
+.XS .cp-opacity {
+	left: 7px;
+	bottom: 25px;
+}
+.XXS .cp-opacity {
+	left: 5px;
+	bottom: 23px;
+}
+.cp-opacity div {
+	width: 100%;
+	height: 16px;
+	margin-top: -3px;
+	overflow: hidden;
+}
+.cp-opacity .cp-opacity-slider {
+	margin: 0 -4px;
+	width: 0px;
+	height: 8px; /* IE7 */
+
+	border: 4px solid #aaa;
+	border-color: #eee transparent;
+}
+
+/* -------- color memory -------- */
+
+.cp-app .cp-memo {
+	bottom: 10px;
+	left: 10px;
+	width: 288px;
+	height: 31px;
+	background-color: #fff;
+}
+.S .cp-memo {
+	height: 15px;
+	width: 144px;
+	left: 9px;
+	bottom: 9px;
+}
+.XS .cp-memo {
+	left: 7px;
+	bottom: 7px;
+}
+.XXS .cp-memo {
+	left: 5px;
+	bottom: 5px;
+}
+.cp-memo div {
+	position: relative;
+	float: left;
+	width: 31px;
+	height: 31px;
+	margin-right: 1px;
+}
+.S .cp-memo div {
+	width: 15px;
+	height: 15px;
+}
+.cp-app .cp-raster, /* also for .cp-ctrl section */
+.cp-memo .cp-raster-bg,
+.S .cp-memo .cp-raster,
+.S .cp-memo .cp-raster-bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+.S .cp-memo .cp-raster-bg {
+	background-position: 0 -31px;
+}
+.cp-app .cp-raster {
+	background-position: 0px -49px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+	filter: alpha(opacity=20);
+	-moz-opacity: 0.2;
+	-khtml-opacity: 0.2;
+	opacity: .2;
+}
+.alpha-bg-b .cp-memo {
+	background-color: #333;
+}
+.alpha-bg-b .cp-raster {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+}
+
+.cp-memo .cp-memo-cursor {
+	position: absolute;
+	right: 0;
+	background-position: -26px -87px;
+}
+.cp-app .light .cp-memo-cursor {
+	background-position: 3px -87px;
+}
+.S .cp-memo-cursor {
+	background-position: -34px -95px;
+}
+.S .light .cp-memo-cursor {
+	background-position: -5px -95px;
+}
+
+/* -------- panel -------- */
+
+.cp-app .cp-panel {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	bottom: 10px;
+	width: 96px;
+	background-color: #333;
+	border: 1px solid;
+	border-color: #222 #555 #555 #222;
+	overflow: hidden;
+}
+.S .cp-panel {
+	top: 9px;
+	right: 9px;
+	bottom: 9px;
+}
+.XS .cp-panel {
+	display: none;
+}
+
+.cp-panel div {
+	position: relative;
+	/*overflow: visible;*/ /* especially for .cp-disp */
+}
+
+/* -------- panel sections -------- */
+
+.cp-panel .cp-hsv, /* not very happy with this ... */
+.cp-panel .cp-hsl,
+.cp-panel .cp-rgb,
+.cp-panel .cp-cmyk,
+.cp-panel .cp-Lab,
+.cp-panel .cp-alpha,
+.no-alpha .cp-panel .cp-HEX,
+.cp-panel .cp-HEX {
+	width: 86px;
+	margin: -1px 0 1px 4px;
+	padding: 1px 0 3px;
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #222;
+	float: left;
+}
+.cp-panel .cp-hsv,
+.cp-panel .cp-hsl {
+	padding-top: 2px;
+}
+.S .cp-hsv,
+.S .cp-hsl {
+	padding-top: 1px;
+}
+.cp-panel .cp-HEX {
+	border-bottom: none; /* 1px solid #333; */
+	border-top: 0;
+	margin-top: -4px;
+	padding-top: 0;
+}
+.no-alpha .cp-panel .cp-HEX {
+	border-bottom: none;
+}
+
+.cp-panel .cp-alpha {
+	border-bottom: none;
+}
+.S .rgb-r .cp-hsv,
+.S .rgb-g .cp-hsv,
+.S .rgb-b .cp-hsv,
+.S .rgb-r .cp-hsl,
+.S .rgb-g .cp-hsl,
+.S .rgb-b .cp-hsl,
+.S .hsv-h .cp-rgb,
+.S .hsv-s .cp-rgb,
+.S .hsv-v .cp-rgb,
+.S .hsl-h .cp-rgb,
+.S .hsl-s .cp-rgb,
+.S .hsl-l .cp-rgb,
+.S .cp-cmyk,
+.S .cp-Lab {
+	display: none;
+}
+
+/* -------- panel sections' elements -------- */
+
+.cp-panel .cp-butt,
+.cp-panel .cp-labl {
+	float: left;
+	width: 16px; width: 14px; /* IE 7 */
+	height: 16px; height: 14px; /* IE 7 */
+	margin-top: 2px;
+	text-align: center;
+	border: 1px solid;
+}
+.cp-panel .cp-butt {
+	border-color: #555 #222 #222 #555;
+}
+.cp-panel .cp-butt:active {
+	background-color: #444;
+}
+.cp-panel .cp-labl {
+	border-color: transparent;
+}
+.cp-panel .Lab-mode,
+.cp-panel .cmyk-mode,
+.cp-panel .hsv-mode,
+.cp-panel .hsl-mode {
+	position: absolute;
+	right: 0;
+	top: 0; /* IE 7 */
+	height: 52px;
+}
+.cp-panel .cmyk-mode {
+	height: 70px;
+}
+.hsl-h .hsl-h-labl,
+.hsl-s .hsl-s-labl,
+.hsl-l .hsl-l-labl,
+.hsv-h .hsv-h-labl,
+.hsv-s .hsv-s-labl,
+.hsv-v .hsv-v-labl {
+	color: #FF9900;
+}
+
+.cp-panel .cmyk-mode,
+.cp-panel .hsv-mode,
+
+.rgb-r .rgb-r-butt, .rgb-g .rgb-g-butt, .rgb-b .rgb-b-butt,
+.hsv-h .hsv-h-butt, .hsv-s .hsv-s-butt, .hsv-v .hsv-v-butt,
+.hsl-h .hsl-h-butt, .hsl-s .hsl-s-butt, .hsl-l .hsl-l-butt,
+
+.cp-panel .rgb-r-labl,
+.cp-panel .rgb-g-labl,
+.cp-panel .rgb-b-labl,
+
+.cp-panel .alpha-butt,
+.cp-panel .HEX-butt,
+.cp-panel .Lab-x-labl/*,
+.cp-panel .alpha-labl*/ { /* ON */
+	background-color: #444;
+	border-color: #222 #555 #555 #222;
+}
+
+.no-rgb-r .rgb-r-labl,
+.no-rgb-g .rgb-g-labl,
+.no-rgb-b .rgb-b-labl,
+
+.mute-alpha .alpha-butt,
+.no-HEX .HEX-butt,
+.cmy-only .Lab-x-labl/*,
+.alpha-bg .alpha-labl*/ { /* OFF */
+	background-color: #333;
+	border-color: #555 #222 #222 #555;
+}
+
+.Lab-x-disp,
+.cmy-only .cmyk-k-disp,
+.cmy-only .cmyk-k-butt {
+	visibility: hidden;
+}
+.cp-panel .HEX-disp {
+	background-image: none;
+}
+
+.cp-panel .cp-disp {
+	float: left;
+	width: 50px; width: 48px; /* IE 7 */
+	height: 16px; height: 14px; /* IE 7 */
+	margin: 2px 2px 0;
+	cursor: text;
+	text-align: left;
+	text-indent: 3px;
+	border: 1px solid;
+	border-color: #222 #555 #555 #222;
+}
+.cp-app .cp-nsarrow {
+	position: absolute;
+	top: 0;
+	left: -13px;
+	width: 8px;
+	height: 16px;
+	background-position: -87px -23px;
+	display: none;
+}
+.cp-app .start-change .cp-nsarrow {
+	display: block;
+}
+.cp-app .do-change .cp-nsarrow {
+	display: block;
+	background-position: -87px -36px;
+}
+.do-change .cp-disp {
+	cursor: default;
+}
+
+.cp-panel .cp-hide {
+	display: none;
+}
+
+/* -------- controller color/contrast bars -------- */
+
+.cp-panel .cp-cont,
+.cp-panel .cp-cold {
+	position: absolute;
+	top: -5px;
+	left: 0; /* IE7 */
+	height: 5px; height: 3px; /* IE7 */
+	border: 1px solid #333;
+}
+.cp-panel .cp-cold {
+	background-color: #c00;
+	z-index: 1;
+}
+.cp-panel .cp-cont {
+	margin-right: -1px;
+	z-index: 2;
+}
+.cp-panel .contrast .cp-cont {
+	background-color: #ccc;
+	z-index: 1;
+}
+.cp-panel .orange .cp-cold {
+	background-color: #FF9900;
+}
+.cp-panel .green .cp-cold {
+	background-color: #44DD00;
+}
+
+/* -------- controller buttons -------- */
+
+.cp-panel .cp-ctrl {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%; /* IE7 */
+	/* overflow: visible; */
+	background-color: #fff;
+}
+
+.alpha-bg-b .cp-ctrl,
+.cp-panel .cp-bres,
+.cp-panel .cp-bsav {
+	background-color: #333;
+}
+
+.cp-panel .cp-col1,
+.cp-panel .cp-col2,
+.cp-panel .cp-bres,
+.cp-panel .cp-bsav {
+	border: 1px solid;
+	border-color: #555 #222 #222 #555;
+	float: left;
+	width: 47px; width: 46px; /* IE7 */
+	line-height: 28px;
+	text-align: center;
+	top: 0;
+}
+.cp-panel div div {
+	height: 100%; /* IE7 */
+}
+.S .cp-ctrl div {
+	line-height: 25px;
+}
+.S .cp-panel .cp-bres,
+.S .cp-panel .cp-bsav {
+	line-height: 26px;
+}
+
+/* -------- app controls -------- */
+
+.cp-app .cp-exit,
+.cp-app .cp-resize {
+	right: 3px;
+	top: 3px;
+	width: 15px;
+	height: 15px;
+	background-position: 0 -52px;
+}
+.cp-app .cp-resize {
+	top: auto;
+	bottom: 3px;
+	background-position: -15px -52px;
+	cursor: nwse-resize;
+}
+
+.S .cp-exit {
+	background-position: 1px -52px;
+}
+.XS .cp-resize,
+.XS .cp-exit {
+	width: 10px;
+	height: 10px;
+	right: 0;
+	background-image: none;
+}
+.XS .cp-exit {
+	top: 0;
+}
+.XS .cp-resize {
+	bottom: 0;
+}
+
+.cp-app .cp-resizer,
+.cp-app .cp-resizer div {
+	position: absolute;
+	border: 1px solid #888;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	left: -1px;
+	z-index: 2; /* overwrites: .cp-panel .cp-cont, .cp-panel .cp-cold */
+	display: none;
+	cursor: nwse-resize;
+}
+.cp-app .cp-resizer div {
+	border: 1px dashed #333;
+	background-color: #bbb;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	-moz-opacity: 0.3;
+	-khtml-opacity: 0.3;
+	opacity: .30;
+	display: block;
+}

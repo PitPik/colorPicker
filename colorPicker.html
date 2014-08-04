@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="colorPicker.css" rel="stylesheet" type="text/css">
+<link href="colorPicker.sys.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#displayHTML, #displayCSS {
+		clear: both;
+		padding: 2em 1em 0;
+		color: #666;
+		font-family: Courier,mono; /* "Courier New", */
+		font-size: 12px;
+		line-height: 15px;
+	}
+	pre {
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+		-webkit-tab-size: 4;
+		-ms-tab-size: 4;
+		tab-size: 4;
+	}
+	.cp-app {
+		position: relative;
+		float: left;
+		margin: 10px 0 0 10px;
+	}
+	.cp-app .cp-curm {
+		top: 255px;
+		left: 0;
+	}
+	.cp-app .cp-curl,
+	.cp-app .cp-curr {
+		top: 255px;
+	}
+	.cp-panel .cp-cold {
+		width: 71%;
+	}
+	.cp-panel .cp-cont {
+		width: 29%;
+		z-index: 2;
+	}
+
+
+</style>
+<title>colorPicker markup</title>
+</head>
+
+<body>
+<div class="cp-app alpha-bg-w">
+	<div class="cp-slds">
+		<div class="cp-sldl-1"></div>
+		<div class="cp-sldl-2"></div>
+		<div class="cp-sldl-3"></div>
+		<div class="cp-curm"></div>
+		<div class="cp-sldr-1"></div>
+		<div class="cp-sldr-2"></div>
+		<div class="cp-sldr-4"></div>
+		<div class="cp-curl"></div>
+		<div class="cp-curr"></div>
+	</div>
+	<div class="cp-opacity">
+		<div>
+			<div class="cp-opacity-slider"></div>
+		</div>
+	</div>
+	<div class="cp-memo">
+		<div class="cp-raster"></div>
+		<div class="cp-raster-bg"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div class="cp-memo-store"></div>
+		<div class="cp-memo-cursor"></div>
+	</div>
+	<div class="cp-panel">
+		<div class="cp-hsv">
+			<div class="hsl-mode cp-butt"></div>
+			<div class="hsv-h-butt cp-butt">H</div>
+			<div class="hsv-h-disp cp-disp">-<div class="cp-nsarrow"></div></div>
+			<div class="hsl-h-labl cp-labl">H</div>
+			<div class="hsv-s-butt cp-butt">S</div>
+			<div class="hsv-s-disp cp-disp">-</div>
+			<div class="hsl-s-labl cp-labl">S</div>
+			<div class="hsv-v-butt cp-butt">B</div>
+			<div class="hsv-v-disp cp-disp">-</div>
+			<div class="hsl-l-labl cp-labl">L</div>
+		</div>
+		<div class="cp-hsl cp-hide">
+			<div class="hsv-mode cp-butt"></div>
+			<div class="hsl-h-butt cp-butt">H</div>
+			<div class="hsl-h-disp cp-disp">-</div>
+			<div class="hsv-h-labl cp-labl">H</div>
+			<div class="hsl-s-butt cp-butt">S</div>
+			<div class="hsl-s-disp cp-disp">-</div>
+			<div class="hsv-s-labl cp-labl">S</div>
+			<div class="hsl-l-butt cp-butt">L</div>
+			<div class="hsl-l-disp cp-disp">-</div>
+			<div class="hsv-v-labl cp-labl">B</div>
+		</div>
+		<div class="cp-rgb">
+			<div class="rgb-r-butt cp-butt">R</div>
+			<div class="rgb-r-disp cp-disp">-</div>
+			<div class="rgb-r-labl cp-butt">&nbsp;</div>
+			<div class="rgb-g-butt cp-butt">G</div>
+			<div class="rgb-g-disp cp-disp">-</div>
+			<div class="rgb-g-labl cp-butt">&nbsp;</div>
+			<div class="rgb-b-butt cp-butt">B</div>
+			<div class="rgb-b-disp cp-disp">-</div>
+			<div class="rgb-b-labl cp-butt">&nbsp;</div>
+		</div>
+		<div class="cp-cmyk">
+			<div class="Lab-mode cp-butt"></div>
+			<div class="cmyk-c-butt cp-labl">C</div>
+			<div class="cmyk-c-disp cp-disp">-</div>
+			<div class="Lab-L-labl cp-labl">L</div>
+			<div class="cmyk-m-butt cp-labl">M</div>
+			<div class="cmyk-m-disp cp-disp">-</div>
+			<div class="Lab-a-labl cp-labl">a</div>
+			<div class="cmyk-y-butt cp-labl">Y</div>
+			<div class="cmyk-y-disp cp-disp">-</div>
+			<div class="Lab-b-labl cp-labl">b</div>
+			<div class="cmyk-k-butt cp-labl">K</div>
+			<div class="cmyk-k-disp cp-disp">-</div>
+			<div class="Lab-x-labl cp-butt">&nbsp;</div>
+		</div>
+		<div class="cp-Lab cp-hide">
+			<div class="cmyk-mode cp-butt"></div>
+			<div class="Lab-L-butt cp-labl">L</div>
+			<div class="Lab-L-disp cp-disp">-</div>
+			<div class="cmyk-c-labl cp-labl">C</div>
+			<div class="Lab-a-butt cp-labl">a</div>
+			<div class="Lab-a-disp cp-disp">-</div>
+			<div class="cmyk-m-labl cp-labl">M</div>
+			<div class="Lab-b-butt cp-labl">b</div>
+			<div class="Lab-b-disp cp-disp">-</div>
+			<div class="cmyk-y-labl cp-labl">Y</div>
+			<div class="Lab-x-butt cp-labl">&nbsp;</div>
+			<div class="Lab-x-disp cp-disp">-</div>
+			<div class="cmyk-k-labl cp-labl">K</div>
+		</div>
+		<div class="cp-alpha">
+			<div class="alpha-butt cp-butt">A</div>
+			<div class="alpha-disp cp-disp">-</div>
+			<div class="alpha-labl cp-butt">W</div>
+		</div>
+		<div class="cp-HEX">
+			<div class="HEX-butt cp-butt">#</div>
+			<div class="HEX-disp cp-disp">-</div>
+			<div class="HEX-labl cp-butt">M</div>
+		</div>
+		<div class="cp-ctrl">
+			<div class="cp-raster"></div>
+			<div class="cp-cont"></div>
+			<div class="cp-cold"></div>
+			<div class="cp-col1">
+				<div>&nbsp;</div>
+			</div>
+			<div class="cp-col2">
+				<div>&nbsp;</div>
+			</div>
+			<div class="cp-bres">RESET</div>
+			<div class="cp-bsav">SAVE</div>
+		</div>
+	</div>
+	<div class="cp-exit"></div>
+	<div class="cp-resize"></div>
+	<div class="cp-resizer"><div></div></div>
+</div>
+
+
+
+<pre id="displayHTML">&nbsp;</pre>
+<pre id="displayCSS">&nbsp;</pre>
+
+<script type="text/javascript" src="colorPicker.dev.js"></script>
+
+<script type="text/javascript" src="color.js"></script>
+<script type="text/javascript" src="colorPicker.js"></script>
+<script type="text/javascript">
+	// var myDevMode = new ColorPicker({
+	// 	devPicker: document.getElementsByClassName('cp-app')[0],
+	// 	instanceName: 'myDevMode'
+	// });
+</script>
+
+</body>
+</html>

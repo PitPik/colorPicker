@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- <link href="colorPicker.sys.css" rel="stylesheet" type="text/css"> -->
+<link href="colorPicker.css" rel="stylesheet" type="text/css">
+<link href="index.css" rel="stylesheet" type="text/css">
+<title>colorPicker_new</title>
+</head>
+
+<body>
+
+<div id="testPatch"> </div>
+
+<div id="contrastPatch"><div></div><i>-Test-</i></div>
+
+<div id="colorValues"> </div>
+
+<div id="sliders" class="sliders">
+  <div id="rgbR"><div></div></div>
+  <div id="rgbG"><div></div></div>
+  <div id="rgbB"><div></div></div>
+
+  <div id="hslH"><div></div></div>
+  <div id="hslS"><div></div></div>
+  <div id="hslL"><div></div></div>
+
+  <!-- <div id="cmyC"><div></div></div>
+  <div id="cmyM"><div></div></div>
+  <div id="cmyY"><div></div></div> -->
+</div>
+
+<div id="hsv_map">
+  <canvas id="surface" width="200" height="200"></canvas>
+  <div class="cover"></div>
+  <div class="hsv-cursor"></div>
+  <div class="bar-bg"></div>
+  <div class="bar-white"></div>
+  <canvas id="luminanceBar" width="25" height="200"></canvas>
+  <div class="hsv-barcursors" id="hsv_cursors">
+    <div class="hsv-barcursor-l"></div>
+    <div class="hsv-barcursor-r"></div>
+  </div>
+</div>
+
+<div id="color_squares">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<div id="description">Demo patches: demonstrate how to build color pickers and how Colors' / ColorPicker's API work. Patches are linked to <select><option value="Colors">Colors</option><option value="ColorPicker">ColorPicker</option></select></div>
+
+<!-- <div id="model_display"></div> -->
+<!--canvas style="position: absolute; left: 500px; width: 255px; height: 255px" id="canvas"></canvas-->
+<!-- <script type="text/javascript" src="color.ext.js"></script> -->
+<script type="text/javascript" src="color.js"></script>
+<!-- script type="text/javascript" src="tools.js"></script -->
+<script type="text/javascript" src="colorPicker.data.js"></script>
+<script type="text/javascript" src="colorPicker.js"></script>
+<!-- <script type="text/javascript" src="color.all.min.js"></script> -->
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
