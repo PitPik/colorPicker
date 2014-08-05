@@ -4,19 +4,14 @@ colorPicker
 An advanced color picker (desktop use) using Colors for color conversion / calculation...
 All the W3C 2.0 calculations are also based on alpha levels on all layers
 Supported color spaces: (*: also displayed as colors)
-    rgb *
-    hsv(b) *
-    hsl *
-    cmyk
-    cmy
-    Lab
-    XYZ
-    HEX
+
+    rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
 Convertions of 182 color space combinations (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
 See demo at http://dematte.at/cpn
 
+<pre>
 var myColors = new Colors({ // all options have a default value...
     color: 'rgba(204, 82, 37, 0.8)', // initial color (#RGB, RGB, #RRGGBB, RRGGBB, rgb(r, g, b), ...)
     XYZMatrix: ..., // Observer = 2° (CIE 1931), Illuminant = D65  --- see source for dedtails
@@ -103,3 +98,4 @@ ColorPicker.removeEvent = function(obj, type, func){};
 ColorPicker.getOrigin = function(elm){};
 ColorPicker.limitValue = function(value, min, max){};
 ColorPicker.changeClass = function(elm, cln, newCln){}; // a bit tricky to use...
+</pre>
