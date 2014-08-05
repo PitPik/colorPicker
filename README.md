@@ -2,14 +2,14 @@ colorPicker
 ===========
 
 An advanced color picker (desktop use) using Colors for color conversion / calculation...
-All the W3C 2.0 calculations are also based on alpha levels on all layers
-Supported color spaces: (*: also displayed as colors)
-
-    rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
-
-Convertions of 182 color space combinations (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
 See demo at http://dematte.at/cpn
+
+All the W3C 2.0 calculations are also based on alpha levels on all layers<br>
+Supported color spaces: (*: also displayed as colors)<br>
+rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
+
+Convertions of 182 color space combinations (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
 <pre>
 var myColors = new Colors({ // all options have a default value...
