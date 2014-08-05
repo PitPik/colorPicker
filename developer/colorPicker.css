@@ -328,7 +328,7 @@
 	top: 10px;
 	right: 10px;
 	bottom: 10px;
-	width: 96px;
+	width: 94px;
 	background-color: #333;
 	border: 1px solid;
 	border-color: #222 #555 #555 #222;
@@ -429,11 +429,15 @@
 .cp-panel .hsl-mode {
 	position: absolute;
 	right: 0;
-	top: 0; /* IE 7 */
-	height: 52px;
+	top: 1px; /* IE 7 */
+	height: 50px;
+}
+.cp-panel .hsv-mode,
+.cp-panel .hsl-mode {
+	top: 2px; /* IE 7 */
 }
 .cp-panel .cmyk-mode {
-	height: 70px;
+	height: 68px;
 }
 .hsl-h .hsl-h-labl,
 .hsl-s .hsl-s-labl,
@@ -572,7 +576,7 @@
 	border: 1px solid;
 	border-color: #555 #222 #222 #555;
 	float: left;
-	width: 47px; width: 46px; /* IE7 */
+	width: 47px; width: 45px; /* IE7 */
 	line-height: 28px;
 	text-align: center;
 	top: 0;

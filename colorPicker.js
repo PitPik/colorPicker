@@ -68,7 +68,8 @@
 				CSSPrefix: 'cp-',
 				allMixDetails: true,
 				alphaBG: 'w',
-				imagePath: '',
+				imagePath: ''
+				// devPicker: false // uses existing HTML for development...
 				// noAlpha: true,
 				// customBG: '#808080'
 				// size: 0,
@@ -281,9 +282,23 @@
 
 	function buildView(THIS) {
 		var app = document.createElement('div'),
-			style,
 			prefix = _options.CSSPrefix,
-			urlData = 'data:image/png;base64,';
+			urlData = 'data:image/png;base64,',
+			addStyleSheet = function(cssText, id) {
+				var style = document.createElement('style');
+
+				style.setAttribute('type', 'text/css');
+				if (id) {
+					style.setAttribute('id', id);
+				}
+				if (!style.styleSheet) {
+					style.appendChild(document.createTextNode(cssText));
+				}
+				document.getElementsByTagName('head')[0].appendChild(style);
+				if (style.styleSheet) { // IE compatible
+					document.styleSheets[document.styleSheets.length-1].cssText = cssText;
+				}
+			};
 
 		// development mode
 		if (_devMode) {
@@ -301,28 +316,15 @@
 		// CSS
 		if (!document.getElementById('colorPickerCSS')) { // only once needed
 			// CSS - system
-			style = document.createElement('style');
-			style.setAttribute('type', 'text/css');
-			style.setAttribute('id', 'colorPickerCSS');
-
 			_data._cssFunc = _data._cssFunc.
 				replace(/§/g, prefix).
 				replace('_patches.png', !_isIE ? urlData + _data._patchesPng : _options.imagePath + '_patches.png').
 				replace('_vertical.png', !_isIE ? urlData + _data._verticalPng : _options.imagePath + '_vertical.png').
 				replace('_horizontal.png', !_isIE ? urlData + _data._horizontalPng :
 					_options.imagePath + '_horizontal.png');
-			if (!style.styleSheet) {
-				style.appendChild(document.createTextNode(_data._cssFunc));
-			}
-			document.getElementsByTagName('head')[0].appendChild(style);
-			if (style.styleSheet) { // IE compatible
-				document.styleSheets[document.styleSheets.length-1].cssText = _data._cssFunc;
-			}
-
+			addStyleSheet(_data._cssFunc, 'colorPickerCSS');
 			// CSS - main
 			if (!_options.customCSS) {
-				style = document.createElement('style');
-				style.setAttribute('type', 'text/css');
 				_data._cssMain = _data._cssMain.
 					replace(/§/g, prefix).
 					replace('_bgs.png', !_isIE ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
@@ -330,20 +332,14 @@
 					replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
 					replace('"Courier New",', !_isIE ? '' : '"Courier New",');
 				// style.appendChild(document.createTextNode(_data._cssFunc));
-				if (!style.styleSheet) {
-					style.appendChild(document.createTextNode(_data._cssMain));
-				}
-				document.getElementsByTagName('head')[0].appendChild(style);
-				if (style.styleSheet) { // IE compatible
-					document.styleSheets[document.styleSheets.length-1].cssText = _data._cssMain;
-				}
+				addStyleSheet(_data._cssMain);
 			}
 			for (var n in _data) { // almost 25k of memory ;o)
 				_data[n] = null;
 			}
 		}
 
-		app.children[0].style.cssText = _options.initStyle || '';
+		app.children[0].style.cssText = _options.initStyle || ''; // for initial hiding...
 
 		return (_options.appenTo || document.body).appendChild(app.children[0]);
 	}

@@ -4,6 +4,7 @@
 
 	if (1 === 2) { // to run ColorPicker on its own....
 		myColor = window.myColor = new window.ColorPicker({
+			imagePath: 'images/' // IE8-
 			// customCSS: true
 		});
 		return;
@@ -423,7 +424,7 @@
 		renderCallback = doRender,
 		// finally the instance of either ColorPicker or Colors (export for debugging purposes)
 		color_ColorPicker = new (ColorPicker || Colors)({
-			customBG: '#808080',
+			customBG: '#808080'
 			// renderCallback: renderCallback, // doesn't work in Colors, but also doesn't matter
 			// convertCallback: function(color, type){console.log(color, type)}
 			// resizeCallback: function(e, value, scale, original){console.log(e, value, scale, original)}
