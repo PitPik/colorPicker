@@ -68,11 +68,13 @@
 				CSSPrefix: 'cp-',
 				scale: 1,
 				allMixDetails: true,
-				alphaBG: 'w'
+				alphaBG: 'w',
+				imagePath: '',
 				// noAlpha: true,
 				// customBG: '#808080'
 				// size: 0,
 				// cmyOnly: false,
+				// initStyle: 'display: none',
 
 				// memoryColors: [{r: 100, g: 200, b: 10}]//  , a: 0.5
 
@@ -88,7 +90,7 @@
 				// noRGBg: false,
 				// noRGBb: false,
 
-				// CSSStrength: 'div.',
+				// ------ CSSStrength: 'div.',
 				// XYZMatrix: XYZMatrix,
 				// XYZReference: {},
 				// grey: grey,
@@ -305,9 +307,10 @@
 
 			_data._cssFunc = _data._cssFunc.
 				replace(/§/g, prefix).
-				replace('_patches.png', !_isIE ? urlData + _data._patchesPng : '_patches.png').
-				replace('_vertical.png', !_isIE ? urlData + _data._verticalPng : '_vertical.png').
-				replace('_horizontal.png', !_isIE ? urlData + _data._horizontalPng : '_horizontal.png');
+				replace('_patches.png', !_isIE ? urlData + _data._patchesPng : _options.imagePath + '_patches.png').
+				replace('_vertical.png', !_isIE ? urlData + _data._verticalPng : _options.imagePath + '_vertical.png').
+				replace('_horizontal.png', !_isIE ? urlData + _data._horizontalPng :
+					_options.imagePath + '_horizontal.png');
 			if (!style.styleSheet) {
 				style.appendChild(document.createTextNode(_data._cssFunc));
 			}
@@ -322,9 +325,9 @@
 				style.setAttribute('type', 'text/css');
 				_data._cssMain = _data._cssMain.
 					replace(/§/g, prefix).
-					replace('_bgs.png', !_isIE ? urlData + _data._bgsPng : '_bgs.png').
-					replace('_icons.png', !_isIE ? urlData + _data._iconsPng : '_icons.png').
-					replace('_blank.png', !_isIE ? urlData + _data._blankPng : '_blank.cur').
+					replace('_bgs.png', !_isIE ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
+					replace('_icons.png', !_isIE ? urlData + _data._iconsPng : _options.imagePath + '_icons.png').
+					replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
 					replace('"Courier New",', !_isIE ? '' : '"Courier New",');
 				// style.appendChild(document.createTextNode(_data._cssFunc));
 				if (!style.styleSheet) {
@@ -339,6 +342,8 @@
 				_data[n] = null;
 			}
 		}
+
+		app.children[0].style.cssText = _options.initStyle || '';
 
 		return (_options.appenTo || document.body).appendChild(app.children[0]);
 	}

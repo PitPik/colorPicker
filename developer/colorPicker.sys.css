@@ -1,0 +1,151 @@
+.rgb-r .cp-sldl-1,
+.rgb-g .cp-sldl-1,
+.rgb-b .cp-sldl-1,
+.hsv-h .cp-sldl-1, .hsv-h .cp-sldr-1, .hsv-h .cp-sldr-2,
+.hsv-s .cp-sldr-1,
+.hsv-v .cp-sldr-1,
+.hsl-h .cp-sldl-1, .hsl-h .cp-sldr-1, .hsl-h .cp-sldr-2,
+.hsl-s .cp-sldr-1,
+.hsl-l .cp-sldr-1,
+.no-rgb-r .rgb-r .cp-sldr-2, .no-rgb-r .rgb-r .cp-sldr-3, .no-rgb-r .rgb-r .cp-sldr-4,
+.no-rgb-g .rgb-g .cp-sldr-2, .no-rgb-g .rgb-g .cp-sldr-3, .no-rgb-g .rgb-g .cp-sldr-4,
+.no-rgb-b .rgb-b .cp-sldr-2, .no-rgb-b .rgb-b .cp-sldr-3, .no-rgb-b .rgb-b .cp-sldr-4 {
+	visibility: hidden;
+}
+.rgb-r .cp-sldl-2, .rgb-r .cp-sldl-3,
+.rgb-g .cp-sldl-2, .rgb-g .cp-sldl-3,
+.rgb-b .cp-sldl-2, .rgb-b .cp-sldl-3 {
+	background-image: url(_patches.png);
+}
+.cp-slds div {
+	background-image: url(_vertical.png);
+}
+.hsv-h .cp-sldl-2, .hsv-s .cp-sldl-1, .hsv-v .cp-sldl-1,
+.hsl-h .cp-sldl-2, .hsl-s .cp-sldl-1, .hsl-l .cp-sldl-1 {
+	background-image: url(_horizontal.png);
+}
+.hsv-s .cp-sldr-4, .hsv-v .cp-sldl-3, .hsl-s .cp-sldr-4, .hsl-l .cp-sldl-3 {
+	background: #000;
+}
+.hsl-s .cp-sldr-3, .hsl-l .cp-sldl-4 {
+	background: #FFF;
+}
+
+.rgb-r .cp-sldr-1 {background-color: #F00;}
+.rgb-g .cp-sldr-1 {background-color: #0F0;}
+.rgb-b .cp-sldr-1 {background-color: #00F;}
+/* ---- RGB R ---- */
+.rgb-r .cp-sldl-2 {background-position: -1664px 0px;}
+.rgb-r .cp-sldl-3 {background-position: -896px 0px;}
+.rgb-r .cp-sldr-1 {background-position: 0px -2432px;}
+.rgb-r .cp-sldr-2 {background-position: 0px -2944px;}
+.rgb-r .cp-sldr-3 {background-position: 0px -4480px;}
+.rgb-r .cp-sldr-4 {background-position: 0px -3202px;}
+/* ---- RGB G ---- */
+.rgb-g .cp-sldl-2 {background-position: -640px 0px;}
+.rgb-g .cp-sldl-3 {background-position: -384px 0px;}
+.rgb-g .cp-sldr-1 {background-position: 0px -2432px;}
+.rgb-g .cp-sldr-2 {background-position: 0px -4736px;}
+.rgb-g .cp-sldr-3 {background-position: 0px -3968px;}
+.rgb-g .cp-sldr-4 {background-position: 0px -3712px;}
+/* ---- RGB B ---- */
+.rgb-b .cp-sldl-2 {background-position: -1152px 0px;}
+.rgb-b .cp-sldl-3 {background-position: -1408px 0px;}
+.rgb-b .cp-sldr-1 {background-position: 0px -2432px;}
+.rgb-b .cp-sldr-2 {background-position: 0px -3456px;}
+.rgb-b .cp-sldr-3 {background-position: 0px -4224px;}
+.rgb-b .cp-sldr-4 {background-position: 0px -2688px;}
+/* ---- HSV H ---- */
+.hsv-h .cp-sldl-2 {background-position: 0px 0px;}
+.hsv-h .cp-sldl-3 {background-position: 0px -2432px;}
+.hsv-h .cp-sldr-4 {background-position: 0px -1664px;}
+/* ---- HSV S ---- */
+.hsv-s .cp-sldl-1 {background-position: -256px 0px;}
+.hsv-s .cp-sldl-2 {background-position: 0px -2432px;}
+.hsv-s .cp-sldl-3 {background-position: 0px -2176px;}
+.hsv-s .cp-sldr-2 {background-position: 0px -1920px;}
+/* ---- HSV B ---- */
+.hsv-v .cp-sldl-1 {background-position: -256px 0px;}
+.hsv-v .cp-sldl-2 {background-position: 0px -1920px;}
+.hsv-v .cp-sldr-2 {background-position: 0px -2432px;}
+.hsv-v .cp-sldr-4 {background-position: 0px -2176px;}
+/* ---- HSL H ---- */
+.hsl-h .cp-sldl-2 {background-position: -768px 0px;}
+.hsl-h .cp-sldl-3 {background-position: 0px -5184px;}
+.hsl-h .cp-sldr-4 {background-position: 0px -1664px;}
+/* ---- HSL S ---- */
+.hsl-s .cp-sldl-1 {background-position: -256px 0px;}
+.hsl-s .cp-sldl-2 {background-position: 0px -5184px;}
+.hsl-s .cp-sldl-3 {background-position: 0px -2176px;}
+.hsl-s .cp-sldr-2 {background-position: 0px -5824px;}
+/* ---- HSL L ---- */
+.hsl-l .cp-sldl-1 {background-position: -256px 0px;}
+.hsl-l .cp-sldl-2 {background-position: 0px -5824px;}
+.hsl-l .cp-sldr-2 {background-position: 0px -5184px;}
+.hsl-l .cp-sldr-4 {background-position: 0px -2176px;}
+/* ---- RGB R ---- */
+.S .rgb-r .cp-sldl-2 {background-position: -128px -128px;}
+.S .rgb-r .cp-sldl-3 {background-position: 0px 0px;}
+.S .rgb-r .cp-sldr-1 {background-position: 0px -1408px;}
+.S .rgb-r .cp-sldr-2 {background-position: 0px -128px;}
+.S .rgb-r .cp-sldr-3 {background-position: 0px -896px;}
+.S .rgb-r .cp-sldr-4 {background-position: 0px -256px;}
+/* ---- RGB G ---- */
+.S .rgb-g .cp-sldl-2 {background-position: -256px -128px;}
+.S .rgb-g .cp-sldl-3 {background-position: -256px 0px;}
+.S .rgb-g .cp-sldr-1 {background-position: 0px -1408px;}
+.S .rgb-g .cp-sldr-2 {background-position: 0px -1024px;}
+.S .rgb-g .cp-sldr-3 {background-position: 0px -640px;}
+.S .rgb-g .cp-sldr-4 {background-position: 0px -512px;}
+/* ---- RGB B ---- */
+.S .rgb-b .cp-sldl-2 {background-position: -128px 0px;}
+.S .rgb-b .cp-sldl-3 {background-position: 0px -128px;}
+.S .rgb-b .cp-sldr-1 {background-position: 0px -1408px;}
+.S .rgb-b .cp-sldr-2 {background-position: 0px -384px;}
+.S .rgb-b .cp-sldr-3 {background-position: 0px -768px;}
+.S .rgb-b .cp-sldr-4 {background-position: 0px 0px;}
+/* ---- HSV H ---- */
+.S .hsv-h .cp-sldl-2 {background-position: -640px 0px;}
+.S .hsv-h .cp-sldl-3 {background-position: 0px -1408px;}
+.S .hsv-h .cp-sldr-4 {background-position: 0px -1536px;}
+/* ---- HSV S ---- */
+.S .hsv-s .cp-sldl-1 {background-position: -512px 0px;}
+.S .hsv-s .cp-sldl-2 {background-position: 0px -1408px;}
+.S .hsv-s .cp-sldl-3 {background-position: 0px -1280px;}
+.S .hsv-s .cp-sldr-2 {background-position: 0px -1152px;}
+/* ---- HSV B ---- */
+.S .hsv-v .cp-sldl-1 {background-position: -512px 0px;}
+.S .hsv-v .cp-sldl-2 {background-position: 0px -1152px;}
+.S .hsv-v .cp-sldr-2 {background-position: 0px -1408px;}
+.S .hsv-v .cp-sldr-4 {background-position: 0px -1280px;}
+/* ---- HSL H ---- */
+.S .hsl-h .cp-sldl-2 {background-position: -1024px 0px;}
+.S .hsl-h .cp-sldl-3 {background-position: 0px -5440px;}
+.S .hsl-h .cp-sldr-4 {background-position: 0px -1536px;}
+/* ---- HSL S ---- */
+.S .hsl-s .cp-sldl-1 {background-position: -512px 0px;}
+.S .hsl-s .cp-sldl-2 {background-position: 0px -5440px;}
+.S .hsl-s .cp-sldl-3 {background-position: 0px -1280px;}
+.S .hsl-s .cp-sldr-2 {background-position: 0px -5696px;}
+/* ---- HSL L ---- */
+.S .hsl-l .cp-sldl-1 {background-position: -512px 0px;}
+.S .hsl-l .cp-sldl-2 {background-position: 0px -5696px;}
+.S .hsl-l .cp-sldr-2 {background-position: 0px -5440px;}
+.S .hsl-l .cp-sldr-4 {background-position: 0px -1280px;}
+/* ---- HSV S ---- */
+.XXS .hsv-s .cp-sldl-2 {background-position: 0px -5120px;}
+.XXS .hsv-s .cp-sldl-3 {background-position: 0px -5056px;}
+.XXS .hsv-s .cp-sldr-2 {background-position: 0px -4992px;}
+/* ---- HSV B ---- */
+.XXS .hsv-v .cp-sldl-2 {background-position: 0px -4992px;}
+.XXS .hsv-v .cp-sldr-2 {background-position: 0px -5120px;}
+.XXS .hsv-v .cp-sldr-4 {background-position: 0px -5056px;}
+/* ---- HSL S ---- */
+.XXS .hsl-s .cp-sldl-2 {background-position: 0px -5568px;}
+.XXS .hsl-s .cp-sldl-3 {background-position: 0px -5056px;}
+.XXS .hsl-s .cp-sldr-2 {background-position: 0px -5632px;}
+/* ---- HSL L ---- */
+.XXS .hsl-l .cp-sldl-2 {background-position: 0px -5632px;}
+.XXS .hsl-l .cp-sldl-3 {background-position: 0px -5056px;}
+.XXS .hsl-l .cp-sldr-2 {background-position: 0px -5568px;}
+.XXS .hsl-l .cp-sldr-4 {background-position: 0px -5056px;}

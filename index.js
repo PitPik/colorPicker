@@ -446,6 +446,7 @@
 		isColorPicker = colorSourceSelector.value === 'ColorPicker';
 
 		myColor = window.myColor = color_Colors;
+		// color_ColorPicker.nodes.colorPicker.style.cssText = '';
 		// mySecondColor = window.mySecondColor = new ColorPicker({instanceName: 'mySecondColor'});
 
 	// in case ColorPicker is not there...
@@ -468,7 +469,9 @@
 	}
 
 
-	function conversionTest () {
+	function conversionTest (skipDisplay) {
+		if (skipDisplay) console.time('convertAll');
+
 		// conversion test
 		var convert = myColor.color ? myColor.color.convertColor : myColor.convertColor,
 			x = 0.85, y = 0.33, z = 0.23, k = 0.1,
@@ -506,20 +509,22 @@
 								// do nothing
 							} else {
 								value = convert(color, fromMode + '2' + toMode);
-								colorOut = [];
-								for (var s in color) {
-									colorOut.push(s + ': ' + color[s]);
-								}
-								colorOut = fromMode === 'HEX' ? '"' + color + '"' : '{' + colorOut.join(', ') + '}';
+								if (!skipDisplay) {
+									colorOut = [];
+									for (var s in color) {
+										colorOut.push(s + ': ' + color[s]);
+									}
+									colorOut = fromMode === 'HEX' ? '"' + color + '"' : '{' + colorOut.join(', ') + '}';
 
-								valueOut = [];
-								for (var s in value) {
-									valueOut.push(s + ': ' + value[s]);
-								}
-								valueOut = toMode === 'HEX' ? '"' + value + '"' : '{' + valueOut.join(', ') + '}';
+									valueOut = [];
+									for (var s in value) {
+										valueOut.push(s + ': ' + value[s]);
+									}
+									valueOut = toMode === 'HEX' ? '"' + value + '"' : '{' + valueOut.join(', ') + '}';
 
-								console.log('convertColor(' + colorOut + ', "' + fromMode +
-									'2' + toMode + '") = ' + valueOut);
+									console.log('convertColor(' + colorOut + ', "' + fromMode +
+										'2' + toMode + '") = ' + valueOut);
+								}
 								counter++;
 							}
 						}
@@ -528,6 +533,8 @@
 			}
 		}
 		console.log('Tested ' + counter + ' conversion combinations (excluding same to same)');
+		if (!skipDisplay) console.log('Call conversionTest(true) for timer (incl. calculations in for loops though...)');
+		if (skipDisplay) console.timeEnd('convertAll');
 	}
 
 	window.conversionTest = conversionTest;

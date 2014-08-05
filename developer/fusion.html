@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>fusion technologie</title>
+</head>
+
+<body>
+
+	<div id="myImage" style="width: 256px; height: 256px;"></img>
+
+<script type="text/javascript">
+(function() {
+	'use strict';
+
+	var myImage = document.getElementById('myImage'),
+		width = 256,
+		height = 1,
+		x = 0, count = 0,
+
+		canvas = document.createElement('canvas'),
+		ctx = canvas.getContext('2d'),
+		imageData = ctx.createImageData(width, height),
+		data = imageData.data,
+		base64TXT = '';
+
+	canvas.width  = width;
+	canvas.height = height;
+
+	for (x = 0; x < 255; x++) {
+		count = 0;
+		data[(x * 4) + count++] = 0;
+		data[(x * 4) + count++] = 0;
+		data[(x * 4) + count++] = 0;
+		data[(x * 4) + count++] = 255 - x;
+	}
+
+	ctx.putImageData(imageData, 0, 0);
+	base64TXT = canvas.toDataURL("image/png");
+
+	console.log('horiontal:' + base64TXT.length);
+
+	myImage.style.backgroundImage = 'url(' + base64TXT + ')';
+
+})(window);
+</script>
+</body>
+</html>
