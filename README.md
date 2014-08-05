@@ -1,7 +1,7 @@
 colorPicker
 ===========
 
-An advanced, fast and small javaScript color picker (color chooser for desktop use) using colors.js, a small but comprehensive tool for color conversions / calculations... that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers and also on IE6+ (an extra CSS has to be made to make it work in IE6 though)
+An advanced, fast and small javaScript color picker (color chooser for desktop use) using colors.js, a small but comprehensive tool for color conversions / calculations... that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers and also on IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)
 
 With Colors.js (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also make simpler and / or smaller color pickers quite easy as demonstrated on the demo page.
 
