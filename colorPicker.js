@@ -66,7 +66,6 @@
 				fps: 60, // 1000 / 60 = ~16.7ms
 				delayOffset: 8,
 				CSSPrefix: 'cp-',
-				scale: 1,
 				allMixDetails: true,
 				alphaBG: 'w',
 				imagePath: '',
@@ -197,6 +196,7 @@
 		// We transfer the responsibility to the instance of Color (to save space and memory)
 		delete THIS.options;
 		_options = _colorInstance.options;
+		_options.scale = 1;
 		CSSPrefix = _options.CSSPrefix;
 
 		THIS.color = _colorInstance; // check this again...
@@ -838,7 +838,7 @@
 
 	function resizeApp(e, size) {
 		var event = e || window.event,
-			page = getPageXY(event),
+			page = event ? getPageXY(event) : {},
 			isSize = size !== undefined,
 			x = isSize ? size : page.X - _targetOrigin.left + 8,
 			y = isSize ? size : page.Y - _targetOrigin.top + 8,
