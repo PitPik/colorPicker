@@ -1,15 +1,15 @@
 colorPicker
 ===========
 
-An advanced javaScript color picker (desktop use) using color.js for color conversion / calculation...
+An advanced, fast and small javaScript color picker (color chooser for desktop use) using colors.js, a small but comprehensive tool for color conversions / calculations... that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers and also on IE6+ (an extra CSS has to be made to make it work in IE6 though)
+
+With Colors.js (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also make simpler and / or smaller color pickers quite easy as demonstrated on the demo page.
 
 See demo at http://dematte.at/cpn
 
-All the W3C 2.0 calculations are also based on alpha levels on all layers<br>
+All the W3C 2.0 calculations for readability are also based on opacity levels on all layers<br>
 Supported color spaces: (*: also displayed as colors)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
-
-Uses, with IE9+ and internet browsers, only one .js file (no extra HTML, CSS, images, etc...), works though in all browsers and also on IE6+ (an extra CSS has to be made to make it work in IE6 though)
 
 Convertions of 182 color space combinations (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
