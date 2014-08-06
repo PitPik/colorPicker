@@ -15,7 +15,7 @@ All the W3C 2.0 calculations for readability are also based on opacity levels of
 Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
-##How to use Color.js
+##Colors.js
 
 ```javascript
 var myColors = new Colors({ // all options have a default value...
@@ -30,7 +30,7 @@ var myColors = new Colors({ // all options have a default value...
     allMixDetails: false // if set to true, Colors deliveres some more mixed layer informations for all color layers
 });
 ```
-##How to use colorPicker.js
+##colorPicker.js
 
 colorPicker uses an instance of Colors and passes the options to it, so some values are the same...
 
@@ -70,14 +70,14 @@ var myColorPicker = new ColorPicker({
 });
 ```
 
-##The color model and more
+##The color model, the methods and more
 
 After initializing Color or ColorPicker you'll get a clean but rhich model of the instance:
 
 ```javascript
-Color: {
-    colors: {all kinds of color values...},
-    options: {all the options you set or that are set as default...},
+myColors: {
+    colors: { all kinds of color values... },
+    options: { all the options you set or that are set as default... },
     __proto__: { // all methods Color uses
         setColor: function(newCol, type, alpha) {},
         getColor: function(type) {},
@@ -89,12 +89,13 @@ Color: {
 ```
 
 ```javascript
-ColorPicker: {
+myColorPicker: {
     color: { // instance of Color inside colorPicker
-        colors: {all kinds of color values...},
-        options: {all the options you set or that are set as default...}
+        colors: { all kinds of color values... },
+        options: { all the options you set or that are set as default... },
+        __proto__: { all methods Color uses ... }
     },
-    nodes: {all kinds of cashed nodes, textNodes and styles, etc...},
+    nodes: { all kinds of cashed nodes, textNodes and styles, etc... },
     __proto__: { // all methods ColorPicker uses
         setColor: function(newCol, type, alpha, forceRender) {},
         startRender: function(oneTime) {},
