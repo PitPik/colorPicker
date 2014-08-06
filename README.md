@@ -15,6 +15,8 @@ All the W3C 2.0 calculations for readability are also based on opacity levels of
 Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
+##How to use Color.js
+
 ```javascript
 var myColors = new Colors({ // all options have a default value...
     color: 'rgba(204, 82, 37, 0.8)', // initial color (#RGB, RGB, #RRGGBB, RRGGBB, rgb(r, g, b), ...)
@@ -28,6 +30,7 @@ var myColors = new Colors({ // all options have a default value...
     allMixDetails: false // if set to true, Colors deliveres some more mixed layer informations for all color layers
 });
 ```
+##How to use colorPicker.js
 
 colorPicker uses an instance of Colors and passes the options to it, so some values are the same...
 
@@ -66,6 +69,8 @@ var myColorPicker = new ColorPicker({
     convertCallback: function(colors, type){}, // see Colors...
 });
 ```
+
+##The color model and more
 
 After initializing Color or ColorPicker you'll get a clean but rhich model of the instance:
 
