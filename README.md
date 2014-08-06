@@ -3,11 +3,11 @@
 An advanced, fast but small **javaScript (only) color picker** (color chooser for desktop use) that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
 **colorPicker.js** uses **colors.js**, a small but comprehensive tool for color conversions / calculations... 
 
-With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://http://dematte.at/cpn).<br />
+With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://dematte.at/cpn).<br />
 **colors.js** can convert 182 different combinations of color spaces (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
 ##Demo
-See **demo** at [http://dematte.at/cpn](http://http://dematte.at/cpn)
+See **demo** at [dematte.at/cpn](http://dematte.at/cpn)
 
 <img src="images/screen-shot-all.png" />
 
