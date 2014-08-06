@@ -7,8 +7,7 @@ With Colors.js (~8.7k or way smaller if other color spaces and complex calculati
 
 See demo at http://dematte.at/cpn
 
-<img src="images/screen-shot-L.png" />&#160;<img src="images/screen-shot-M.png" />
-<img src="images/screen-shot-XS.png" />&#160;<img src="images/screen-shot-XXS.png" />
+<img src="images/screen-shot-all.png" />
 
 All the W3C 2.0 calculations for readability are also based on opacity levels on all layers<br>
 Supported color spaces: (*: also displayed as colors)<br>
