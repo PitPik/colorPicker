@@ -1,21 +1,21 @@
-colorPicker
-===========
+# colorPicker
 
-An advanced, fast and small javaScript color picker (color chooser for desktop use) using colors.js, a small but comprehensive tool for color conversions / calculations... that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers and also on IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)
+An advanced, fast but small **javaScript (only) color picker** (color chooser for desktop use) that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
+colorPicker uses colors.js, a small but comprehensive tool for color conversions / calculations... 
 
-With Colors.js (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also make simpler and / or smaller color pickers quite easy as demonstrated on the demo page.
+With **Colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the demo page.<br />
+**Colors.js** can convert 182 different combinations of color spaces (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
-See demo at http://dematte.at/cpn
+##Demo
+See **demo** at http://dematte.at/cpn
 
 <img src="images/screen-shot-all.png" />
 
-All the W3C 2.0 calculations for readability are also based on opacity levels on all layers<br>
-Supported color spaces: (*: also displayed as colors)<br>
+All the W3C 2.0 calculations for readability are also based on opacity levels of all layers<br>
+Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
-Convertions of 182 color space combinations (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
-
-<pre>
+```javascript
 var myColors = new Colors({ // all options have a default value...
     color: 'rgba(204, 82, 37, 0.8)', // initial color (#RGB, RGB, #RRGGBB, RRGGBB, rgb(r, g, b), ...)
     XYZMatrix: ..., // Observer = 2° (CIE 1931), Illuminant = D65  --- see source for dedtails
@@ -27,9 +27,11 @@ var myColors = new Colors({ // all options have a default value...
     convertCallback: function(colors, type){}, // callback function after color convertion for further calculations...
     allMixDetails: false // if set to true, Colors deliveres some more mixed layer informations for all color layers
 });
+```
 
 colorPicker uses an instance of Colors and passes the options to it, so some values are the same...
 
+```javascript
 var myColorPicker = new ColorPicker({
     color: ..., // see Colors...
     mode: 'rgb-b', // initial mode the color picker is starting with
@@ -63,9 +65,11 @@ var myColorPicker = new ColorPicker({
     actionCallback: function(e, action){}, // callback on any action within colorPicker (buttons, sliders, ...)
     convertCallback: function(colors, type){}, // see Colors...
 });
+```
 
 After initializing Color or ColorPicker you'll get a clean but rhich model of the instance:
 
+```javascript
 Color: {
     colors: {all kinds of color values...},
     options: {all the options you set or that are set as default...},
@@ -77,7 +81,9 @@ Color: {
         convertColor: function(color, type) {} // converts 182 different combinations
     }
 }
+```
 
+```javascript
 ColorPicker: {
     color: { // instance of Color inside colorPicker
         colors: {all kinds of color values...},
@@ -94,12 +100,14 @@ ColorPicker: {
         destroyAll: function() {}
     }
 }
+```
 
 The klass ColorPicker has some functions attached, used inside, exported for convenience...
 
+```javascript
 ColorPicker.addEvent = function(obj, type, func){}; // with built in cashe
 ColorPicker.removeEvent = function(obj, type, func){};
 ColorPicker.getOrigin = function(elm){};
 ColorPicker.limitValue = function(value, min, max){};
 ColorPicker.changeClass = function(elm, cln, newCln){}; // a bit tricky to use...
-</pre>
+```
