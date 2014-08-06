@@ -330,7 +330,12 @@
 					replace('_bgs.png', !_isIE ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
 					replace('_icons.png', !_isIE ? urlData + _data._iconsPng : _options.imagePath + '_icons.png').
 					replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
-					replace('"Courier New",', !_isIE ? '' : '"Courier New",');
+					replace('"Courier New",', !_isIE ? '' : '"Courier New",').
+					replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
+						return _isIE ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
+						Math.round(+$2 * 100) + ')";filter: alpha(opacity=' + Math.round(+$2 * 100) + ')' :
+						'-moz-opacity: ' + $2 + '; -khtml-opacity: ' + $2 + '; opacity: ' + $2;
+					});
 				// style.appendChild(document.createTextNode(_data._cssFunc));
 				addStyleSheet(_data._cssMain);
 			}
