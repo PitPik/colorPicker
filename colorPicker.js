@@ -127,7 +127,7 @@
 		return saveAsBackground();
 	};
 
-	Colors.prototype.setCustomBackground = function(col) {
+	ColorPicker.prototype.setCustomBackground = function(col) {
 		focusInstance(this); // needed???
 		return _colorInstance.setCustomBackground(col);
 	};
