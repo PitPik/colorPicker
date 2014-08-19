@@ -294,7 +294,7 @@
 				background.rgbaMixBlack[luminance]);
 			/* ------ */
 			rgbaMixBGMixBlack.luminanceDelta = Math.abs(
-				rgbaMixBGMixBlack[luminance] - colors.background.rgbaMixBlack[luminance]);
+				rgbaMixBGMixBlack[luminance] - background.rgbaMixBlack[luminance]);
 			rgbaMixBGMixBlack.hueDelta = getHueDelta(background.rgbaMixBlack, rgbaMixBGMixBlack, true);
 			/* ------ */
 			colors.rgbaMixBGMixBlack = rgbaMixBGMixBlack;
@@ -305,7 +305,7 @@
 				background.rgbaMixWhite[luminance]);
 			/* ------ */
 			rgbaMixBGMixWhite.luminanceDelta = Math.abs(
-				rgbaMixBGMixWhite[luminance] - colors.background.rgbaMixWhite[luminance]);
+				rgbaMixBGMixWhite[luminance] - background.rgbaMixWhite[luminance]);
 			rgbaMixBGMixWhite.hueDelta = getHueDelta(background.rgbaMixWhite, rgbaMixBGMixWhite, true);
 			/* ------ */
 			colors.rgbaMixBGMixWhite = rgbaMixBGMixWhite;
@@ -319,7 +319,7 @@
 			colors.rgbaMixBGMixCustom = rgbaMixBGMixCustom;
 			/* ------ */
 			rgbaMixBGMixCustom.luminanceDelta = Math.abs(
-				rgbaMixBGMixCustom[luminance] - colors.background.rgbaMixCustom[luminance]);
+				rgbaMixBGMixCustom[luminance] - background.rgbaMixCustom[luminance]);
 			rgbaMixBGMixCustom.hueDelta = getHueDelta(background.rgbaMixCustom, rgbaMixBGMixCustom, true);
 			/* ------ */
 		}
