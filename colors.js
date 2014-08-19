@@ -7,8 +7,8 @@
 			hsl:   {h: [0, 360], s: [0, 100], l: [0, 100]},
 			cmy:   {c: [0, 100], m: [0, 100], y: [0, 100]},
 			cmyk:  {c: [0, 100], m: [0, 100], y: [0, 100], k: [0, 100]},
-			XYZ:   {X: [0, 100], Y: [0, 100], Z: [0, 100]},
 			Lab:   {L: [0, 100], a: [-128, 127], b: [-128, 127]},
+			XYZ:   {X: [0, 100], Y: [0, 100], Z: [0, 100]},
 			alpha: {alpha: [0, 1]},
 			HEX:   {HEX: [0, 16777215]} // maybe we don't need this
 		},
@@ -116,7 +116,7 @@
 			types = type.split('2'),
 			fromType = types[0],	
 			toType = types[1],
-			test =  /(?:RG|HS|CM|LA)/,
+			test = /(?:RG|HS|CM|LA)/,
 			normalizeFrom = test.test(fromType),
 			normalizeTo = test.test(toType),
 			exceptions = {LAB: 'Lab'},
@@ -222,7 +222,7 @@
 */
 			for (var typ in ranges) {
 				if (!ranges[typ][typ]) { // no alpha|HEX
-					if (type !== typ) { //  && typ !== 'XYZ'
+					if (type !== typ && typ !== 'XYZ') {
 						from = exceptions[typ] || 'rgb';
 						colors[typ] = convert[from + '2' + typ](colors[from]);
 					}
