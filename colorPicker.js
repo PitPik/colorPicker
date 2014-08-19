@@ -1155,6 +1155,7 @@
 	}
 
 	function limitValue(value, min, max) {
+		// return Math.max(min, Math.min(max, value)); // faster??
 		return (value > max ? max : value < min ? min : value);
 	}
 

@@ -222,7 +222,7 @@
 */
 			for (var typ in ranges) {
 				if (!ranges[typ][typ]) { // no alpha|HEX
-					if (type !== typ && typ !== 'XYZ') {
+					if (type !== typ) { //  && typ !== 'XYZ'
 						from = exceptions[typ] || 'rgb';
 						colors[typ] = convert[from + '2' + typ](colors[from]);
 					}
@@ -708,6 +708,7 @@
 	}
 
 	function limitValue(value, min, max) {
+		// return Math.max(min, Math.min(max, value)); // faster??
 		return (value > max ? max : value < min ? min : value);
 	}
 })(window);

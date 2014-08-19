@@ -76,7 +76,7 @@ After initializing Color or ColorPicker you'll get a clean but rhich model of th
 
 ```javascript
 myColors: {
-    colors: { all kinds of color values... },
+    colors: { all kinds of color values...  see late},
     options: { all the options you set or that are set as default... },
     __proto__: { // all methods Color uses
         setColor: function(newCol, type, alpha) {},
@@ -91,7 +91,7 @@ myColors: {
 ```javascript
 myColorPicker: {
     color: { // instance of Color inside colorPicker
-        colors: { all kinds of color values... },
+        colors: { all kinds of color values... see later},
         options: { all the options you set or that are set as default... },
         __proto__: { all methods Color uses ... }
     },
@@ -116,4 +116,121 @@ ColorPicker.removeEvent = function(obj, type, func){};
 ColorPicker.getOrigin = function(elm){};
 ColorPicker.limitValue = function(value, min, max){};
 ColorPicker.changeClass = function(elm, cln, newCln){}; // a bit tricky to use...
+```
+
+If `allMixDetails` in options is set to true you'll get the following color model
+
+```javascript
+HEX: "CC5225"
+HUELuminance: 0.2551624375341642
+Lab:
+    L: 50.69829294450699
+    a: 46.211447715607754
+    b: 48.89440661211546
+RGBLuminance: 0.19005527463028907
+RND:
+    Lab:
+        L: 51
+        a: 46
+        b: 49
+    XYZ:
+        X: 28
+        Y: 19
+        Z: 4
+    cmy:
+        c: 20
+        m: 68
+        y: 85
+    cmyk:
+        c: 0
+        k: 20
+        m: 60
+        y: 82
+    hsl:
+        h: 16
+        l: 47
+        s: 69
+    hsv:
+        h: 16
+        s: 82
+        v: 80
+    rgb:
+        b: 37
+        g: 82
+        r: 204
+XYZ:
+    X: 0.28256150053199897
+    Y: 0.1900947979548766
+    Z: 0.03931214183196716
+alpha: 0.8
+background:
+    RGB:
+        b: 37
+        g: 82
+        r: 204
+    alpha: 0.8
+    equivalentGrey: 113
+    rgb:
+        b: 0.1450980392156863
+        g: 0.3215686274509804
+        r: 0.8
+    rgbaMixBlack:
+        a: 1
+        b: 0.11607843137254903
+        g: 0.2572549019607843
+        luminance: 0.11749216636078468
+        r: 0.6400000000000001
+    rgbaMixWhite:
+        a: 1
+        b: 0.316078431372549
+        g: 0.4572549019607843
+        luminance: 0.2754391314146436
+        r: 0.8400000000000001
+cmy:
+    c: 0.19999999999999996
+    m: 0.6784313725490196
+    y: 0.8549019607843137
+cmyk:
+    c: 0
+    k: 0.19999999999999996
+    m: 0.5980392156862746
+    y: 0.8186274509803921
+equivalentGrey: 0.4443719529411765
+hsl:
+    h: 0.04491017964071856
+    l: 0.4725490196078432
+    s: 0.6929460580912863
+hsv:
+    h: 0.04491017964071856
+    s: 0.8186274509803921
+    v: 0.8
+hueRGB:
+    b: 0
+    g: 69
+    r: 255
+rgb:
+    b: 0.1450980392156863
+    g: 0.3215686274509804
+    r: 0.8
+rgbaMixBlack:
+    a: 1
+    b: 0.11607843137254903
+    g: 0.2572549019607843
+    luminance: 0.11749216636078468
+    r: 0.6400000000000001
+rgbaMixWhite:
+    a: 1
+    b: 0.316078431372549
+    g: 0.4572549019607843
+    luminance: 0.2754391314146436
+    r: 0.8400000000000001
+saveColor: ""
+webSave: Object
+    b: 51
+    g: 102
+    r: 204
+webSmart:
+    b: 34
+    g: 85
+    r: 204
 ```
