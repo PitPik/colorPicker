@@ -1,7 +1,7 @@
-# colorPicker
+# colorPicker and colors
 
-An advanced, fast but small **javaScript (only) color picker** (color chooser for desktop use) that uses only one .js file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers), works though in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
-**colorPicker.js** uses **colors.js**, a small but comprehensive tool for color conversions / calculations... 
+An advanced, fast but small **javaScript** (only, framework independent) **color picker** (or color chooser for desktop use) that uses only one javaScript (.js) file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers).<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
+**colorPicker.js** uses **colors.js**, a small but comprehensive tool for color conversions / calculations (WCAG 2.0, contrast, color difference, layer mix, etc.)... 
 
 With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://dematte.at/cpn).<br />
 **colors.js** can convert 182 different combinations of color spaces (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
@@ -11,7 +11,7 @@ See **demo** at [dematte.at/cpn](http://dematte.at/cpn)
 
 <img src="images/screen-shot-all.png" />
 
-All the W3C 2.0 calculations for readability are also based on opacity levels of all layers<br>
+All the WCAG 2.0 calculations for readability are also based on opacity levels of all layers<br>
 Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
@@ -93,7 +93,7 @@ myColorPicker: {
     color: { // instance of Color inside colorPicker
         colors: { all kinds of color values... see later},
         options: { all the options you set or that are set as default... },
-        __proto__: { all methods Color uses ... }
+        __proto__: { all methods Color uses ... see above}
     },
     nodes: { all kinds of cashed nodes, textNodes and styles, etc... },
     __proto__: { // all methods ColorPicker uses
@@ -121,7 +121,7 @@ ColorPicker.changeClass = function(elm, cln, newCln){}; // a bit tricky to use..
 If `allMixDetails` in options is set to true you'll get the following color model
 
 ```javascript
-HEX: "CC5225" // current color as HEX (upper case, 6 digits)
+HEX: // current color as HEX (upper case, 6 digits)
 rgb: // current RGB color as normalized values (0 - 1)
     r: // red
     g: // green
@@ -190,7 +190,7 @@ background: // saved (background) color (saveAsBackground(){})
         r: // red (0 - 255)
         g: // green (0 - 255)
         b: // blue (0 - 255)
-    alpha: alpha or opacity value (0 - 1)
+    alpha: // alpha or opacity value (0 - 1)
     equivalentGrey: // r = g = b = (0 - 255)
     rgbaMixBlack: // saved (background) color mixed with solid black color
         r: // red
