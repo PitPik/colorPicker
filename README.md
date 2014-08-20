@@ -121,164 +121,164 @@ ColorPicker.changeClass = function(elm, cln, newCln){}; // a bit tricky to use..
 If `allMixDetails` in options is set to true you'll get the following color model
 
 ```javascript
-HEX: "CC5225"
-HUELuminance: 0.2551624375341642
-Lab:
-    L: 50.69829294450699
-    a: 46.211447715607754
-    b: 48.89440661211546
-RGBLuminance: 0.19005527463028907
-RND:
-    Lab:
-        L: 51
-        a: 46
-        b: 49
-    XYZ:
-        X: 28
-        Y: 19
-        Z: 4
-    cmy:
-        c: 20
-        m: 68
-        y: 85
-    cmyk:
-        c: 0
-        k: 20
-        m: 60
-        y: 82
-    hsl:
-        h: 16
-        l: 47
-        s: 69
-    hsv:
-        h: 16
-        s: 82
-        v: 80
-    rgb:
-        b: 37
-        g: 82
-        r: 204
-XYZ:
-    X: 0.28256150053199897
-    Y: 0.1900947979548766
-    Z: 0.03931214183196716
-alpha: 0.8
-background:
-    RGB:
-        b: 37
-        g: 82
-        r: 204
-    alpha: 0.8
-    equivalentGrey: 113
-    rgb:
-        b: 0.1450980392156863
-        g: 0.3215686274509804
-        r: 0.8
-    rgbaMixBlack:
-        a: 1
-        b: 0.11607843137254903
-        g: 0.2572549019607843
-        luminance: 0.11749216636078468
-        r: 0.6400000000000001
-    rgbaMixCustom:
-        a: 1
-        b: 0.2164705882352941
-        g: 0.35764705882352943
-        luminance: 0.18587426449997613
-        r: 0.7403921568627452
-    rgbaMixWhite:
-        a: 1
-        b: 0.316078431372549
-        g: 0.4572549019607843
-        luminance: 0.2754391314146436
-        r: 0.8400000000000001
-cmy:
-    c: 0.19999999999999996
-    m: 0.6784313725490196
-    y: 0.8549019607843137
-cmyk:
-    c: 0
-    k: 0.19999999999999996
-    m: 0.5980392156862746
-    y: 0.8186274509803921
-equivalentGrey: 0.4443719529411765
-hsl:
-    h: 0.04491017964071856
-    l: 0.4725490196078432
-    s: 0.6929460580912863
-hsv:
-    h: 0.04491017964071856
-    s: 0.8186274509803921
-    v: 0.8
-hueRGB:
-    b: 0
-    g: 69
-    r: 255
-rgb:
-    b: 0.1450980392156863
-    g: 0.3215686274509804
-    r: 0.8
-rgbaMixBG:
-    a: 0.96
-    b: 0.1450980392156863
-    g: 0.3215686274509804
-    luminance: 0.19005527463028912
-    r: 0.8000000000000002
-rgbaMixBGMixBlack:
-    WCAG2Ratio: 1.34
-    a: 1
-    b: 0.13929411764705882
-    g: 0.30870588235294116
-    hueDelta: 0.06755555555555555
-    luminance: 0.17390431940250664
-    luminanceDelta: 0.056412153041721966
-    r: 0.7680000000000001
-rgbaMixBGMixCustom:
-    WCAG2Ratio: 1.01
-    a: 1
-    b: 0.15937254901960785
-    g: 0.3287843137254902
-    hueDelta: 0.044549019607843125
-    luminance: 0.1888539436392117
-    luminanceDelta: 0.0029796791392355804
-    r: 0.7880784313725491
-rgbaMixBGMixWhite:
-    WCAG2Ratio: 1.28
-    a: 1
-    b: 0.17929411764705883
-    g: 0.34870588235294114
-    hueDelta: 0.09244444444444444
-    luminance: 0.20454042294912048
-    luminanceDelta: 0.07089870846552312
-    r: 0.808
-rgbaMixBlack:
-    WCAG2Ratio: 3.35
-    a: 1
-    b: 0.11607843137254903
-    g: 0.2572549019607843
-    luminance: 0.11749216636078468
-    r: 0.6400000000000001
-rgbaMixCustom:
-    WCAG2Ratio: 1.13
-    a: 1
-    b: 0.2164705882352941
-    g: 0.35764705882352943
-    luminance: 0.18587426449997613
-    r: 0.7403921568627452
-rgbaMixWhite:
-    WCAG2Ratio: 3.23
-    a: 1
-    b: 0.316078431372549
-    g: 0.4572549019607843
-    luminance: 0.2754391314146436
-    r: 0.8400000000000001
-saveColor: ""
-webSave: Object
-    b: 51
-    g: 102
-    r: 204
-webSmart:
-    b: 34
-    g: 85
-    r: 204
+HEX: "CC5225" // current color as HEX (upper case, 6 digits)
+rgb: // current RGB color as normalized values (0 - 1)
+    r: // red
+    g: // green
+    b: // blue
+hsv: // current color values in normalized HSV (HSB) model
+    h: // hue
+    s: // saturation
+    v: // value (brightness)
+hsl: // current color values in normalized HSL model
+    h: // hue
+    s: // saturation
+    l: // lightness
+cmy: // current color values in normalized CMY model
+    c: // cyan
+    m: // magenta
+    y: // yellow
+cmyk: // current color values in normalized CMYK model
+    c: // cyan
+    m: // magenta
+    y: // yellow
+    k: // black
+Lab: // current color values in normalized CIE 1976 L* a* b* (or CIELAB) model
+    L: // lightness
+    a: // color-opponent dimension
+    b: // color-opponent dimension
+XYZ: // current color values in normalized CIE 1931 XYZ model
+    X: // mix (a linear combination) of cone response curves (LMS)
+    Y: // luminance
+    Z: // quasi-equal to blue stimulation (S)
+RND: // all above colors in their defined ranges
+    rgb: // current RGB color, rounded between 0 and 255
+        r: // red (0 - 255)
+        g: // green (0 - 255)
+        b: // blue (0 - 255)
+    hsv: // see above
+        h: // hue (0 - 360 degrees)
+        s: // saturation (0 - 100 %)
+        v: // value (brightness) (0 - 100 %)
+    hsl: // see above
+        h: // hue (0 - 360 degrees)
+        s: // saturation (0 - 100 %)
+        l: // lightness (0 - 100 %)
+    cmy: // see above
+        c: // cyan (0 - 100 %)
+        m: // magenta (0 - 100 %)
+        y: // yellow (0 - 100 %)
+    cmyk: // see above
+        c: // cyan (0 - 100 %)
+        m: // magenta (0 - 100 %)
+        y: // yellow (0 - 100 %)
+        k: // black (0 - 100 %)
+    Lab: // see above
+        L: // lightness (0 - 100 %)
+        a: // color-opponent dimension (-128 - 127)
+        b: // color-opponent dimension (-128 - 127)
+    XYZ: // see above (values might be slightly above 100, dependent on matrix)
+        X: // mix (a linear combination) of cone response curves (LMS) (0 - 100)
+        Y: // luminance (0 - 100)
+        Z: // quasi-equal to blue stimulation (S) (0 - 100)
+background: // saved (background) color (saveAsBackground(){})
+    rgb: // color in RGB model
+        r: // red
+        g: // green
+        b: // blue
+    RGB: // RGB color, rounded between 0 and 255
+        r: // red (0 - 255)
+        g: // green (0 - 255)
+        b: // blue (0 - 255)
+    alpha: alpha or opacity value (0 - 1)
+    equivalentGrey: // r = g = b = (0 - 255)
+    rgbaMixBlack: // saved (background) color mixed with solid black color
+        r: // red
+        g: // green
+        b: // blue
+        a: // resulting alpha or opacity value (0 - 1)
+        luminance: // luminance of resulting mix (0 - 1)
+    rgbaMixCustom: // saved (background) color mixed with custom (solid) color
+        r: // red
+        g: // green
+        b: // blue
+        a: // resulting alpha or opacity value (0 - 1)
+        luminance: // luminance of resulting mix (0 - 1)
+    rgbaMixWhite: // saved (background) color mixed with solid white color
+        r: // red
+        g: // green
+        b: // blue
+        a: // resulting alpha or opacity value (0 - 1)
+        luminance: // luminance of resulting mix (0 - 1)
+alpha: // alpha or opacity value (0 - 1) of current color
+equivalentGrey: // r = g = b = (0 - 1)
+HUELuminance: // luminance of hue (in full brightnes and saturation) (0 - 1)
+RGBLuminance: // luminance of the current color
+hueRGB: // rounded integer value of current color in rgb model with full saturation and brightness
+    r: // red (0 - 255)
+    g: // green (0 - 255)
+    b: // blue (0 - 255)
+saveColor: // '' or 'web smart' or 'web save', if so.
+webSave: // closest web-save color
+    r: // red (0 - 255)
+    g: // green (0 - 255)
+    b: // blue (0 - 255)
+webSmart: // closest web-smart color
+    r: // red (0 - 255)
+    g: // green (0 - 255)
+    b: // blue (0 - 255)
+rgbaMixBG: // color mix result: current color above saved (background) color
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+rgbaMixBGMixBlack: // color mix result: current color above saved (background) color above solid black
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+    luminanceDelta: // luminance difference between current color and resulting saved-black mix (0 - 1)
+    hueDelta: // hue difference between current color and resulting custom-black mix (0 - 1)
+    WCAG2Ratio: // readability vale (1 - 21, 1:1 to 21:1)
+rgbaMixBGMixCustom: // color mix result: current color above saved (background) color above solid custom color
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+    luminanceDelta: // luminance difference between current color and resulting saved-custom mix (0 - 1)
+    hueDelta: // hue difference between current color and resulting saved-custom mix (0 - 1)
+    WCAG2Ratio: // readability vale (1 - 21, 1:1 to 21:1)
+rgbaMixBGMixWhite: // color mix result: current color above saved (background) color above solid white
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+    luminanceDelta: // luminance difference between current color and resulting saved-white mix (0 - 1)
+    hueDelta: // hue difference between current color and resulting saved-white mix (0 - 1)
+    WCAG2Ratio: // readability vale (1 - 21, 1:1 to 21:1)
+rgbaMixBlack: // color mix result: current color above solid black
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+    WCAG2Ratio: // readability vale (1 - 21, 1:1 to 21:1)
+rgbaMixCustom: // color mix result: current color above solid custom color
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+    WCAG2Ratio: // readability vale (1 - 21, 1:1 to 21:1)
+rgbaMixWhite: // color mix result: current color above solid white
+    r: // red (0 - 1)
+    g: // green (0 - 1)
+    b: // blue (0 - 1)
+    a: // resulting alpha or opacity value (0 - 1)
+    luminance: // luminance of resulting mix (0 - 1)
+    WCAG2Ratio: // readability vale (1 - 21, 1:1 to 21:1)
 ```
