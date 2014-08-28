@@ -1142,17 +1142,29 @@
 		return newColor;
 	}
 
-	function color2string(color, type) {
-		var out = [],
-			n = 0;
+	// function color2string(color, type) {
+	// 	var out = [],
+	// 		n = 0;
 
-		type = type || 'rgb';
-		while (type[n] || type.charAt(n)) { // IE7
-			out.push(color[type[n] || type.charAt(n)]);
-			n++;
+	// 	type = type || 'rgb';
+	// 	while (type.charAt(n)) { // IE7 // V8 type[n] || 
+	// 		out.push(color[type.charAt(n)]);
+	// 		n++;
+	// 	}
+	// 	return type + '(' + out.join(', ') + ')';
+	// }
+
+	function color2string(color, type) { // ~2 x faster on V8
+		var out = '',
+			t = (type || 'rgb').split(''),
+			n = t.length;
+
+		for ( ; n--; ) {
+			out = ', ' + color[t[n]] + out;
 		}
-		return type + '(' + out.join(', ') + ')';
+		return (type || 'rgb') + '(' + out.substr(2) + ')';
 	}
+
 
 	function limitValue(value, min, max) {
 		// return Math.max(min, Math.min(max, value)); // faster??

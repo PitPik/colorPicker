@@ -1,6 +1,6 @@
 # colorPicker and colors
 
-An advanced, fast but small **javaScript** (only, framework independent) **color picker** (or color chooser for desktop use) that uses only one javaScript (.js) file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers).<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
+An advanced, fast but small (46.9KB, 19.9KB gZip) **javaScript** (only, framework independent) **color picker** (or color chooser for desktop use) that uses only one javaScript (.js) file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers).<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
 **colorPicker.js** uses **colors.js**, a small but comprehensive tool for color conversions / calculations (WCAG 2.0, contrast, color difference, layer mix, etc.)... 
 
 With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://dematte.at/cpn).<br />
@@ -64,7 +64,7 @@ var myColorPicker = new ColorPicker({
     grey: ..., // see Colors...
     luminance: ..., // see Colors...
     devPicker: false // uses existing HTML instead of internal template for developing
-    renderCallback: // function(colors, mode){}, // callback on after rendering (for further rendering outside colorPicker)
+    renderCallback: function(colors, mode){}, // callback on after rendering (for further rendering outside colorPicker)
     actionCallback: function(e, action){}, // callback on any action within colorPicker (buttons, sliders, ...)
     convertCallback: function(colors, type){}, // see Colors...
 });
@@ -76,7 +76,7 @@ After initializing Color or ColorPicker you'll get a clean but rhich model of th
 
 ```javascript
 myColors: {
-    colors: { all kinds of color values...  see late},
+    colors: { all kinds of color values...  see later},
     options: { all the options you set or that are set as default... },
     __proto__: { // all methods Color uses
         setColor: function(newCol, type, alpha) {},
