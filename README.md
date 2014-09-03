@@ -9,6 +9,8 @@ With **colors.js** (~8.7k or way smaller if other color spaces and complex calcu
 ##Demo
 See **demo** at [dematte.at/cpn](http://dematte.at/cpn)
 
+I will soon add some implementation examples (for jQuery, ...)
+
 <img src="images/screen-shot-all.png" />
 
 All the WCAG 2.0 calculations for readability are also based on opacity levels of all layers<br>
