@@ -100,7 +100,8 @@
 									$colorPicker.hide(animationSpeed);
 									$(':focus').trigger('blur');
 								} else {
-									$(document.body).append(isColorPicker);
+									// buttons on colorPicker don't work any more
+									// $(document.body).append(isColorPicker);
 								}
 							} else if (inputIndex !== -1) {
 								// input field
