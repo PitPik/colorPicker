@@ -17,6 +17,7 @@ See **demo** at [dematte.at/cpn/jQuery_implementation](http://dematte.at/cpn/jQu
         patch: elm,
         animationSpeed: 200,
         draggable: true,
+        multipleInstances: false
         margin: {left: -1, top: 2},
         initStyle: 'display: none',
         mode: 'hsv-h',
