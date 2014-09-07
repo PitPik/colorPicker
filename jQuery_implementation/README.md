@@ -22,5 +22,6 @@ See **demo** at [dematte.at/cpn/jQuery_implementation](http://dematte.at/cpn/jQu
         mode: 'hsv-h',
         size: 1,
         renderCallback: renderCallback
+        // and all other options from color and colorPicker
     });
 ```
