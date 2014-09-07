@@ -82,6 +82,7 @@
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
+						$(options.appenTo || document.body).append($colorPicker);
 						$colorPicker.show(colorPicker.color.options.animationSpeed);
 					});
 
@@ -104,7 +105,7 @@
 									// $(document.body).append(isColorPicker);
 								}
 							} else if (inputIndex !== -1) {
-								// input field
+								// input fireld
 							} else {
 								$colorPicker.hide(animationSpeed);
 							}
