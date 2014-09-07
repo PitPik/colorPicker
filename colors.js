@@ -345,7 +345,7 @@
 	var ColorConverter = {
 		txt2color: function(txt) {
 			var color = {},
-				parts = txt.replace(/(?:#|\))/, '').split('('),
+				parts = txt.replace(/(?:#|\)|%)/g, '').split('('),
 				values = (parts[1] || '').split(/,\s*/),
 				type = parts[1] ? parts[0].substr(0, 3) : 'rgb',
 				m = '';

@@ -438,10 +438,11 @@
 
 			if (_mouseMoveAction) {
 				_startCoords = {pageX: page.X, pageY: page.Y};
-				_mainTarget.style.display = 'block';
+				_mainTarget.style.display = 'block'; // for resizer...
 				_targetOrigin = getOrigin(_mainTarget);
 				_targetOrigin.width = _nodes.opacity.offsetWidth; // ???????
 				_targetOrigin.childWidth = _nodes.opacity_slider.offsetWidth; // ???????
+				_mainTarget.style.display = ''; // ??? for resizer...
 				_mouseMoveAction(event);
 				addEvent(_isIE ? document.body : window, 'mousemove', _mouseMoveAction);
 				_renderTimer = window[requestAnimationFrame](renderAll);

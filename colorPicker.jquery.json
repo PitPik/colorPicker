@@ -1,0 +1,28 @@
+{
+	"name": "ColorPicker",
+	"title": "jQuery-ColorPicker",
+	"description": "Advanced javaScript color picker for jQuery (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...)",
+	"keywords": [
+		"color-picker",
+		"color",
+		"colour"
+	],
+	"version": "1.0",
+	"author": {
+		"name": "Peter Dematté",
+		"email": "colorPicker@dematte.at",
+		"url": "http://dematte.at/colorPicker"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/PitPik/colorPicker/blob/master/MIT-LICENSE.txt"
+		}
+	],
+	"bugs": "https://github.com/PitPik/colorPicker/issues",
+	"homepage": "http://dematte.at/colorPicker",
+	"docs": "https://github.com/PitPik/colorPicker",
+	"dependencies": {
+		"jquery": ">=1.7"
+	}
+}

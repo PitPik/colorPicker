@@ -1,3 +1,4 @@
+
 # colorPicker and colors
 
 An advanced, fast but small (46.9KB, 19.9KB gZip) **javaScript** (only, framework independent) **color picker** (or color chooser for desktop use) that uses only one javaScript (.js) file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers).<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />

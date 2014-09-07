@@ -1,0 +1,20 @@
+body {
+	color: #ccc;
+	padding: .5em 2em;
+	font: normal normal normal .9em/1.35em Georgia, "Times New Roman", Times, serif;
+}
+input:focus {
+	outline: none;
+}
+pre {
+	display: inline;
+	background-color: rgba(255, 255, 255, .2);
+	padding: .5em;
+}
+.color {
+	padding: .5em;
+	margin-right: .4em;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	width: 140px;
+}
