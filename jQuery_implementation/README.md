@@ -23,5 +23,4 @@ See **demo** at [dematte.at/cpn/jQuery_implementation](http://dematte.at/cpn/jQu
         size: 1,
         renderCallback: renderCallback
     });
-});
 ```
