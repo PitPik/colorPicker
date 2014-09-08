@@ -32,6 +32,29 @@
 						options.displayCallback(colors, mode, options);
 					}
 				},
+				actionCallback = function(event, action) {
+					if (action === 'toMemery') { // create cookie string out of memory colors
+						var memos = colorPickers.current.nodes.memos,
+							$memo,
+							backgroundColor = '',
+							opacity = 0,
+							cookieTXT = [];
+
+						for (var n = 0, m = memos.length; n < m; n++) {
+							$memo = $(memos[n]);
+							backgroundColor = $memo.css('background-color');
+							opacity = Math.round($memo.css('opacity') * 100) / 100;
+							cookieTXT.push(backgroundColor.
+								replace(/, /g, ',').
+								replace('rgb(', 'rgba(').
+								replace(')', ',' + opacity + ')')
+							);
+						}
+						cookieTXT = '\'' + cookieTXT.join('\',\'') + '\'';
+						// console.log(cookieTXT);
+						$.docCookies('colorPickerMemos', cookieTXT);
+					}
+				},
 				createInstance = function(elm, config) {
 					var initConfig = {
 							klass: window.ColorPicker,
@@ -41,13 +64,15 @@
 							animationSpeed: 200,
 							draggable: true,
 							margin: {left: -1, top: 2},
+							memoryColors: $.docCookies('colorPickerMemos'),
 							// displayCallback: displayCallback,
 							/* --- regular colorPicker options from this point --- */
-							color: elm.value,
+							color: elm.value, // this has to go to focus as well!!!
 							initStyle: 'display: none',
 							mode: 'hsv-h',
 							size: 1,
-							renderCallback: renderCallback
+							renderCallback: renderCallback,
+							actionCallback: actionCallback
 						};
 
 					for (var n in config) {
@@ -70,6 +95,7 @@
 								{cancel: '.' + options.CSSPrefix + 'app div'}
 							) : $(colorPicker.nodes.colorPicker);
 
+						options.color = elm.value; // brings color to default on reset
 						$colorPicker.css({
 							'position': 'absolute',
 							'left': position.left + options.margin.left,
@@ -135,4 +161,39 @@
 			return this;
 		}
 	});
+
+	$.docCookies = function(key, val, options) {
+		var encode = encodeURIComponent, decode = decodeURIComponent,
+			cookies, n, tmp, cache = {},
+			days;
+
+		if (val === undefined) { // all about reading cookies
+			cookies = document.cookie.split('; ') || []; // easier for decoding then with RegExp search // .split(/;\s*/)
+			for (n = cookies.length; n--; ) {
+				tmp = cookies[n].split('=');
+				if (tmp[0]) cache[decode(tmp.shift())] = decode(tmp.join('=')); // there might be '='s in the value...
+			}
+
+			if (!key) return cache; // return Json for easy access to all cookies
+			else return cache[key]; // easy access to cookies from here
+		} else { // write/delete cookie
+			options = options || {};
+
+			if (val === '' || options.expires < 0) { // prepare deleteing the cookie
+				options.expires = -1;
+				// options.path = options.domain = options.secure = undefined; // to make shure the cookie gets deleted...
+			}
+
+			if (options.expires !== undefined) { // prepare date if any
+				days = new Date();
+				days.setDate(days.getDate() + options.expires);
+			}
+
+			document.cookie = encode(key) + '=' + encode(val) +
+				(days            ? '; expires=' + days.toUTCString() : '') +
+				(options.path    ? '; path='    + options.path       : '') +
+				(options.domain  ? '; domain='  + options.domain     : '') +
+				(options.secure  ? '; secure'                        : '');
+		}
+	};
 })(jQuery, this);

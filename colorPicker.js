@@ -76,7 +76,8 @@
 				// cmyOnly: false,
 				// initStyle: 'display: none',
 
-				// memoryColors: [{r: 100, g: 200, b: 10}]//  , a: 0.5
+				// memoryColors: "'rgba(82,80,151,1)','rgba(100,200,10,0.5)','rgba(0,0,0,1)','rgba(0,0,0,1)'"
+				// memoryColors: [{r: 100, g: 200, b: 10, a: 0.5}] //  
 
 				// opacityPositionRelative: undefined,
 				// customCSS: undefined,
@@ -188,7 +189,8 @@
 			memory,
 			mode = '',
 			CSSPrefix = '',
-			optionButtons;
+			optionButtons,
+			tmp = [];
 
 		for (var option in options) { // deep copy ??
 			THIS.options[option] = options[option];
@@ -234,7 +236,14 @@
 		}
 
 		memory = _options.memoryColors;
+		if (typeof memory === 'string') { // revisit!!!
+			memory = memory.replace(/^'|'$/g, '').replace(/\s*/, '').split('\',\'');
+		}
 		for (var n = _nodes.memos.length; n--; ) { // check again how to handle alpha...
+			if (memory && typeof memory[n] === 'string') {
+				tmp = memory[n].replace('rgba(', '').replace(')', '').split(',');
+				memory[n] = {r: tmp[0], g: tmp[1], b: tmp[2], a: tmp[3]}
+			}
 			_nodes.memos[n].style.cssText = 'background-color: ' + (memory && memory[n] !== undefined ?
 				color2string(memory[n]) + ';' + getOpacityCSS(memory[n]['a'] || 1) : 'rgb(0,0,0);');
 		}
