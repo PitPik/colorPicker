@@ -392,7 +392,7 @@
 				r: Math.round([1, 1 - i, 0, 0, i, 1][mod] * 255),
 				g: Math.round([i, 1, 1, 1 - i, 0, 0][mod] * 255),
 				b: Math.round([0, 0, i, 1, 1, 1 - i][mod] * 255)
-			}
+			};
 		},
 
 		// ------------------------ HSV ------------------------ //
@@ -452,7 +452,7 @@
 				h: hsv.h,
 				s: !hsv.v && !s ? ((_colors && _colors.hsl.s) || 0) : s, // ???
 				l: l / 2
-			}
+			};
 		},
 
 		rgb2hsl: function(rgb, dependent) { // not used in Color
@@ -551,11 +551,13 @@
 				r = X * M.R[0] + Y * M.R[1] + Z * M.R[2],
 				g = X * M.G[0] + Y * M.G[1] + Z * M.G[2],
 				b = X * M.B[0] + Y * M.B[1] + Z * M.B[2],
-				N = 1 / 2.4, M = 0.0031308;
+				N = 1 / 2.4;
 
-				r = (r > M ? 1.055 * Math.pow(r, N) - 0.055 : 12.92 * r);
-				g = (g > M ? 1.055 * Math.pow(g, N) - 0.055 : 12.92 * g);
-				b = (b > M ? 1.055 * Math.pow(b, N) - 0.055 : 12.92 * b);
+			M = 0.0031308;
+
+			r = (r > M ? 1.055 * Math.pow(r, N) - 0.055 : 12.92 * r);
+			g = (g > M ? 1.055 * Math.pow(g, N) - 0.055 : 12.92 * g);
+			b = (b > M ? 1.055 * Math.pow(b, N) - 0.055 : 12.92 * b);
 
 			if (!skip) { // out of gammut
 				_colors._rgb = {r: r, g: g, b: b};

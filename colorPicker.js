@@ -39,10 +39,10 @@
 		_targetOrigin = {},
 		_renderTimer, // animationFrame/interval variable
 		_newData = true,
-		_txt = {
-			selection: document.selection || window.getSelection(),
-			range: (document.createRange ? document.createRange() : document.body.createTextRange())
-		},
+		// _txt = {
+		// 	selection: document.selection || window.getSelection(),
+		// 	range: (document.createRange ? document.createRange() : document.body.createTextRange())
+		// },
 
 		_renderVars = {}, // used only in renderAll and convertColors
 		_cashedVars = {}, // reset in initSliders
@@ -120,11 +120,11 @@
 		if (forceRender) {
 			this.startRender(true);
 		}
-	}
+	};
 
 	ColorPicker.prototype.saveAsBackground = function() {
 		focusInstance(this);
-		return saveAsBackground();
+		return saveAsBackground(true);
 	};
 
 	ColorPicker.prototype.setCustomBackground = function(col) {
@@ -171,7 +171,7 @@
 				}
 				nodes[n] = null;
 				delete nodes[n];
-			};
+			}
 		};
 
 		this.stopRender();
@@ -213,17 +213,17 @@
 		//_nodes.colorPicker.className += ' cmy-' + _options.cmyOnly;
 
 		if (_options.noHexButton) {
-			changeClass(_nodes.HEX_butt, CSSPrefix + 'butt', CSSPrefix + 'labl')
+			changeClass(_nodes.HEX_butt, CSSPrefix + 'butt', CSSPrefix + 'labl');
 		}
 
 		if (_options.size !== undefined) {
-			resizeApp (undefined, _options.size);
+			resizeApp(undefined, _options.size);
 		}
 
 		optionButtons = {
 			alphaBG: _nodes.alpha_labl,
 			cmyOnly: _nodes.HEX_labl // test... take out
-		}
+		};
 		for (var n in optionButtons) {
 			if (_options[n] !== undefined) {
 				buttonActions({target: optionButtons[n], data: _options[n]});
@@ -408,14 +408,14 @@
 			_mainTarget = target;
 			stopChange(undefined, 'resetEventListener');
 
-			if (target == _nodes.sldl_3 || target == _nodes.curm) {
+			if (target === _nodes.sldl_3 || target === _nodes.curm) {
 				_mainTarget = _nodes.sldl_3;
 				_mouseMoveAction = changeXYValue;
 				changeClass(_nodes.slds, 'do-drag');
-			} else if (/sldr/.test(className) || target == _nodes.curl || target == _nodes.curr) {
+			} else if (/sldr/.test(className) || target === _nodes.curl || target === _nodes.curr) {
 				_mainTarget = _nodes.sldr_4;
 				_mouseMoveAction = changeZValue;
-			} else if (target == _nodes.opacity.children[0] || target == _nodes.opacity_slider) {
+			} else if (target === _nodes.opacity.children[0] || target === _nodes.opacity_slider) {
 				_mainTarget = _nodes.opacity;
 				_mouseMoveAction = changeOpacityValue;
 			} else if (/-disp/.test(className) && !/HEX-/.test(className)) {
@@ -426,7 +426,7 @@
 				_valueType = {type: _valueType[0], z: _valueType[1] || ''};
 				changeClass(_nodes.panel, 'start-change');
 				_delayState = 0;
-			} else if (target == _nodes.resize && !_options.noResize) {
+			} else if (target === _nodes.resize && !_options.noResize) {
 				if (!_options.sizes) {
 					getUISizes();
 				}
@@ -477,7 +477,7 @@
 
 		onOffEvent(_nodes.colorPicker, 'paste', function(e) {
 			e.target.firstChild.data = e.clipboardData.getData('Text');
-			return preventDefault(event);
+			return preventDefault(e);
 		});
 	}
 
@@ -750,9 +750,9 @@
 				changeClass(_nodes.colorPicker, 'no-HEX', (options.HEXState = !options.HEXState) ? undefined : '');
 				buttonAction = 'HEXState';
 			} else if (target === _nodes.HEX_labl) { // web save state change
-				var isWebSave = _colors.saveColor === "web save";
+				var isWebSave = _colors.saveColor === 'web save';
 
-				if (_colors.saveColor !== "web smart" && !isWebSave) {
+				if (_colors.saveColor !== 'web smart' && !isWebSave) {
 					options.webUnsave = copyColor(RGB);
 					_colorPicker.setColor(_colors.webSmart, 'rgb');
 				} else if (!isWebSave) {
@@ -954,11 +954,15 @@
 		_newData = true;
 	}
 
-	function saveAsBackground() {
+	function saveAsBackground(refresh) {
 		_colorInstance.saveAsBackground();
 		_nodes.styles.col2.cssText = 'background-color: ' + color2string(_colors.background.RGB) + ';' +
 			getOpacityCSS(_colors.background.alpha);
 		
+		if (refresh) {
+			preRenderAll(_colors);
+			// renderAll();
+		}
 		return (_colors);
 	}
 
@@ -1215,7 +1219,7 @@
 		return {
 			X: e.pageX || e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
 			Y: e.pageY || e.clientY + document.body.scrollTop + document.documentElement.scrollTop
-		}
+		};
 	}
 
 	function addEvent(obj, type, func) {
@@ -1253,7 +1257,7 @@
 		}
 
 		if (obj.addEventListener) obj.addEventListener(type, func, false);
-		else obj.attachEvent("on" + type, func);
+		else obj.attachEvent('on' + type, func);
 	}
 
 	function removeEvent(obj, type, func) {
@@ -1263,7 +1267,7 @@
 		}
 
 		if (obj.removeEventListener) obj.removeEventListener(type, func, false);
-		else obj.detachEvent("on" + type, func);
+		else obj.detachEvent('on' + type, func);
 	}
 
 	function caret(target, pos) { // only for contenteditable
@@ -1279,7 +1283,7 @@
 				out = {
 					end: range2.toString().length,
 					range: range1.toString().length
-				}
+				};
 			} else { // IE < 9
 				target.focus();
 				var range1 = document.selection.createRange(),
@@ -1289,7 +1293,7 @@
 				out = {
 					end: range2.text.length,
 					range: range1.text.length
-				}
+				};
 			}
 			out.start = out.end - out.range;
 			return out;
