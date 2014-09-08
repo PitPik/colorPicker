@@ -33,8 +33,10 @@
 					}
 				},
 				actionCallback = function(event, action) {
-					if (action === 'toMemery') { // create cookie string out of memory colors
-						var memos = colorPickers.current.nodes.memos,
+					var colorPicker = colorPickers.current;
+
+					if (action === 'toMemery') {
+						var memos = colorPicker.nodes.memos,
 							$memo,
 							backgroundColor = '',
 							opacity = 0,
@@ -51,8 +53,13 @@
 							);
 						}
 						cookieTXT = '\'' + cookieTXT.join('\',\'') + '\'';
-						// console.log(cookieTXT);
 						$.docCookies('colorPickerMemos', cookieTXT);
+					} else if (action === 'resizeApp') {
+						$.docCookies('colorPickerSize', colorPicker.color.options.currentSize);
+					} else if (action === 'modeChange') {
+						var mode = colorPicker.color.options.mode;
+
+						$.docCookies('colorPickerMode', mode.type + '-' + mode.z);
 					}
 				},
 				createInstance = function(elm, config) {
@@ -64,13 +71,13 @@
 							animationSpeed: 200,
 							draggable: true,
 							margin: {left: -1, top: 2},
-							memoryColors: $.docCookies('colorPickerMemos'),
 							// displayCallback: displayCallback,
 							/* --- regular colorPicker options from this point --- */
 							color: elm.value, // this has to go to focus as well!!!
 							initStyle: 'display: none',
-							mode: 'hsv-h',
-							size: 1,
+							mode: $.docCookies('colorPickerMode') || 'hsv-h',
+							memoryColors: $.docCookies('colorPickerMemos'),
+							size: $.docCookies('colorPickerSize') || 1,
 							renderCallback: renderCallback,
 							actionCallback: actionCallback
 						};

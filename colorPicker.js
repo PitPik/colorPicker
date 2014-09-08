@@ -855,10 +855,11 @@
 			y = isSize ? size : page.Y - _targetOrigin.top + 8,
 			values = [' S XS XXS', ' S XS', ' S', ''],
 			sizes = _options.sizes, // from getUISizes();
-			value = isSize ? values[size] :
-				y < sizes.XXS[1] + 25 ? values[0] :
-				x < sizes.XS[0] + 25? values[1] :
-				x < sizes.S[0] + 25 || y < sizes.S[1] + 25 ? values[2] : values[3],
+			currentSize = isSize ? size :
+				y < sizes.XXS[1] + 25 ? 0 :
+				x < sizes.XS[0] + 25? 1 :
+				x < sizes.S[0] + 25 || y < sizes.S[1] + 25 ? 2 : 3,
+			value = values[currentSize],
 			isXXS = false,
 			mode,
 			tmp = '';
@@ -878,6 +879,7 @@
 
 			_nodes.colorPicker.className = _nodes.colorPicker.className.replace(/\s+(?:S|XS|XXS)/g, '') + value;
 			_options.scale = isXXS ? 4 : /S/.test(value) ? 2 : 1;
+			_options.currentSize = currentSize;
 
 			_cashedVars.resizer = value;
 
