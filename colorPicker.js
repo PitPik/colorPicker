@@ -308,7 +308,37 @@
 				if (style.styleSheet) { // IE compatible
 					document.styleSheets[document.styleSheets.length-1].cssText = cssText;
 				}
-			};
+			},
+			processCSS = function(doesBAS64){
+				// CSS - system
+				_data._cssFunc = _data._cssFunc.
+					replace(/§/g, prefix).
+					replace('_patches.png', doesBAS64 ? urlData + _data._patchesPng : _options.imagePath + '_patches.png').
+					replace('_vertical.png', doesBAS64 ? urlData + _data._verticalPng : _options.imagePath + '_vertical.png').
+					replace('_horizontal.png', doesBAS64 ? urlData + _data._horizontalPng :
+						_options.imagePath + '_horizontal.png');
+				addStyleSheet(_data._cssFunc, 'colorPickerCSS');
+				// CSS - main
+				if (!_options.customCSS) {
+					_data._cssMain = _data._cssMain.
+						replace(/§/g, prefix).
+						replace('_bgs.png', doesBAS64 ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
+						replace('_icons.png', doesBAS64 ? urlData + _data._iconsPng : _options.imagePath + '_icons.png').
+						replace('_blank.png', doesBAS64 ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
+						replace('"Courier New",', doesBAS64 ? '' : '"Courier New",').
+						replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
+							return !_doesOpacity ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
+							Math.round(+$2 * 100) + ')";filter: alpha(opacity=' + Math.round(+$2 * 100) + ')' :
+							'-moz-opacity: ' + $2 + '; -khtml-opacity: ' + $2 + '; opacity: ' + $2;
+						});
+					// style.appendChild(document.createTextNode(_data._cssFunc));
+					addStyleSheet(_data._cssMain);
+				}
+				for (var n in _data) { // almost 25k of memory ;o)
+					_data[n] = null;
+				}
+			},
+			test = document.createElement('img');
 
 		// development mode
 		if (_devMode) {
@@ -325,33 +355,12 @@
 
 		// CSS
 		if (!document.getElementById('colorPickerCSS')) { // only once needed
-			// CSS - system
-			_data._cssFunc = _data._cssFunc.
-				replace(/§/g, prefix).
-				replace('_patches.png', !_isIE ? urlData + _data._patchesPng : _options.imagePath + '_patches.png').
-				replace('_vertical.png', !_isIE ? urlData + _data._verticalPng : _options.imagePath + '_vertical.png').
-				replace('_horizontal.png', !_isIE ? urlData + _data._horizontalPng :
-					_options.imagePath + '_horizontal.png');
-			addStyleSheet(_data._cssFunc, 'colorPickerCSS');
-			// CSS - main
-			if (!_options.customCSS) {
-				_data._cssMain = _data._cssMain.
-					replace(/§/g, prefix).
-					replace('_bgs.png', !_isIE ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
-					replace('_icons.png', !_isIE ? urlData + _data._iconsPng : _options.imagePath + '_icons.png').
-					replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
-					replace('"Courier New",', !_isIE ? '' : '"Courier New",').
-					replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
-						return !_doesOpacity ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
-						Math.round(+$2 * 100) + ')";filter: alpha(opacity=' + Math.round(+$2 * 100) + ')' :
-						'-moz-opacity: ' + $2 + '; -khtml-opacity: ' + $2 + '; opacity: ' + $2;
-					});
-				// style.appendChild(document.createTextNode(_data._cssFunc));
-				addStyleSheet(_data._cssMain);
-			}
-			for (var n in _data) { // almost 25k of memory ;o)
-				_data[n] = null;
-			}
+			test.onload = test.onerror = function(){
+				if (_data._cssFunc) {
+					processCSS(this.width === 1 && this.height === 1);
+				}
+			};
+			test.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 		}
 
 		app = app.children[0];
