@@ -76,7 +76,7 @@
 							color: elm.value, // this has to go to focus as well!!!
 							initStyle: 'display: none',
 							mode: $.docCookies('colorPickerMode') || 'hsv-h',
-							memoryColors: $.docCookies('colorPickerMemos'),
+							memoryColors: $.docCookies('colorPickerMemos'), // no-alpha????
 							size: $.docCookies('colorPickerSize') || 1,
 							renderCallback: renderCallback,
 							actionCallback: actionCallback

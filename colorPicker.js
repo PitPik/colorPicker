@@ -15,6 +15,7 @@
 		// }
 		_devMode = !_data, // if no _data we assume that colorPicker.data.js is missing (for development)
 		_isIE = document.createStyleSheet !== undefined && document.getElementById,
+		_doesOpacity = typeof document.body.style.opacity !== 'undefined',
 		// _isIE8 = _isIE && document.querySelectorAll,
 
 		_valueRanges = {}, // will be assigned in initInstance() by Colors instance
@@ -341,7 +342,7 @@
 					replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
 					replace('"Courier New",', !_isIE ? '' : '"Courier New",').
 					replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
-						return _isIE ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
+						return !_doesOpacity ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
 						Math.round(+$2 * 100) + ')";filter: alpha(opacity=' + Math.round(+$2 * 100) + ')' :
 						'-moz-opacity: ' + $2 + '; -khtml-opacity: ' + $2 + '; opacity: ' + $2;
 					});
@@ -353,9 +354,11 @@
 			}
 		}
 
-		app.children[0].style.cssText = _options.initStyle || ''; // for initial hiding...
+		app = app.children[0];
+		app.style.cssText = _options.initStyle || ''; // for initial hiding...
+		app.className = app.className.split(' ')[0]; // cleanup for multy instances
 
-		return (_options.appenTo || document.body).appendChild(app.children[0]);
+		return (_options.appenTo || document.body).appendChild(app);
 	}
 
 	function getInstanceNodes(colorPicker, THIS) { // check nodes again... are they all needed?
@@ -1190,12 +1193,12 @@
 	function getOpacityCSS(value) {
 		if (value === undefined) value = 1;
 
-		if (_isIE) {
-			return 'filter: alpha(opacity=' + Math.round(value * 100) + ');';
-		} else {
+		if (_doesOpacity) {
 			return 'opacity: ' + (Math.round(value * 10000000000) / 10000000000) + ';'; // value.toFixed(16) = 99% slower
 			// some speed test:
 			// return ['opacity: ', (Math.round(value * 1e+10) / 1e+10), ';'].join('');
+		} else {
+			return 'filter: alpha(opacity=' + Math.round(value * 100) + ');';
 		}
 	}
 
