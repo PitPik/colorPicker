@@ -170,6 +170,9 @@
 					var value = elm.value.split('(');
 					$(elm).data('colorMode', value[1] ? value[0].substr(0, 3) : 'HEX');
 					doEventListeners(elm, (config && config.multipleInstances), false);
+					if (config && config.readOnly) {
+						elm.readOnly = true;
+					}
 				}
 			});
 
