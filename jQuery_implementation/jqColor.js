@@ -15,7 +15,7 @@
 						colorMode = $input.data('colorMode');
 
 					$patch.css({
-						'color': (colors.rgbaMixBlack.luminance > 0.22 ? '#222' : '#ddd'), // Black...???
+						'color': (colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd'), // Black...???
 						'background-color': RGBAText,
 						'filter' : (options.isIE8 ? 'progid:DXImageTransform.Microsoft.gradient(' + // IE<9
 							'startColorstr=#' + AHEX + ',' + 'endColorstr=#' + AHEX + ')' : '')
@@ -72,6 +72,7 @@
 							animationSpeed: 200,
 							draggable: true,
 							margin: {left: -1, top: 2},
+							customBG: '#FFFFFF',
 							// displayCallback: displayCallback,
 							/* --- regular colorPicker options from this point --- */
 							color: elm.value,

@@ -30,7 +30,7 @@ Calling the colorPicker on all inputs with the calssName 'color': <pre>$('input.
 
 <script type="text/javascript" src="jqColor.js"></script>
 <script type="text/javascript">
-	var $colors = $('input.color').colorPicker().each(function(idx, elm) { // {multipleInstances: true}
+	var $colors = $('input.color').colorPicker({customBG: '#222'}).each(function(idx, elm) { // {multipleInstances: true}
 		$(elm).css({'background-color': this.value})
 	});
 </script>
