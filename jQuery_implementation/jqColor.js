@@ -116,7 +116,9 @@
 						}
 						colorPickers.current = colorPickers[index];
 						$(options.appenTo || document.body).append($colorPicker);
-						$colorPicker.show(colorPicker.color.options.animationSpeed);
+						setTimeout(function() { // compensating late style on onload in colorPicker
+							$colorPicker.show(colorPicker.color.options.animationSpeed);
+						}, 0);
 					});
 
 					if (!colorPickers.evt || off) {
