@@ -325,7 +325,7 @@
 						replace('_bgs.png', doesBAS64 ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
 						replace('_icons.png', doesBAS64 ? urlData + _data._iconsPng : _options.imagePath + '_icons.png').
 						replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
-						replace('"Courier New",', doesBAS64 ? '' : '"Courier New",').
+						replace('"Courier New",', !_isIE ? '' : '"Courier New",').
 						replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
 							return !_doesOpacity ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
 							Math.round(+$2 * 100) + ')";filter: alpha(opacity=' + Math.round(+$2 * 100) + ')' :
