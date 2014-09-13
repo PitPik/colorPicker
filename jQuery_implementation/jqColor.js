@@ -53,7 +53,7 @@
 								replace(')', ',' + opacity + ')')
 							);
 						}
-						cookieTXT = '\'' + cookieTXT.join('\',\'') + '\'';console.log(options.noAlpha)
+						cookieTXT = '\'' + cookieTXT.join('\',\'') + '\'';
 						$.docCookies('colorPickerMemos' + (options.noAlpha ? 'NoAlpha' : ''), cookieTXT);
 					} else if (action === 'resizeApp') {
 						$.docCookies('colorPickerSize', colorPicker.color.options.currentSize);
@@ -64,7 +64,6 @@
 					}
 				},
 				createInstance = function(elm, config) {
-					console.log('colorPickerMemos' + ((config || {}).noAlpha ? 'NoAlpha' : ''));
 					var initConfig = {
 							klass: window.ColorPicker,
 							input: elm,
