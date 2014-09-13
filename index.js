@@ -104,8 +104,10 @@
 	}
 
 	Tools.addEvent(colorSquares, 'click', function(e){ // event delegation
-		if (e.target.parentNode === this) {
-			myColor.setColor(e.target.style.backgroundColor);
+		var target = e.target || e.srcElement;
+
+		if (target.parentNode === this) {
+			myColor.setColor(target.style.backgroundColor);
 			startRender(true);
 		}
 	});
@@ -125,17 +127,17 @@
 			// cmyk: {c: 100, m: 100, y: 100, k: 100},
 		},
 		sliderDown = function (e) { // mouseDown callback
-			var target = e.target,
+			var target = e.target || e.srcElement,
 				id, len;
 
-			if (e.target !== this) {
-				e.preventDefault();
+			if (target !== this) {
+				if (e.preventDefault) e.preventDefault();
 
 				currentTarget = target.id ? target : target.parentNode;
 				id = currentTarget.id; // rgbR
 				len = id.length - 1;
 				type = id.substr(0, len); // rgb
-				mode = id[len].toLowerCase(); // R -> r
+				mode = id.charAt(len).toLowerCase(); // R -> r
 				startPoint = Tools.getOrigin(currentTarget);
 				currentTargetWidth = currentTarget.offsetWidth;
 
@@ -159,9 +161,9 @@
 				var child = sliderChildren[n],
 					len =  child.id.length - 1,
 					type = child.id.substr(0, len),
-					mode = child.id[len].toLowerCase();
+					mode = child.id.charAt(len).toLowerCase();
 
-				child.children[0].style.width = (color.RND[type][mode] / max[type][mode] * 100) + '%';
+				if (child.id) child.children[0].style.width = (color.RND[type][mode] / max[type][mode] * 100) + '%';
 			}
 		};
 
@@ -189,9 +191,9 @@
 		luminanceBar = document.getElementById('luminanceBar'),
 
 		hsvDown = function(e) { // mouseDown callback
-			var target = e.target;
+			var target = e.target || e.srcElement;
 
-			e.preventDefault();
+			if (e.preventDefault) e.preventDefault();
 
 			currentTarget = target.id ? target : target.parentNode;
 			startPoint = Tools.getOrigin(currentTarget);
@@ -276,7 +278,7 @@
 				// maybe change className of hsv_map to change colors of all cursors...
 				'border-color: ' + (color.RGBLuminance > 0.22 ? '#333;' : '#ddd');
 			hsv_barCursors.className = color.RGBLuminance > 0.22 ? hsv_barCursorsCln + ' dark' : hsv_barCursorsCln;
-			hsv_Leftcursor.style.top = hsv_Rightcursor.style.top = ((1 - color.hsv.v) * colorDiscRadius * 2) + 'px';
+			if (hsv_Leftcursor) hsv_Leftcursor.style.top = hsv_Rightcursor.style.top = ((1 - color.hsv.v) * colorDiscRadius * 2) + 'px';
 		};
 
 	Tools.addEvent(hsv_map, 'mousedown', hsvDown); // event delegation
@@ -331,36 +333,38 @@
 			});
 		};
 
-	drawDisk( // HSV color wheel with white center
-		colorDisc.getContext("2d"),
-		[colorDisc.width / 2, colorDisc.height / 2],
-		[colorDisc.width / 2 - 1, colorDisc.height / 2 - 1],
-		360,
-		function(ctx, angle) {
-			var gradient = ctx.createRadialGradient(1, 1, 1, 1, 1, 0);
-			gradient.addColorStop(0, 'hsl(' + (360 - angle + 0) + ', 100%, 50%)');
-			gradient.addColorStop(1, "#FFFFFF");
+	if (colorDisc.getContext) {
+		drawDisk( // HSV color wheel with white center
+			colorDisc.getContext("2d"),
+			[colorDisc.width / 2, colorDisc.height / 2],
+			[colorDisc.width / 2 - 1, colorDisc.height / 2 - 1],
+			360,
+			function(ctx, angle) {
+				var gradient = ctx.createRadialGradient(1, 1, 1, 1, 1, 0);
+				gradient.addColorStop(0, 'hsl(' + (360 - angle + 0) + ', 100%, 50%)');
+				gradient.addColorStop(1, "#FFFFFF");
 
-			ctx.fillStyle = gradient;
-			ctx.fill();
-		}
-	);
-	drawCircle( // gray border
-		colorDisc.getContext("2d"),
-		[colorDisc.width / 2, colorDisc.height / 2],
-		[colorDisc.width / 2, colorDisc.height / 2],
-		'#555',
-		3
-	);
-	// draw the luminanceBar bar
-	var ctx = luminanceBar.getContext("2d"),
-		gradient = ctx.createLinearGradient(0, 0, 0, 200);
+				ctx.fillStyle = gradient;
+				ctx.fill();
+			}
+		);
+		drawCircle( // gray border
+			colorDisc.getContext("2d"),
+			[colorDisc.width / 2, colorDisc.height / 2],
+			[colorDisc.width / 2, colorDisc.height / 2],
+			'#555',
+			3
+		);
+		// draw the luminanceBar bar
+		var ctx = luminanceBar.getContext("2d"),
+			gradient = ctx.createLinearGradient(0, 0, 0, 200);
 
-	gradient.addColorStop(0,"transparent");
-	gradient.addColorStop(1,"black");
+		gradient.addColorStop(0,"transparent");
+		gradient.addColorStop(1,"black");
 
-	ctx.fillStyle = gradient;
-	ctx.fillRect(0, 0, 30, 200);
+		ctx.fillStyle = gradient;
+		ctx.fillRect(0, 0, 30, 200);
+	}
 
 
 	// experimental stuff
@@ -424,7 +428,8 @@
 		renderCallback = doRender,
 		// finally the instance of either ColorPicker or Colors (export for debugging purposes)
 		color_ColorPicker = new (ColorPicker || Colors)({
-			customBG: '#808080'
+			customBG: '#808080',
+			imagePath: 'images/'
 			// renderCallback: renderCallback, // doesn't work in Colors, but also doesn't matter
 			// convertCallback: function(color, type){console.log(color, type)}
 			// resizeCallback: function(e, value, scale, original){console.log(e, value, scale, original)}
