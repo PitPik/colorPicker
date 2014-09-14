@@ -365,7 +365,8 @@
 
 		app = app.children[0];
 		app.style.cssText = _options.initStyle || ''; // for initial hiding...
-		app.className = app.className.split(' ')[0]; // cleanup for multy instances
+		// get a better addClass for this....
+		// app.className = app.className.split(' ')[0]; // cleanup for multy instances
 
 		return (_options.appenTo || document.body).appendChild(app);
 	}
