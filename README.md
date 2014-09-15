@@ -7,10 +7,8 @@ An advanced, fast but small (46.9KB, 19.9KB gZip) **javaScript** (only, framewor
 With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://dematte.at/cpn).<br />
 **colors.js** can convert 182 different combinations of color spaces (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
 
-##Demo
-See **demo** at [dematte.at/cpn](http://dematte.at/cpn)
-
-I will soon add some implementation examples (for jQuery, ...)
+##Demo & integration
+See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQuery integration at [dematte.at/cpn/jQuery_implementation](http://www.dematte.at/cpn/jQuery_implementation/) and [jQuery_implementation/jqColor.js](jQuery_implementation)
 
 <img src="images/screen-shot-all.png" />
 
