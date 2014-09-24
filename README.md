@@ -1,11 +1,13 @@
 
 # colorPicker and colors
 
-An advanced, fast but small (46.9KB, 19.9KB gZip) **javaScript** (only, framework independent) **color picker** (or color chooser for desktop use) that uses only one javaScript (.js) file (no extra HTML, CSS, images, etc... on IE9+ and internet browsers).<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
+An advanced, fast and small (45.4KB, 19.5KB gZip) **javaScript** (framework independent) **color picker** (color chooser) that uses only one javaScript (color.all.min.js) file, so no extra HTML, CSS, images, etc... on IE9+ and internet browsers.<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
 **colorPicker.js** uses **colors.js**, a small but comprehensive tool for color conversions / calculations (WCAG 2.0, contrast, color difference, layer mix, etc.)... 
 
 With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://dematte.at/cpn).<br />
 **colors.js** can convert 182 different combinations of color spaces (rgb2HSV, RGB2hsl, rgb2RGB, HEX2Lab, ...)
+
+If you like it, don't be shy to click the ★ Star button ;o)
 
 ##Demo & integration
 See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQuery integration at [dematte.at/cpn/jQuery_implementation](http://www.dematte.at/cpn/jQuery_implementation/) and [jQuery_implementation/jqColor.js](jQuery_implementation)
