@@ -23,12 +23,16 @@ Calling the colorPicker on all inputs with the calssName 'color': <pre>$('input.
 	<input class="color" value="hsl(32, 95%, 23%)" />
 </p>
 <!-- <button onclick="$colors.colorPicker('destroy')">destroy</button> -->
-<!-- <script type="text/javascript" src="../color.all.min.js"></script> -->
 <script type="text/javascript" src="../colors.js"></script>
 <script type="text/javascript" src="../colorPicker.data.js"></script>
 <script type="text/javascript" src="../colorPicker.js"></script>
 
+<!-- <script type="text/javascript" src="../color.all.min.js"></script> -->
+
 <script type="text/javascript" src="jqColor.js"></script>
+
+<!-- <script type="text/javascript" src="jQueryColorPicker.min.js"></script> -->
+
 <script type="text/javascript">
 	var $colors = $('input.color').colorPicker({customBG: '#222', readOnly: true}).each(function(idx, elm) { // {multipleInstances: true}
 		$(elm).css({'background-color': this.value})

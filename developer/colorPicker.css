@@ -2,7 +2,7 @@
 
 .cp-app {
 	color: #bbb;
-	font-family: "Courier New", Courier, mono; /* "Courier New", */
+	font-family: monospace, "Courier New", Courier, mono; /* "Courier New", */
 	font-size: 12px;
 	line-height: 15px;
 	font-weight: bold;

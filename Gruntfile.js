@@ -8,15 +8,18 @@ module.exports = function(grunt) {
 				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
 				sourceMap: true,
 				// sourceMapIncludeSources: true,
-        		sourceMapName: 'colorPicker.js.map',
-        		report: 'gzip'
+				sourceMapName: 'colorPicker.js.map',
+				report: 'gzip'
 			},
-		    my_target: {
-		      files: {
-		        'color.all.min.js': ['colors.js', 'colorPicker.data.js', 'colorPicker.js']
-		      }
-		    }
-		  }
+			my_target: {
+				files: [{
+					'color.all.min.js': ['colors.js', 'colorPicker.data.js', 'colorPicker.js']
+				},{
+					'jQuery_implementation/jQueryColorPicker.min.js':
+						['colors.js', 'colorPicker.data.js', 'colorPicker.js','jQuery_implementation/jqColor.js']
+				}]
+			}
+		}
 	});
 
 	// Load the plugin that provides the "uglify" task.
