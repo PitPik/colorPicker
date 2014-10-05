@@ -10,7 +10,7 @@ With **colors.js** (~8.7k or way smaller if other color spaces and complex calcu
 If you like it, don't be shy to click the ★ Star button ;o)
 
 ##Demo & integration
-See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQuery integration at [dematte.at/cpn/jQuery_implementation](http://www.dematte.at/cpn/jQuery_implementation/) and [jQuery_implementation/jqColor.js](jQuery_implementation) or the javaScript implementation at [dematte.at/cpn/javaScript_implementation](http://www.dematte.at/cpn/javaScript_implementation/) and [javascript_implementation/jsColor.js](jQuery_implementation)
+See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQuery integration at [dematte.at/cpn/jQuery_implementation](http://www.dematte.at/cpn/jQuery_implementation/) and [jQuery_implementation/jqColor.js](jQuery_implementation) or the javaScript implementation at [dematte.at/cpn/javaScript_implementation](http://www.dematte.at/cpn/javaScript_implementation/) and [javascript_implementation/jsColor.js](javascript_implementation)
 
 <img src="images/screen-shot-all.png" />
 
