@@ -68,7 +68,7 @@
 							klass: window.ColorPicker,
 							input: elm,
 							patch: elm,
-							isIE8: document.all && !document.addEventListener, // Opera???
+							isIE8: !!document.all && !document.addEventListener, // Opera???
 							animationSpeed: 200,
 							draggable: true,
 							margin: {left: -1, top: 2},
