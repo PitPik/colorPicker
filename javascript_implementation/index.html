@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset='utf-8'>
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta http-equiv="Content-Language" content="en">
+
+  <link href="../index.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="jsColor.css" media="all" rel="stylesheet" type="text/css" />
+      
+  <meta name="description" content="colorPicker - Advanced javaScript color picker and color conversion / calculation (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...); this is a javaScript implememntation example">
+  <title>colorPicker javaScript implementation example</title>
+</head>
+
+<body>
+<h1>Simple javaScript implementation</h1>
+Calling the colorPicker on all inputs with the calssName 'color': <pre>jsColorPicker('input.color');</pre>
+<p>
+	<input class="color" value="#323f03" />
+	<input class="color" value="rgb(162, 63, 3)" />
+	<input class="color" value="hsla(32, 95%, 23%, 0.9)" />
+</p>
+<!-- <button onclick="$colors.colorPicker('destroy')">destroy</button> -->
+<script type="text/javascript" src="../colors.js"></script>
+<script type="text/javascript" src="../colorPicker.data.js"></script>
+<script type="text/javascript" src="../colorPicker.js"></script>
+
+<!-- <script type="text/javascript" src="../color.all.min.js"></script> -->
+
+<script type="text/javascript" src="jsColor.js"></script>
+
+<!-- <script type="text/javascript" src="jQueryColorPicker.min.js"></script> -->
+
+<script type="text/javascript">
+	var colors = jsColorPicker('input.color', {
+        customBG: '#222',
+        readOnly: true,
+        init: function(elm) {
+          elm.style.backgroundColor = elm.value;
+        }
+      });
+</script>
+</body>
+</html>
