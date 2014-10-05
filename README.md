@@ -9,7 +9,7 @@ With **colors.js** (~8.7k or way smaller if other color spaces and complex calcu
 
 If you like it, don't be shy to click the ★ Star button ;o)
 
-Now with new implementations for [javascript_implementation/jsColor.js](javaScript) and [jQuery_implementation/jqColor.js](jQuery)
+Now with new implementations for [javaScript](javascript_implementation/jsColor.js) and [jQuery](jQuery_implementation/jqColor.js)
 
 ##Demo & integration
 See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQuery integration at [dematte.at/cpn/jQuery_implementation](http://www.dematte.at/cpn/jQuery_implementation/) and [jQuery_implementation/jqColor.js](jQuery_implementation) or the javaScript implementation at [dematte.at/cpn/javaScript_implementation](http://www.dematte.at/cpn/javaScript_implementation/) and [javascript_implementation/jsColor.js](javascript_implementation)
