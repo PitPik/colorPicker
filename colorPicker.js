@@ -33,6 +33,7 @@
 		_bgTypes = {w: 'White', b: 'Black', c: 'Custom'},
 
 		_mouseMoveAction, // current mouseMove handler assigned on mouseDown
+		_action = '', // needed for action callback; needed due to minification of javaScript
 		_mainTarget, // target on mouseDown, might be parent element though...
 		_valueType, // check this variable; gets missused/polutet over time
 		_delayState = 1, // mouseMove offset (y-axis) in display elements // same here...
@@ -429,19 +430,24 @@
 			focusInstance(THIS);
 			_mainTarget = target;
 			stopChange(undefined, 'resetEventListener');
+			_action = ''; // needed due to minification of javaScript
 
 			if (target === _nodes.sldl_3 || target === _nodes.curm) {
 				_mainTarget = _nodes.sldl_3;
 				_mouseMoveAction = changeXYValue;
+				_action = 'changeXYValue';
 				changeClass(_nodes.slds, 'do-drag');
 			} else if (/sldr/.test(className) || target === _nodes.curl || target === _nodes.curr) {
 				_mainTarget = _nodes.sldr_4;
 				_mouseMoveAction = changeZValue;
+				_action = 'changeZValue';
 			} else if (target === _nodes.opacity.children[0] || target === _nodes.opacity_slider) {
 				_mainTarget = _nodes.opacity;
 				_mouseMoveAction = changeOpacityValue;
+				_action = 'changeOpacityValue';
 			} else if (/-disp/.test(className) && !/HEX-/.test(className)) {
 				_mouseMoveAction = changeInputValue;
+				_action = 'changeInputValue';
 				(target.nextSibling.nodeType === 3 ? target.nextSibling.nextSibling : target.nextSibling).
 					appendChild(_nodes.nsarrow); // nextSibling for better text selection
 				_valueType = className.split('-disp')[0].split('-');
@@ -454,6 +460,7 @@
 				}
 				_mainTarget = _nodes.resizer;
 				_mouseMoveAction = resizeApp;
+				_action = 'resizeApp';
 			} else {
 				_mouseMoveAction = undefined;
 			}
@@ -548,7 +555,7 @@
 			resetCursors();
 
 			if (_options.actionCallback) {
-				_options.actionCallback(e, mouseMoveAction.name || action || 'external');
+				_options.actionCallback(e, _action || mouseMoveAction.name || action || 'external');
 			}
 		}
 	}

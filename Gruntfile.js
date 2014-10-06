@@ -17,6 +17,9 @@ module.exports = function(grunt) {
 				},{
 					'jQuery_implementation/jQueryColorPicker.min.js':
 						['colors.js', 'colorPicker.data.js', 'colorPicker.js','jQuery_implementation/jqColor.js']
+				},{
+					'javascript_implementation/jsColorPicker.min.js':
+						['colors.js', 'colorPicker.data.js', 'colorPicker.js','javascript_implementation/jsColor.js']
 				}]
 			}
 		}
