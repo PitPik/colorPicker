@@ -154,7 +154,8 @@
 					}
 				},
 				that = this,
-				colorPickers = this.colorPickers || []; // this is a way to prevent data binding on HTMLElements
+				colorPickers = this.colorPickers || [], // this is a way to prevent data binding on HTMLElements
+				testColors = new window.Colors({customBG: config.customBG, allMixDetails: true});
 
 			this.colorPickers = colorPickers;
 
@@ -172,6 +173,10 @@
 					doEventListeners(elm, (config && config.multipleInstances), false);
 					if (config && config.readOnly) {
 						elm.readOnly = true;
+					}
+					testColors.setColor(elm.value);
+					if (config && config.init) {
+						config.init(elm, testColors.colors);
 					}
 				}
 			});

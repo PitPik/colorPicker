@@ -15,6 +15,7 @@ See **demo** at [dematte.at/cpn/jQuery_implementation](http://dematte.at/cpn/jQu
         klass: window.ColorPicker,
         input: elm,
         patch: elm,
+        init: function(elm, colors){}, // initialization callback (before colorPicker gets initialized though)
         animationSpeed: 200,
         draggable: true,
         multipleInstances: false

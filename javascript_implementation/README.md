@@ -15,6 +15,7 @@ See **demo** at [dematte.at/cpn/javaScript_implementation](http://dematte.at/cpn
         klass: window.ColorPicker,
         input: elm,
         patch: elm,
+        init: function(elm, colors){}, // initialization callback (before colorPicker gets initialized though)
         // animationSpeed: 200, will be supported soon
         // draggable: true,
         multipleInstances: false

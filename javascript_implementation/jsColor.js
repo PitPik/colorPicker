@@ -157,7 +157,8 @@
 			},
 			// this is a way to prevent data binding on HTMLElements
 			colorPickers = window.jsColorPicker.colorPickers || [],
-			elms = document.querySelectorAll(selectors);
+			elms = document.querySelectorAll(selectors),
+			testColors = new window.Colors({customBG: config.customBG, allMixDetails: true});
 
 		window.jsColorPicker.colorPickers = colorPickers;
 
@@ -172,8 +173,9 @@
 			} else {
 				var value = elm.value.split('(');
 
+				testColors.setColor(elm.value);
 				if (config && config.init) {
-					config.init(elm);
+					config.init(elm, testColors.colors);
 				}
 				elm.setAttribute('data-colorMode', value[1] ? value[0].substr(0, 3) : 'HEX');
 				doEventListeners(elm, (config && config.multipleInstances), false);
