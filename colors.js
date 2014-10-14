@@ -210,16 +210,6 @@
 			RGB = RND.rgb, SAVE, SMART;
 
 		if (type !== 'alpha') {
-/*			if (type !== 'rgb') colors.rgb = convert[type + '2rgb'](colors[type]);
-			if (type !== 'hsv') colors.hsv = convert.rgb2hsv(colors.rgb);
-			if (type !== 'hsl') colors.hsl = convert.hsv2hsl(colors.hsv);
-			if (type !== 'cmy' && type !== 'cmyk') colors.cmy = convert.rgb2cmy(colors.rgb);
-			if (type !== 'cmyk') colors.cmyk = convert.cmy2cmyk(colors.cmy);
-			if (type !== 'Lab') {
-				colors.Lab = convert.rgb2Lab(colors.rgb);
-				delete colors._rgb;
-			}
-*/
 			for (var typ in ranges) {
 				if (!ranges[typ][typ]) { // no alpha|HEX
 					if (type !== typ && typ !== 'XYZ') {
@@ -670,22 +660,6 @@
 		return ((luminance.r * RGB[0]) + (luminance.g * RGB[1]) + (luminance.b * RGB[2]));
 	}
 
-/*	function mixColors(topColor, bottomColor, topAlpha, bottomAlpha) {
-		// http://stackoverflow.com/questions/726549/algorithm-for-additive-color-mixing-for-rgb-values
-		var newColor = {},
-			alphaTop = (topAlpha !== undefined ? topAlpha : 1),
-			alphaBottom = (bottomAlpha !== undefined ? bottomAlpha : 1);
-
-		// if (alphaTop >= 1) return topColor;
-
-		for(var n in topColor) {
-			newColor[n] = topColor[n] * alphaTop +
-				bottomColor[n] * alphaBottom * (1 - alphaTop);
-		}
-		newColor.a = alphaTop + alphaBottom * (1 - alphaTop);
-		return newColor;
-	}
-*/
 	function mixColors(topColor, bottomColor, topAlpha, bottomAlpha) {
 		var newColor = {},
 			alphaTop = (topAlpha !== undefined ? topAlpha : 1),
