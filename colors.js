@@ -451,7 +451,7 @@
 
 			return {
 				h: hsv.h,
-				s: !hsv.v && !s ? ((_colors && _colors.hs && _colors.hsl.s) || 0) : s, // ???
+				s: !hsv.v && !s ? ((_colors && _colors.hsl && _colors.hsl.s) || 0) : s, // ???
 				l: l / 2
 			};
 		},
