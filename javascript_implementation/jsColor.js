@@ -142,7 +142,7 @@
 							}
 						} else if (inputIndex !== -1) {
 							// ...
-						} else {
+						} else if (colorPickerUI) {
 							colorPickerUI.style.display = 'none';
 						}
 					};

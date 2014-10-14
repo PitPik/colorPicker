@@ -416,8 +416,9 @@
 			chroma = r - min;
 			s = r ? (chroma / r) : 0;
 			return {
-				h: s < 1e-15 ? ((_colors && _colors.hsl.h) || 0) : chroma ? Math.abs(k + (g - b) / (6 * chroma)) : 0,
-				s: r ? (chroma / r) : ((_colors && _colors.hsv.s) || 0), // ??_colors.hsv.s || 0
+				h: s < 1e-15 ? ((_colors && _colors.hsl && _colors.hsl.h) || 0) :
+					chroma ? Math.abs(k + (g - b) / (6 * chroma)) : 0,
+				s: r ? (chroma / r) : ((_colors && _colors.hsv && _colors.hsv.s) || 0), // ??_colors.hsv.s || 0
 				v: r
 			};
 		},
@@ -450,7 +451,7 @@
 
 			return {
 				h: hsv.h,
-				s: !hsv.v && !s ? ((_colors && _colors.hsl.s) || 0) : s, // ???
+				s: !hsv.v && !s ? ((_colors && _colors.hs && _colors.hsl.s) || 0) : s, // ???
 				l: l / 2
 			};
 		},
