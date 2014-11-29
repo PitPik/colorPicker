@@ -661,7 +661,7 @@
 			val = origValue === '0' && !isHex ? [] : origValue.split(''); // gefixt
 
 		if (/^(?:27|13)$/.test(keyCode)) { // ENTER || ESC
-			// preventDefault(event);
+			preventDefault(event);
 			elm.blur();
 		} else if (event.type === 'keydown') { // functional keys
 			if (arrowKey) { // arrow/page keys
@@ -951,18 +951,19 @@
 	}
 
 	function initSliders() { // function name...
-		var regex = /\s+(?:hue-)*(?:dark|light)/g;
+		var regex = /\s+(?:hue-)*(?:dark|light)/g,
+			className = 'className'; // minification
 
-		_nodes.curl.className = _nodes.curl.className.replace(regex, ''); // .....
-		_nodes.curr.className = _nodes.curr.className.replace(regex, ''); // .....
-		_nodes.slds.className = _nodes.slds.className.replace(regex, '');
+		_nodes.curl[className] = _nodes.curl[className].replace(regex, ''); // .....
+		_nodes.curr[className] = _nodes.curr[className].replace(regex, ''); // .....
+		_nodes.slds[className] = _nodes.slds[className].replace(regex, '');
 		// var sldrs = ['sldr_2', 'sldr_4', 'sldl_3'];
 		// for (var n = sldrs.length; n--; ) {
-		// 	_nodes[sldrs[n]].className = _options.CSSPrefix + sldrs[n].replace('_', '-');
+		// 	_nodes[sldrs[n]][className] = _options.CSSPrefix + sldrs[n].replace('_', '-');
 		// }
-		_nodes.sldr_2.className = _options.CSSPrefix + 'sldr-2';
-		_nodes.sldr_4.className = _options.CSSPrefix + 'sldr-4';
-		_nodes.sldl_3.className = _options.CSSPrefix + 'sldl-3';
+		_nodes.sldr_2[className] = _options.CSSPrefix + 'sldr-2';
+		_nodes.sldr_4[className] = _options.CSSPrefix + 'sldr-4';
+		_nodes.sldl_3[className] = _options.CSSPrefix + 'sldl-3';
 
 		for (var style in _nodes.styles) {
 			if (!style.indexOf('sld')) _nodes.styles[style].cssText = '';
@@ -997,7 +998,7 @@
 		return (_colors);
 	}
 
-	function preRenderAll(colors) { // do we need this??? yes, only calculate if values change... but how about _newData
+	function preRenderAll(colors) {
 		var renderVars = _renderVars,
 			bgType = _bgTypes[_options.alphaBG];
 
