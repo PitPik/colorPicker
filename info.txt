@@ -1,0 +1,32 @@
+ColorPicker is a small (45.4KB, 19.5KB gZip) but very advanced framework independent javaScript color picker and color conversion / calculation tool that supports the following color spaces: rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab but also  alpha, WCAG 2.0 readability standards (based on opacity levels of all layers), contrast, color similarity, grayscale, 2-layer or 3-layer overlap mix, etc...
+
+ColorPicker is very convenient and intuitive to use due to
+ - its 4 different UI sizes (advanced, smaller, simple and tiny),
+ - its big variety of visualized color spaces (rgb, hsv and hsl),
+ - its convenient multiple usage of input fields (typing, arrow keys or page keys or mouse dragging for value changes),
+ - its practical color value memory slots,
+ - its fast, responsive and supportive cursor rendering,
+ - its feasible color comparison tools,
+ - etc... play around with the demo to find out what ColorPicker provides...
+
+ColorPicker runs within all browsers including IE7+ (theoretically also IE5.5+ and mobile devices with some modifications) can be called within 1 single file (color.all.min.js 45.4KB, 19.5KB gZip including HTML, CSS and some images),
+although it's separated into 4 components for flexible customization, developing and handling:
+ - colors.js (the brain that calculates all colors and color dependent components. Can be used separately to build your own color tool)
+ - colorPicker.js (the UI (user interface) that renders in your browser and handles user interactions)
+ - colorPicker.data.js (the HTML, CSS (functional and visual UI) and 5 images including transparent cursor. All those can be customized. There are tools for customizations available, or it can be dropped for development or if there is custom components available)
+ - jsColor.js or jqColor.js (the plain javaScript or jQuery implementation for out of the box usage of ColorPicker or for simple development for all your needs without having to dig deep into the rest of the code. See this as a simple API usage example for your implementations. Find single file versions in according folders)
+
+ The demos and the implementations show how easy it would be to build your own color picker with colors.js (8.46KB) that could be used as a mobile device color chooser or an advanced color calculation tool. Be creative and use colors' or ColorPicker's clean, intuitive and convenient API to create your own great tools.
+
+Some technical facts:
+ColorPicker is faster and more efficient than most other tools of its kind due to a smart combination of some technics like:
+ - heaviest (pre-)calculations in non-critical situations
+ - intensive usage of fast cache, cache queries and buffering of elements, styles and color calculations
+ - simple and effective DOM manipulation (fastest old school technics for broadest browser coverage)
+ - strict separation of calculations and rendering
+ - usage of requestAnimationFrame for optimized rendering speed
+ - a smart layer rendering technic makes ColorPicker also small and compact (fast download of a single small file)
+
+
+
+http://www.dematte.at/cpn/
