@@ -78,7 +78,7 @@
 				// cmyOnly: false,
 				// initStyle: 'display: none',
 
-				// memoryColors: "'rgba(82,80,151,1)','rgba(100,200,10,0.5)','rgba(0,0,0,1)','rgba(0,0,0,1)'"
+				// memoryColors: "'rgba(82,80,151,1)','rgba(100,200,10,0.5)','rgba(100,0,0,1)','rgba(0,0,0,1)'"
 				// memoryColors: [{r: 100, g: 200, b: 10, a: 0.5}] //  
 
 				// opacityPositionRelative: undefined,
@@ -184,15 +184,30 @@
 		html = null;
 	};
 
+	ColorPicker.prototype.renderMemory = function(memory) {
+		var memos = this.nodes.memos,
+			tmp = [];
+
+		if (typeof memory === 'string') { // revisit!!!
+			memory = memory.replace(/^'|'$/g, '').replace(/\s*/, '').split('\',\'');
+		}
+		for (var n = memos.length; n--; ) { // check again how to handle alpha...
+			if (memory && typeof memory[n] === 'string') {
+				tmp = memory[n].replace('rgba(', '').replace(')', '').split(',');
+				memory[n] = {r: tmp[0], g: tmp[1], b: tmp[2], a: tmp[3]}
+			}
+			memos[n].style.cssText = 'background-color: ' + (memory && memory[n] !== undefined ?
+				color2string(memory[n]) + ';' + getOpacityCSS(memory[n]['a'] || 1) : 'rgb(0,0,0);');
+		}
+	};
+
 	// ------------------------------------------------------ //
 
 	function initInstance(THIS, options) {
 		var exporter, // do something here..
-			memory,
 			mode = '',
 			CSSPrefix = '',
-			optionButtons,
-			tmp = [];
+			optionButtons;
 
 		for (var option in options) { // deep copy ??
 			THIS.options[option] = options[option];
@@ -237,18 +252,7 @@
 			_nodes.colorPicker.className += ' no-alpha'; // IE6 ??? maybe for IE6 on document.body
 		}
 
-		memory = _options.memoryColors;
-		if (typeof memory === 'string') { // revisit!!!
-			memory = memory.replace(/^'|'$/g, '').replace(/\s*/, '').split('\',\'');
-		}
-		for (var n = _nodes.memos.length; n--; ) { // check again how to handle alpha...
-			if (memory && typeof memory[n] === 'string') {
-				tmp = memory[n].replace('rgba(', '').replace(')', '').split(',');
-				memory[n] = {r: tmp[0], g: tmp[1], b: tmp[2], a: tmp[3]}
-			}
-			_nodes.memos[n].style.cssText = 'background-color: ' + (memory && memory[n] !== undefined ?
-				color2string(memory[n]) + ';' + getOpacityCSS(memory[n]['a'] || 1) : 'rgb(0,0,0);');
-		}
+		THIS.renderMemory(_options.memoryColors);
 
 		installEventListeners(THIS);
 		
@@ -351,7 +355,11 @@
 			// we need to be careful with recycling HTML as slider calssNames might have been changed...
 			initSliders();
 		}
-		app.innerHTML = _colorPicker ? _colorPicker.nodes.colorPicker.outerHTML : _data._html.replace(/§/g, prefix);
+		// app.innerHTML = _colorPicker ? _colorPicker.nodes.colorPicker.outerHTML : _data._html.replace(/§/g, prefix);
+		// faster ... FF8.0 (2011) though (but IE4)
+		// outerHTML ... FF11 (2013)
+		app.insertAdjacentHTML('afterbegin',
+			_colorPicker ? _colorPicker.nodes.colorPicker.outerHTML : _data._html.replace(/§/g, prefix));
 		// _html = null;
 
 		// CSS
@@ -877,7 +885,7 @@
 			sizes = _options.sizes, // from getUISizes();
 			currentSize = isSize ? size :
 				y < sizes.XXS[1] + 25 ? 0 :
-				x < sizes.XS[0] + 25? 1 :
+				x < sizes.XS[0] + 25 ? 1 :
 				x < sizes.S[0] + 25 || y < sizes.S[1] + 25 ? 2 : 3,
 			value = values[currentSize],
 			isXXS = false,
@@ -1024,22 +1032,37 @@
 			_newData = false;
 		}
 		// console.time('renderAll');
-		var options = _options, colors = _colors, renderVars = _renderVars, cashedVars = _cashedVars,
-			mode = options.mode, nodes = _nodes,
+		var options = _options,
+			mode = options.mode,
+			scale = options.scale,
 			prefix = options.CSSPrefix,
-			valueRanges = _valueRanges,
-			valueType = _valueType,
+			colors = _colors,
+			nodes = _nodes,
 			CSS = nodes.styles,
 			textNodes = nodes.textNodes,
-			scale = _options.scale,
-			x  = colors[mode.type][mode.x], X = Math.round(x * 255 / (scale === 4 ? 2 : scale)),
-			y_ = colors[mode.type][mode.y], y = 1 - y_, Y = Math.round(y * 255 / scale),
-			z  = 1 - colors[mode.type][mode.z], Z = Math.round(z * 255 / scale),
-			coords = (1 === 1) ? [x, y_] : [0, 0], a = 0, b = 0, // (1 === 2) button label up
-			isRGB = mode.type === 'rgb', isHue = mode.z === 'h', isHSL = mode.type === 'hsl',
+			valueRanges = _valueRanges,
+			valueType = _valueType,
+			renderVars = _renderVars,
+			cashedVars = _cashedVars,
+
+			a = 0,
+			b = 0,
+			x  = colors[mode.type][mode.x],
+			X = Math.round(x * 255 / (scale === 4 ? 2 : scale)),
+			y_ = colors[mode.type][mode.y],
+			y = 1 - y_,
+			Y = Math.round(y * 255 / scale),
+			z  = 1 - colors[mode.type][mode.z],
+			Z = Math.round(z * 255 / scale),
+			coords = (1 === 1) ? [x, y_] : [0, 0], // (1 === 2) button label up
+
+			isRGB = mode.type === 'rgb',
+			isHue = mode.z === 'h',
+			isHSL = mode.type === 'hsl',
 			isHSL_S = isHSL && mode.z === 's',
-			display, tmp, value, slider,
-			moveXY = _mouseMoveAction === changeXYValue, moveZ  = _mouseMoveAction === changeZValue;
+			moveXY = _mouseMoveAction === changeXYValue,
+			moveZ  = _mouseMoveAction === changeZValue,
+			display, tmp, value, slider;
 
 		if (isRGB) {
 			if (coords[0] >= coords[1]) b = 1; else a = 1;
