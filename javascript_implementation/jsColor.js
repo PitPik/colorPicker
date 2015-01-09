@@ -124,13 +124,13 @@
 						var colorPicker = colorPickers.current,
 							colorPickerUI = (colorPicker ? colorPicker.nodes.colorPicker : undefined),
 							animationSpeed = colorPicker ? colorPicker.color.options.animationSpeed : 0,
-							isColorPicker = function(elm) {
+							isColorPicker = colorPicker && (function(elm) {
 								while (elm) {
 									if ((elm.className || '').indexOf('cp-app') !== -1) return elm;
 									elm = elm.parentNode;
 								}
 								return false;
-							}(e.target),
+							})(e.target),
 							inputIndex = Array.prototype.indexOf.call(elms, e.target);
 
 						if (isColorPicker && Array.prototype.indexOf.call(colorPickers, isColorPicker)) {

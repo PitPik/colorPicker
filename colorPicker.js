@@ -419,6 +419,9 @@
 			}
 		}
 
+		// Chrome bug: focuses contenteditable on mouse over while dragging
+		nodes.panelCover = nodes.panel.appendChild(document.createElement('div'));
+
 		return nodes;
 	}
 
@@ -561,6 +564,7 @@
 			_valueType = undefined;
 
 			resetCursors();
+			_nodes.panelCover.style.cssText = '';
 
 			if (_options.actionCallback) {
 				_options.actionCallback(e, _action || mouseMoveAction.name || action || 'external');
@@ -622,7 +626,8 @@
 				delta += _delayState;
 				_delayState = 1;
 				changeClass(_nodes.panel, 'start-change', 'do-change');
-				window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+				_nodes.panelCover.style.cssText = 'position:absolute;left:0;top:0;right:0;bottom:0';
+				// window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
 				document.activeElement.blur();
 				_renderTimer = window[requestAnimationFrame](renderAll);
 			}
