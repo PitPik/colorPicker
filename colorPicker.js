@@ -83,7 +83,7 @@
 
 				// opacityPositionRelative: undefined,
 				// customCSS: undefined,
-				// appenTo: document.body,
+				// appendTo: document.body,
 				// noRangeBackground: false,
 				// textRight: false, ?????
 				// noHexButton: false,
@@ -377,7 +377,7 @@
 		// get a better addClass for this....
 		// app.className = app.className.split(' ')[0]; // cleanup for multy instances
 
-		return (_options.appenTo || document.body).appendChild(app);
+		return (_options.appendTo || document.body).appendChild(app);
 	}
 
 	function getInstanceNodes(colorPicker, THIS) { // check nodes again... are they all needed?
@@ -553,6 +553,7 @@
 			changeClass(_nodes.panel, '(?:start-change|do-change)', '');
 
 			_nodes.resizer.style.cssText = '';
+			_nodes.panelCover.style.cssText = '';
 
 			_nodes.memo_store.style.cssText = 'background-color: ' +
 				color2string(_colors.RND.rgb) + '; ' + getOpacityCSS(_colors.alpha);
@@ -564,7 +565,6 @@
 			_valueType = undefined;
 
 			resetCursors();
-			_nodes.panelCover.style.cssText = '';
 
 			if (_options.actionCallback) {
 				_options.actionCallback(e, _action || mouseMoveAction.name || action || 'external');

@@ -55,7 +55,7 @@ var myColorPicker = new ColorPicker({
     memoryColors: [{r: 100, g: 200, b: 10, a: 0.8}, ...] // array of colors in memory section
     opacityPositionRelative: undefined, // render opacity slider arrows in px or %
     customCSS: undefined, // if external stylesheet, internal will be ignored...
-    appenTo: document.body, // the HTMLElement the colorPicker will be appended to on initialization
+    appendTo: document.body, // the HTMLElement the colorPicker will be appended to on initialization
     noRangeBackground: false, // performance option: doesn't render backgrounds in input fields if set to false
     textRight: false, // not supported yet. Make numbers appear aligned right
     noHexButton: false, // button next to HEX input could be used for some trigger...
