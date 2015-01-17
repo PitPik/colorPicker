@@ -350,6 +350,16 @@
 			return THIS.color.options.devPicker;
 		}
 
+		// CSS
+		if (!document.getElementById('colorPickerCSS')) { // only once needed
+			test.onload = test.onerror = function(){
+				if (_data._cssFunc) {
+					processCSS(this.width === 1 && this.height === 1);
+				}
+			};
+			test.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+		}
+
 		// HTML
 		if (_previousInstance = _colorPicker) {
 			// we need to be careful with recycling HTML as slider calssNames might have been changed...
@@ -360,17 +370,7 @@
 		// outerHTML ... FF11 (2013)
 		app.insertAdjacentHTML('afterbegin',
 			_colorPicker ? _colorPicker.nodes.colorPicker.outerHTML : _data._html.replace(/§/g, prefix));
-		// _html = null;
-
-		// CSS
-		if (!document.getElementById('colorPickerCSS')) { // only once needed
-			test.onload = test.onerror = function(){
-				if (_data._cssFunc) {
-					processCSS(this.width === 1 && this.height === 1);
-				}
-			};
-			test.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-		}
+		// _data._html = null;
 
 		app = app.children[0];
 		app.style.cssText = _options.initStyle || ''; // for initial hiding...
