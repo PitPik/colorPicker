@@ -121,7 +121,7 @@
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
-						$(options.appenTo || document.body).append($colorPicker);
+						$(options.appendTo || document.body).append($colorPicker);
 						setTimeout(function() { // compensating late style on onload in colorPicker
 							$colorPicker.show(colorPicker.color.options.animationSpeed);
 						}, 0);

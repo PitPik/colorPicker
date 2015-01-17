@@ -185,7 +185,7 @@
 			}
 		};
 
-		return this;
+		return window.jsColorPicker.colorPickers;
 	};
 
 	window.ColorPicker.docCookies = function(key, val, options) {
