@@ -98,7 +98,7 @@
 
 					$(elm)[onOff]('focus.colorPicker', function(e) {
 						var $input = $(this),
-							position = $input.position(),
+							position = $input.offset(),
 							index = multiple ? $(that).index(this) : 0,
 							colorPicker = colorPickers[index] ||
 								(colorPickers[index] = createInstance(this, config)),

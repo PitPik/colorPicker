@@ -18,3 +18,6 @@ pre {
 	border-radius: 3px;
 	width: 140px;
 }
+.the-paragraph {
+	position: relative;
+}
