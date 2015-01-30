@@ -155,7 +155,10 @@
 				},
 				that = this,
 				colorPickers = this.colorPickers || [], // this is a way to prevent data binding on HTMLElements
-				testColors = new window.Colors({customBG: config.customBG, allMixDetails: true});
+				testColors = new window.Colors({
+					customBG: (config && config.customBG) || '#FFFFFF',
+					allMixDetails: true
+				});
 
 			this.colorPickers = colorPickers;
 
