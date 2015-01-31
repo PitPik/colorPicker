@@ -137,7 +137,7 @@
 								isColorPicker = $(e.target).closest('.cp-app')[0],
 								inputIndex = $(that).index(e.target);
 
-							if (isColorPicker && $(colorPickers).index(isColorPicker)) {
+							if (isColorPicker && colorPicker && $(colorPickers).index(isColorPicker)) {
 								if (e.target === colorPicker.nodes.exit) {
 									$colorPicker.hide(animationSpeed);
 									$(':focus').trigger('blur');
