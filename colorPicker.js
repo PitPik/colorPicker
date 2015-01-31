@@ -339,9 +339,9 @@
 					// style.appendChild(document.createTextNode(_data._cssFunc));
 					addStyleSheet(_data._cssMain);
 				}
-				for (var n in _data) { // almost 25k of memory ;o)
-					_data[n] = null;
-				}
+				// for (var n in _data) { // almost 25k of memory ;o)
+				// 	_data[n] = null;
+				// }
 			},
 			test = document.createElement('img');
 
@@ -369,7 +369,10 @@
 		// faster ... FF8.0 (2011) though (but IE4)
 		// outerHTML ... FF11 (2013)
 		app.insertAdjacentHTML('afterbegin',
-			_colorPicker ? _colorPicker.nodes.colorPicker.outerHTML : _data._html.replace(/§/g, prefix));
+			_colorPicker ? _colorPicker.nodes.colorPicker.outerHTML ||
+				new XMLSerializer().serializeToString(_colorPicker.nodes.colorPicker) : // FF before F11
+				_data._html.replace(/§/g, prefix));
+			// _colorPicker ? _colorPicker.nodes.colorPicker.parentNode.innerHTML : _data._html.replace(/§/g, prefix));
 		// _data._html = null;
 
 		app = app.children[0];
