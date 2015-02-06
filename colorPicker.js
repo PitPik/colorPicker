@@ -11,7 +11,6 @@
 		// 	_patchesPng: ..., // background images for square sliders in RGB mode
 		// 	_iconsPng: ..., // some icon sprite images
 		// 	_bgsPng: ..., // some more icon sprite images
-		// 	_blankPng: ... // the blank 16x16px image for the transparent cursor
 		// }
 		_devMode = !_data, // if no _data we assume that colorPicker.data.js is missing (for development)
 		_isIE = document.createStyleSheet !== undefined && document.getElementById || !!window.MSInputMethodContext,
@@ -329,7 +328,6 @@
 						replace(/§/g, prefix).
 						replace('_bgs.png', doesBAS64 ? urlData + _data._bgsPng : _options.imagePath + '_bgs.png').
 						replace('_icons.png', doesBAS64 ? urlData + _data._iconsPng : _options.imagePath + '_icons.png').
-						replace('_blank.png', !_isIE ? urlData + _data._blankPng : _options.imagePath + '_blank.cur').
 						// replace('"Courier New",', !_isIE ? '' : '"Courier New",').
 						replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
 							return !_doesOpacity ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +

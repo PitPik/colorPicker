@@ -227,7 +227,7 @@ a {
 	border-color: #333;
 }
 .no-cursor .hsv-cursor, #hsv_map.no-cursor .cover {
-	cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQI12P4//8/MwAI/wMBbrqo4gAAAABJRU5ErkJggg==), auto;
+	cursor: none; /* also works in IE8 */
 	/*url(_blank.gif), url(_blank.png), url(_blank.cur), auto;*/
 }
 #luminanceBar {
