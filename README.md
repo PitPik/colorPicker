@@ -16,6 +16,8 @@ See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQ
 
 <img src="images/screen-shot-all.png" />
 
+If you put the scripts in the header of your document and try to initialize right away, please make shure that you wrap it in some kind of document.ready wrapper or just put the scripts on the bottom of your document.
+
 All the WCAG 2.0 calculations for readability are also based on opacity levels of all layers<br>
 Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
