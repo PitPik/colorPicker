@@ -127,50 +127,42 @@
 						}, 0);
 					});
 
-					if (!colorPickers.evt || off) {
-						colorPickers.evt = true; // prevent new eventListener for window
+					$(window)[onOff]('mousedown.colorPicker', function(e) {
+						var colorPicker = colorPickers.current,
+							$colorPicker = $(colorPicker ? colorPicker.nodes.colorPicker : undefined),
+							animationSpeed = colorPicker ? colorPicker.color.options.animationSpeed : 0,
+							isColorPicker = $(e.target).closest('.cp-app')[0],
+							inputIndex = $(that).index(e.target);
 
-						$(window)[onOff]('mousedown.colorPicker', function(e) {
-							var colorPicker = colorPickers.current,
-								$colorPicker = $(colorPicker ? colorPicker.nodes.colorPicker : undefined),
-								animationSpeed = colorPicker ? colorPicker.color.options.animationSpeed : 0,
-								isColorPicker = $(e.target).closest('.cp-app')[0],
-								inputIndex = $(that).index(e.target);
-
-							if (isColorPicker && colorPicker && $(colorPickers).index(isColorPicker)) {
-								if (e.target === colorPicker.nodes.exit) {
-									$colorPicker.hide(animationSpeed);
-									$(':focus').trigger('blur');
-								} else {
-									// buttons on colorPicker don't work any more
-									// $(document.body).append(isColorPicker);
-								}
-							} else if (inputIndex !== -1) {
-								// input fireld
-							} else {
+						if (isColorPicker && colorPicker && $(colorPickers).index(isColorPicker)) {
+							if (e.target === colorPicker.nodes.exit) {
 								$colorPicker.hide(animationSpeed);
+								$(':focus').trigger('blur');
+							} else {
+								// buttons on colorPicker don't work any more
+								// $(document.body).append(isColorPicker);
 							}
-						});
-					}
+						} else if (inputIndex !== -1) {
+							// input fireld
+						} else {
+							$colorPicker.hide(animationSpeed);
+						}
+					});
 				},
 				that = this,
-				colorPickers = this.colorPickers || [], // this is a way to prevent data binding on HTMLElements
+				colorPickers = $.fn.colorPicker.colorPickers || [], // this is a way to prevent data binding on HTMLElements
 				testColors = new window.Colors({
 					customBG: (config && config.customBG) || '#FFFFFF',
 					allMixDetails: true
 				});
 
-			this.colorPickers = colorPickers;
+			$.fn.colorPicker.colorPickers = colorPickers;
 
 			$(this).each(function(idx, elm) {
-				if (config === 'destroy') {
-					// doEventListeners(elm, (config && config.multipleInstances), true);
-					$(elm).off('.colorPicker');
-					$(window).off('.colorPicker');
-					if (colorPickers[idx]) {
-						colorPickers[idx].destroyAll();
-					}
-				} else {
+				// doEventListeners(elm, (config && config.multipleInstances), true);
+				$(elm).off('.colorPicker');
+				$(window).off('.colorPicker');
+				if (config !== 'destroy') {
 					var value = elm.value.split('(');
 					$(elm).data('colorMode', value[1] ? value[0].substr(0, 3) : 'HEX');
 					doEventListeners(elm, (config && config.multipleInstances), false);
