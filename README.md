@@ -107,9 +107,10 @@ myColorPicker: {
         setColor: function(newCol, type, alpha, forceRender) {},
         startRender: function(oneTime) {},
         stopRender: function() {},
-        setCustomBackground: function(col) {},
-        saveAsBackground: function() {},
+        setCustomBackground: function(col) {}, // 3rd layer solid bg-color
+        saveAsBackground: function() {}, // save current color as bg-color to compare
         setMode: function(mode) {},
+        renderMemory: function(memory) {}, // dynamically manipulate memory squares
         destroyAll: function() {}
     }
 }
