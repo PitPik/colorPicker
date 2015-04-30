@@ -1,7 +1,9 @@
 
 # colorPicker and colors
 
-An advanced, fast and small (45.4KB, 19.5KB gZip) **javaScript** (framework independent) **color picker** (color chooser) that uses only one javaScript (x.min.js) file, so no extra HTML, CSS, images, etc... on IE9+ and internet browsers.<br />ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
+An advanced, fast and small (45.4KB, 19.5KB gZip) **JavaScript** (framework independent) **color picker** (color chooser) that uses only one javaScript (x.min.js) file, so no extra HTML, CSS, images, etc... on IE9+ and internet browsers.
+
+ColorPicker works in all browsers incl. IE6+ (an extra CSS has to be made to make it work in IE6 though and some additional setTimeout tricks to make it work in IE5.5)<br />
 **colorPicker.js** uses **colors.js**, a small but comprehensive tool for color conversions / calculations (WCAG 2.0, contrast, color difference, layer mix, etc.)... 
 
 With **colors.js** (~8.7k or way smaller if other color spaces and complex calculations are taken out...) you can also build your own simpler and / or smaller color pickers quite easy as demonstrated on the [demo page](http://dematte.at/cpn).<br />
@@ -9,9 +11,10 @@ With **colors.js** (~8.7k or way smaller if other color spaces and complex calcu
 
 If you like it, don't be shy to click the ★ Star button ;o)
 
-Now with new implementations for [javaScript](javascript_implementation) and [jQuery](jQuery_implementation)
+Now with new implementations for [JavaScript](javascript_implementation) and [jQuery](jQuery_implementation)
 
-##Demo & integration
+## Demo & integration
+
 See **demo** at [dematte.at/cpn](http://dematte.at/cpn) or check out a simple jQuery integration at [dematte.at/cpn/jQuery_implementation](http://www.dematte.at/cpn/jQuery_implementation/) and [jQuery_implementation/jqColor.js](jQuery_implementation) or the javaScript implementation at [dematte.at/cpn/javaScript_implementation](http://www.dematte.at/cpn/javaScript_implementation/) and [javascript_implementation/jsColor.js](javascript_implementation)
 
 <img src="images/screen-shot-all.png" />
@@ -22,7 +25,7 @@ All the WCAG 2.0 calculations for readability are also based on opacity levels o
 Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
-##colors.js
+## colors.js
 
 ```javascript
 var myColors = new Colors({ // all options have a default value...
@@ -37,9 +40,9 @@ var myColors = new Colors({ // all options have a default value...
     allMixDetails: false // if set to true, Colors deliveres some more mixed layer informations for all color layers
 });
 ```
-##colorPicker.js
+## colorPicker.js
 
-colorPicker uses an instance of Colors and passes the options to it, so some values are the same...
+colorPicker uses an instance of Colors and passes the options to it, so some values are the same:
 
 ```javascript
 var myColorPicker = new ColorPicker({
@@ -77,9 +80,9 @@ var myColorPicker = new ColorPicker({
 });
 ```
 
-##The color model, the methods and more
+## The color model, the methods and more
 
-After initializing Color or ColorPicker you'll get a clean but rhich model of the instance:
+After initializing Color or ColorPicker you'll get a clean but rich model of the instance:
 
 ```javascript
 myColors: {
