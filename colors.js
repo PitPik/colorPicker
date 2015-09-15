@@ -76,7 +76,7 @@
 			return setColor(this.colors, newCol, type, undefined, alpha);
 		} else {
 			if (alpha !== undefined) {
-				this.colors.alpha = alpha;
+				this.colors.alpha = limitValue(alpha, 0, 1);
 			}
 			return convertColors(type);
 		}
@@ -168,7 +168,7 @@
 			}
 		}
 		if (alpha !== undefined) {
-			colors.alpha = +alpha;
+			colors.alpha = limitValue(+alpha, 0, 1);
 		}
 		return convertColors(type, save ? colors : undefined);
 	}

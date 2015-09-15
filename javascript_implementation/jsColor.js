@@ -115,7 +115,7 @@
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
-						(options.appenTo || document.body).appendChild(colorPickerUI);
+						(options.appendTo || document.body).appendChild(colorPickerUI);
 						setTimeout(function() { // compensating late style on onload in colorPicker
 							colorPickerUI.style.display = 'block';
 						}, 0);
