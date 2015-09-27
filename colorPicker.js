@@ -55,6 +55,8 @@
 		_options = {},
 		_nodes = {},
 
+		_math = Math,
+
 		animationFrame = 'AnimationFrame', // we also need this later
 		requestAnimationFrame = 'request' + animationFrame,
 		cancelAnimationFrame = 'cancel' + animationFrame,
@@ -331,7 +333,7 @@
 						// replace('"Courier New",', !_isIE ? '' : '"Courier New",').
 						replace(/opacity:(\d*\.*(\d+))/g, function($1, $2){
 							return !_doesOpacity ? '-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' +
-							Math.round(+$2 * 100) + ')";filter: alpha(opacity=' + Math.round(+$2 * 100) + ')' :
+							_math.round(+$2 * 100) + ')";filter: alpha(opacity=' + _math.round(+$2 * 100) + ')' :
 							'-moz-opacity: ' + $2 + '; -khtml-opacity: ' + $2 + '; opacity: ' + $2;
 						});
 					// style.appendChild(document.createTextNode(_data._cssFunc));
@@ -603,7 +605,7 @@
 			page = getPageXY(event);
 
 		_newData = true;
-		_colors.alpha = limitValue(Math.round(
+		_colors.alpha = limitValue(_math.round(
 			(page.X - _targetOrigin.left) / _targetOrigin.width * 100), 0, 100
 		) / 100;
 		convertColors('alpha');
@@ -619,7 +621,7 @@
 			isAlpha = type === 'alpha',
 			ranges;
 
-		if (_delayState || Math.abs(delta) >= delayOffset) {
+		if (_delayState || _math.abs(delta) >= delayOffset) {
 			if (!_delayState) {
 				_delayState = (delta > 0 ? -delayOffset : delayOffset) +
 					(+_mainTarget.firstChild.data) * (isAlpha ? 100 : 1);
@@ -679,7 +681,7 @@
 			elm.blur();
 		} else if (event.type === 'keydown') { // functional keys
 			if (arrowKey) { // arrow/page keys
-				value = limitValue(Math.round((+origValue + arrowKey) * 1e+6) / 1e+6, valueRange[0], valueRange[1]);
+				value = limitValue(_math.round((+origValue + arrowKey) * 1e+6) / 1e+6, valueRange[0], valueRange[1]);
 			} else if (/^(?:8|46)$/.test(keyCode)) { // DELETE / BACKSPACE
 				if (!rangeData.range) {
 					rangeData.range++;
@@ -732,7 +734,7 @@
 			stopChange(e, event.type);
 
 			textNode.data = value; // if 
-			caret(elm, Math.min(elm.firstChild.data.length, rangeData.start < 0 ? 0 : rangeData.start));
+			caret(elm, _math.min(elm.firstChild.data.length, rangeData.start < 0 ? 0 : rangeData.start));
 		}
 	}
 
@@ -780,9 +782,9 @@
 					alphaBG === 'c' ? 'b' : 'w')));
 				target.firstChild.data = alphaBG.toUpperCase();
 				_nodes.ctrl.style.backgroundColor = _nodes.memo.style.backgroundColor =
-					alphaBG !== 'c' ? '' : 'rgb(' + Math.round(customBG.r * 255) + ', ' +
-					Math.round(customBG.g * 255) + ', ' +
-					Math.round(customBG.b * 255) + ')';
+					alphaBG !== 'c' ? '' : 'rgb(' + _math.round(customBG.r * 255) + ', ' +
+					_math.round(customBG.g * 255) + ', ' +
+					_math.round(customBG.b * 255) + ')';
 				_nodes.raster.style.cssText = _nodes.raster_bg.previousSibling.style.cssText =
 					alphaBG !== 'c' ? '' : getOpacityCSS(customBG.luminance < 0.22 ? 0.5 : 0.4);
 				buttonAction = 'alphaBackground';
@@ -1013,12 +1015,13 @@
 	}
 
 	function preRenderAll(colors) {
-		var renderVars = _renderVars,
+		var _Math = _math,
+			renderVars = _renderVars,
 			bgType = _bgTypes[_options.alphaBG];
 
-		renderVars.hueDelta = Math.round(colors['rgbaMixBGMix' + bgType].hueDelta * 100);
-		// renderVars.RGBLuminanceDelta = Math.round(colors.RGBLuminanceDelta * 100);
-		renderVars.luminanceDelta = Math.round(colors['rgbaMixBGMix' + bgType].luminanceDelta * 100);
+		renderVars.hueDelta = _Math.round(colors['rgbaMixBGMix' + bgType].hueDelta * 100);
+		// renderVars.RGBLuminanceDelta = _Math.round(colors.RGBLuminanceDelta * 100);
+		renderVars.luminanceDelta = _Math.round(colors['rgbaMixBGMix' + bgType].luminanceDelta * 100);
 		renderVars.RGBLuminance = colors.RGBLuminance > 0.22 ? 'light' : 'dark';
 		renderVars.HUEContrast = colors.HUELuminance > 0.22 ? 'light' : 'dark';
 		// renderVars.contrast = renderVars.RGBLuminanceDelta > renderVars.hueDelta ? 'contrast' : '';
@@ -1051,15 +1054,19 @@
 			renderVars = _renderVars,
 			cashedVars = _cashedVars,
 
+			_Math = _math,
+			_getOpacityCSS = getOpacityCSS,
+			_color2string = color2string,
+
 			a = 0,
 			b = 0,
 			x  = colors[mode.type][mode.x],
-			X = Math.round(x * 255 / (scale === 4 ? 2 : scale)),
+			X = _Math.round(x * 255 / (scale === 4 ? 2 : scale)),
 			y_ = colors[mode.type][mode.y],
 			y = 1 - y_,
-			Y = Math.round(y * 255 / scale),
+			Y = _Math.round(y * 255 / scale),
 			z  = 1 - colors[mode.type][mode.z],
-			Z = Math.round(z * 255 / scale),
+			Z = _Math.round(z * 255 / scale),
 			coords = (1 === 1) ? [x, y_] : [0, 0], // (1 === 2) button label up
 
 			isRGB = mode.type === 'rgb',
@@ -1079,11 +1086,11 @@
 		}
 		if ((isRGB && !moveZ) || (isHue && !moveXY) || (!isHue && !moveZ)) {
 			CSS[isHue ? 'sldl_2' : 'sldr_2'][isRGB ? 'cssText' : 'backgroundColor'] =
-				isRGB ? getOpacityCSS((coords[a] - coords[b]) / (1 - (coords[b]) || 0)) : color2string(colors.hueRGB);
+				isRGB ? _getOpacityCSS((coords[a] - coords[b]) / (1 - (coords[b]) || 0)) : _color2string(colors.hueRGB);
 		}
 		if (!isHue) {
-			if (!moveZ)  CSS.sldr_4.cssText = getOpacityCSS(isRGB ? coords[b] : isHSL_S ? Math.abs(1 - y * 2) : y);
-			if (!moveXY) CSS.sldl_3.cssText = getOpacityCSS(isHSL && mode.z === 'l' ? Math.abs(1 - z * 2) : z);
+			if (!moveZ)  CSS.sldr_4.cssText = _getOpacityCSS(isRGB ? coords[b] : isHSL_S ? _Math.abs(1 - y * 2) : y);
+			if (!moveXY) CSS.sldl_3.cssText = _getOpacityCSS(isHSL && mode.z === 'l' ? _Math.abs(1 - z * 2) : z);
 			if (isHSL) { // switch slider class name for black/white color half way through in HSL(S|L) mode(s)
 				slider = isHSL_S ? 'sldr_4' : 'sldl_3';
 				tmp = isHSL_S ? 'r-' : 'l-';
@@ -1106,9 +1113,9 @@
 				(colors.alpha * 100) + '%';
 		}
 
-		CSS.col1.cssText = 'background-color: ' + color2string(colors.RND.rgb) + '; ' +
-			(options.muteAlpha ? '' : getOpacityCSS(colors.alpha));
-		CSS.opacity.backgroundColor = color2string(colors.RND.rgb);
+		CSS.col1.cssText = 'background-color: ' + _color2string(colors.RND.rgb) + '; ' +
+			(options.muteAlpha ? '' : _getOpacityCSS(colors.alpha));
+		CSS.opacity.backgroundColor = _color2string(colors.RND.rgb);
 		CSS.cold.width = renderVars.hueDelta + '%';
 		CSS.cont.width = renderVars.luminanceDelta + '%';
 
@@ -1128,7 +1135,7 @@
 						value = (value - valueRanges[tmp[0]][tmp[1]][0]) /
 							(valueRanges[tmp[0]][tmp[1]][1] - valueRanges[tmp[0]][tmp[1]][0]);
 					}
-					CSS[display].backgroundPosition = Math.round((1 - value) * 100) + '% 0%';
+					CSS[display].backgroundPosition = _Math.round((1 - value) * 100) + '% 0%';
 				}
 			}
 		}
@@ -1241,11 +1248,11 @@
 		if (value === undefined) value = 1;
 
 		if (_doesOpacity) {
-			return 'opacity: ' + (Math.round(value * 10000000000) / 10000000000) + ';'; // value.toFixed(16) = 99% slower
+			return 'opacity: ' + (_math.round(value * 10000000000) / 10000000000) + ';'; // value.toFixed(16) = 99% slower
 			// some speed test:
 			// return ['opacity: ', (Math.round(value * 1e+10) / 1e+10), ';'].join('');
 		} else {
-			return 'filter: alpha(opacity=' + Math.round(value * 100) + ');';
+			return 'filter: alpha(opacity=' + _math.round(value * 100) + ');';
 		}
 	}
 
@@ -1277,9 +1284,11 @@
 	}
 
 	function getPageXY(e) {
+		var doc = window.document;
+
 		return {
-			X: e.pageX || e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
-			Y: e.pageY || e.clientY + document.body.scrollTop + document.documentElement.scrollTop
+			X: e.pageX || e.clientX + doc.body.scrollLeft + doc.documentElement.scrollLeft,
+			Y: e.pageY || e.clientY + doc.body.scrollTop + doc.documentElement.scrollTop
 		};
 	}
 
