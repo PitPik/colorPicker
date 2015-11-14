@@ -30,6 +30,9 @@
 					options.displayCallback(colors, mode, options);
 				}
 			},
+			extractValue = function(elm) {
+				return elm.value || elm.getAttribute('value') || elm.style.backgroundColor || '#FFFFFF';
+			},
 			actionCallback = function(event, action) {
 				var options = this,
 					colorPicker = colorPickers.current;
@@ -72,7 +75,7 @@
 						customBG: '#FFFFFF',
 						// displayCallback: displayCallback,
 						/* --- regular colorPicker options from this point --- */
-						color: elm.value,
+						color: extractValue(elm),
 						initStyle: 'display: none',
 						mode: ColorPicker.docCookies('colorPickerMode') || 'hsv-h',
 						// memoryColors: (function(colors, config) {
@@ -102,7 +105,7 @@
 							options = colorPicker.color.options,
 							colorPickerUI = colorPicker.nodes.colorPicker;
 
-						options.color = elm.value; // brings color to default on reset
+						options.color = extractValue(elm); // brings color to default on reset
 						colorPickerUI.style.cssText = 
 							'position: absolute;' +
 							'left:' + (position.left + options.margin.left) + 'px;' +
@@ -111,7 +114,7 @@
 						if (!multiple) {
 							options.input = elm;
 							options.patch = elm; // check again???
-							colorPicker.setColor(elm.value, undefined, undefined, true);
+							colorPicker.setColor(extractValue(elm), undefined, undefined, true);
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
@@ -171,9 +174,10 @@
 					colorPickers[n].destroyAll();
 				}
 			} else {
-				var value = elm.value.split('(');
+				var color = extractValue(elm);
+				var value = color.split('(');
 
-				testColors.setColor(elm.value);
+				testColors.setColor(color);
 				if (config && config.init) {
 					config.init(elm, testColors.colors);
 				}

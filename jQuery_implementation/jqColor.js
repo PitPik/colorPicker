@@ -32,6 +32,9 @@
 						options.displayCallback(colors, mode, options);
 					}
 				},
+				extractValue = function(elm) {
+					return elm.value || elm.getAttribute('value') || elm.style.backgroundColor || '#FFFFFF';
+				},
 				actionCallback = function(event, action) {
 					var options = this,
 						colorPicker = colorPickers.current;
@@ -75,7 +78,7 @@
 							customBG: '#FFFFFF',
 							// displayCallback: displayCallback,
 							/* --- regular colorPicker options from this point --- */
-							color: elm.value,
+							color: extractValue(elm),
 							initStyle: 'display: none',
 							mode: $.docCookies('colorPickerMode') || 'hsv-h',
 							// memoryColors: (function(colors, config) {
@@ -108,7 +111,7 @@
 								{cancel: '.' + options.CSSPrefix + 'app div'}
 							) : $(colorPicker.nodes.colorPicker);
 
-						options.color = elm.value; // brings color to default on reset
+						options.color = extractValue(elm); // brings color to default on reset
 						$colorPicker.css({
 							'position': 'absolute',
 							'left': position.left + options.margin.left,
@@ -117,7 +120,7 @@
 						if (!multiple) {
 							options.input = elm;
 							options.patch = elm; // check again???
-							colorPicker.setColor(elm.value, undefined, undefined, true);
+							colorPicker.setColor(extractValue(elm), undefined, undefined, true);
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
@@ -163,13 +166,14 @@
 				$(elm).off('.colorPicker');
 				$(window).off('.colorPicker');
 				if (config !== 'destroy') {
-					var value = elm.value.split('(');
+					var color = extractValue(elm),
+						value = color.split('(');
 					$(elm).data('colorMode', value[1] ? value[0].substr(0, 3) : 'HEX');
 					doEventListeners(elm, (config && config.multipleInstances), false);
 					if (config && config.readOnly) {
 						elm.readOnly = true;
 					}
-					testColors.setColor(elm.value);
+					testColors.setColor(color);
 					if (config && config.init) {
 						config.init(elm, testColors.colors);
 					}
