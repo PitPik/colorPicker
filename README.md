@@ -25,6 +25,28 @@ All the WCAG 2.0 calculations for readability are also based on opacity levels o
 Supported color spaces are: (* also displayed as colors in realtime)<br>
 rgb *, hsv(b) *, hsl *, cmyk, cmy, Lab, XYZ, HEX
 
+## Description of files
+
+ - **colors.js** - the color calculation library
+ - **colorPicker.data.js** - HTMLS / CSS and images used by the UI
+ - **colorPicker.js** - the UI (but not the implementation)
+
+Those three files are used to build the color picker UI and calculate colors as you use it from the UI or from outside, just like shown on the [demo page](http://dematte.at/colorPicker).
+**colors.js** doesn't have any dependencies and can be used standalone to build your own color picker or some other app...
+Those 3 files are combined and minified in a file named: **color.all.min.js**
+
+If you want to use colorPicker as a plugin that opens on clicks on input fields, remembers colors and it's current size etc. then you need to additionally use the implementations, either
+ - **javascript_implementation/jsColor.js** or
+ - **jQuery_implementation/jqColor.js**
+
+This is all seperated so you can write your own implementations if you have any special requirements not covered by those quite experimental implementations...
+
+Those folders also include a 'whole package' file so you can go for only one file and don't need to include the others:
+ - jsColorPicker.min.js
+ - jQueryColorPicker.min.js
+
+Those include **colors.js**, **colorPicker.data.js**, **colorPicker.js** and either **jsColor.js** or **jqColor.js** depending of which implementation you chose.
+
 ## colors.js
 
 ```javascript
