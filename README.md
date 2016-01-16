@@ -115,7 +115,7 @@ myColors: {
         getColor: function(type) {},
         setCustomBackground: function(col) {},
         saveAsBackground: function() {},
-        convertColor: function(color, type) {} // converts 182 different combinations
+        convertColor: function(color, type) {} // String type: 'rgb2HSL';... converts 182 different combinations
     }
 }
 ```
