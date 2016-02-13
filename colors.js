@@ -17,7 +17,7 @@
 		_colors = {},
 
 		// http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html for more
-		XYZMatrix = { // Observer = 2° (CIE 1931), Illuminant = D65 
+		XYZMatrix = { // Observer = 2° (CIE 1931), Illuminant = D65
 			X: [ 0.4124564,  0.3575761,  0.1804375],
 			Y: [ 0.2126729,  0.7151522,  0.0721750],
 			Z: [ 0.0193339,  0.1191920,  0.9503041],
@@ -28,8 +28,8 @@
 		grey = {r: 0.298954, g: 0.586434, b: 0.114612}, // CIE-XYZ 1931
 		luminance = {r: 0.2126, g: 0.7152, b: 0.0722}, // W3C 2.0
 
-		_math = Math,
-		_parseint = parseInt,
+		_math = window.Math,
+		_parseint = window.parseInt,
 
 		Colors = window.Colors = function(options) {
 			this.colors = {RND: {}};
@@ -64,7 +64,7 @@
 			};
 			customBG = _options.customBG;
 			_options.customBG = (typeof customBG === 'string') ? ColorConverter.txt2color(customBG).rgb : customBG;
-			_colors = setColor(THIS.colors, _options.color, undefined, true); // THIS.colors = _colors = 
+			_colors = setColor(THIS.colors, _options.color, undefined, true); // THIS.colors = _colors =
 		},
 		focusInstance = function(THIS) {
 			if (_instance !== THIS) {
@@ -117,7 +117,7 @@
 		var convert = ColorConverter,
 			ranges = _valueRanges,
 			types = type.split('2'),
-			fromType = types[0],	
+			fromType = types[0],
 			toType = types[1],
 			test = /(?:RG|HS|CM|LA)/,
 			normalizeFrom = test.test(fromType),
@@ -132,7 +132,7 @@
 						_math.round(color[n] * (Lab || ranges[type][n][1])) :
 						color[n] / (Lab || ranges[type][n][1]);
 				}
-				
+
 				return result;
 			};
 
@@ -144,9 +144,9 @@
 		}
 		color = fromType === toType ? color : ( // same type; returns same/normalized version
 			convert[fromType + '2' + toType] ? convert[fromType + '2' + toType](color, true) : // existing converter
-			toType === 'HEX' ? convert.RGB2HEX(type === 'RGB2HEX' ? color : normalize(fromType === 'rgb' ? color : 
+			toType === 'HEX' ? convert.RGB2HEX(type === 'RGB2HEX' ? color : normalize(fromType === 'rgb' ? color :
 				convert[fromType + '2rgb'](color, true), 'rgb', true)) :
- 			convert['rgb2' + toType](convert[fromType + '2rgb'](color, true), true) // not in ColorConverter
+			convert['rgb2' + toType](convert[fromType + '2rgb'](color, true), true) // not in ColorConverter
 		);
 		if (normalizeTo) { // from abc to ABC
 			color = normalize(color, toType, true);
@@ -167,7 +167,8 @@
 			alpha = alpha !== undefined ? alpha : color.alpha;
 		} else if (color) {
 			for (var n in color) {
-				colors[type][n] = limitValue(color[n] / _valueRanges[type][n][1], 0 , 1);
+				colors[type][n] = type === 'Lab' ? color[n] :
+				limitValue(color[n] / _valueRanges[type][n][1], 0 , 1);
 			}
 		}
 		if (alpha !== undefined) {
@@ -256,7 +257,7 @@
 			alpha = colors.alpha,
 			luminance = 'luminance',
 			background = colors.background,
-			rgbaMixBlack, rgbaMixWhite, rgbaMixCustom, 
+			rgbaMixBlack, rgbaMixWhite, rgbaMixCustom,
 			rgbaMixBG, rgbaMixBGMixBlack, rgbaMixBGMixWhite, rgbaMixBGMixCustom,
 			_mixColors = mixColors,
 			_getLuminance = getLuminance,
@@ -487,10 +488,10 @@
 
 		// ------------------------ CMYK ------------------------ //
 		// Quote from Wikipedia:
-		// "Since RGB and CMYK spaces are both device-dependent spaces, there is no 
-		// simple or general conversion formula that converts between them.  
-		// Conversions are generally done through color management systems, using 
-		// color profiles that describe the spaces being converted. Nevertheless, the 
+		// "Since RGB and CMYK spaces are both device-dependent spaces, there is no
+		// simple or general conversion formula that converts between them.
+		// Conversions are generally done through color management systems, using
+		// color profiles that describe the spaces being converted. Nevertheless, the
 		// conversions cannot be exact, since these spaces have very different gamuts."
 		// Translation: the following are just simple RGB to CMY(K) and visa versa conversion functions.
 

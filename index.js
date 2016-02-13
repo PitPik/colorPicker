@@ -163,7 +163,7 @@
 					type = child.id.substr(0, len),
 					mode = child.id.charAt(len).toLowerCase();
 
-				if (child.id) child.children[0].style.width = (color.RND[type][mode] / max[type][mode] * 100) + '%';
+				child.children[0].style.width = (color.RND[type][mode] / max[type][mode] * 100) + '%';
 			}
 		};
 

@@ -13,8 +13,8 @@
 		// 	_bgsPng: ..., // some more icon sprite images
 		// }
 		_devMode = !_data, // if no _data we assume that colorPicker.data.js is missing (for development)
-		_isIE = document.createStyleSheet !== undefined && document.getElementById || !!window.MSInputMethodContext,
-		_doesOpacity = typeof document.body.style.opacity !== 'undefined',
+		_isIE = false,
+		_doesOpacity = false,
 		// _isIE8 = _isIE && document.querySelectorAll,
 
 		_valueRanges = {}, // will be assigned in initInstance() by Colors instance
@@ -213,6 +213,8 @@
 		for (var option in options) { // deep copy ??
 			THIS.options[option] = options[option];
 		}
+		_isIE = document.createStyleSheet !== undefined && document.getElementById || !!window.MSInputMethodContext;
+		_doesOpacity = typeof document.body.style.opacity !== 'undefined';
 		_colorInstance = new Colors(THIS.options);
 		// We transfer the responsibility to the instance of Color (to save space and memory)
 		delete THIS.options;
@@ -438,9 +440,10 @@
 		onOffEvent(_nodes.colorPicker, 'mousedown', function(e) {
 			var event = e || window.event,
 				page = getPageXY(event),
-				target = event.target || event.srcElement,
+				target = (event.button || event.which) < 2 ?
+					(event.target || event.srcElement) : {},
 				className = target.className;
-			
+
 			focusInstance(THIS);
 			_mainTarget = target;
 			stopChange(undefined, 'resetEventListener');
