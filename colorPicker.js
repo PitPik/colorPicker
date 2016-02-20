@@ -866,7 +866,7 @@
 					}
 					_nodes.memos[0].style.cssText = _nodes.memo_store.style.cssText;
 				}
-				buttonAction = 'toMemery';
+				buttonAction = 'toMemory';
 			} else { // reset color from memo
 				resetBlink();
 				_colorPicker.setColor(target.style.backgroundColor, 'rgb', target.style.opacity || 1);
