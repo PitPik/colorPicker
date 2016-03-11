@@ -115,7 +115,7 @@
 						$colorPicker.css({
 							'position': 'absolute',
 							'left': position.left + options.margin.left,
-							'top': position.top + +$input.outerHeight(true) + options.margin.top
+							'top': position.top + $input.outerHeight(true) + options.margin.top
 						});
 						if (!multiple) {
 							options.input = elm;
