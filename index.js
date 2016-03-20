@@ -119,10 +119,12 @@
 		sliderChildren = sliders.children,
 		type,
 		mode,
+		isLabAB = false,
 		max = {
 			rgb:  {r: 255, g: 255, b: 255},
 			hsl:  {h: 360, s: 100, l: 100},
-			cmy:  {c: 100, m: 100, y: 100}
+			cmy:  {c: 100, m: 100, y: 100},
+			Lab:  {L: 100, a: 256, b: 256}
 			// hsv:  {h: 360, s: 100, v: 100},
 			// cmyk: {c: 100, m: 100, y: 100, k: 100},
 		},
@@ -137,7 +139,8 @@
 				id = currentTarget.id; // rgbR
 				len = id.length - 1;
 				type = id.substr(0, len); // rgb
-				mode = id.charAt(len).toLowerCase(); // R -> r
+				mode = id.charAt(len); // .toLowerCase(); // R -> r
+				isLabAB = type === 'Lab' && (/(?:a|b)/.test(mode));
 				startPoint = Tools.getOrigin(currentTarget);
 				currentTargetWidth = currentTarget.offsetWidth;
 
@@ -148,12 +151,13 @@
 		},
 		sliderMove = function (e) { // mouseMove callback
 			var newColor = {};
-
 			// The idea here is (so in the HSV-color-picker) that you don't
 			// render anything here but just send data to the colorPicker, no matter
 			// if it's out of range. colorPicker will take care of that and render it
 			// then in the renderColorSliders correctly (called in renderCallback).
-			newColor[mode] = (e.clientX - startPoint.left) / currentTargetWidth * max[type][mode];
+			newColor[mode] = (e.clientX - startPoint.left) / currentTargetWidth * max[type][mode] -
+				(isLabAB ? 128 : 0);
+
 			myColor.setColor(newColor, type);
 		},
 		renderColorSliders = function(color) { // used in renderCallback of 'new ColorPicker'
@@ -161,9 +165,10 @@
 				var child = sliderChildren[n],
 					len =  child.id.length - 1,
 					type = child.id.substr(0, len),
-					mode = child.id.charAt(len).toLowerCase();
+					mode = child.id.charAt(len); // .toLowerCase();
 
-				child.children[0].style.width = (color.RND[type][mode] / max[type][mode] * 100) + '%';
+				child.children[0].style.width = (color.RND[type][mode] / max[type][mode] * 100) +
+					(type === 'Lab' && /(?:a|b)/.test(mode) ? 50 : 0) + '%';
 			}
 		};
 

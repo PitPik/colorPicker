@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <meta charset='utf-8'>
-  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-  <meta http-equiv="Content-Language" content="en">
+	<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="Content-Language" content="en">
 
-  <link href="../index.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="jsColor.css" media="all" rel="stylesheet" type="text/css" />
-      
-  <meta name="description" content="colorPicker - Advanced javaScript color picker and color conversion / calculation (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...); this is a javaScript implememntation example">
-  <title>colorPicker javaScript implementation example</title>
+	<link href="../index.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="jsColor.css" media="all" rel="stylesheet" type="text/css" />
+
+	<meta name="description" content="colorPicker - Advanced javaScript color picker and color conversion / calculation (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...); this is a javaScript implememntation example">
+	<title>colorPicker javaScript implementation example</title>
 </head>
 
 <body>
@@ -33,14 +32,14 @@ Calling the colorPicker on all inputs with the calssName 'color': <pre>jsColorPi
 
 <script type="text/javascript">
 	var colors = jsColorPicker('input.color', {
-        customBG: '#222',
-        readOnly: true,
-        // patch: false,
-        init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
-          elm.style.backgroundColor = elm.value;
-          elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
-        }
-      });
+			customBG: '#222',
+			readOnly: true,
+			// patch: false,
+			init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
+				elm.style.backgroundColor = elm.value;
+				elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
+			}
+		});
 </script>
 </body>
 </html>

@@ -167,7 +167,8 @@
 			alpha = alpha !== undefined ? alpha : color.alpha;
 		} else if (color) {
 			for (var n in color) {
-				colors[type][n] = type === 'Lab' ? color[n] :
+				colors[type][n] = type === 'Lab' ?
+				limitValue(color[n], _valueRanges[type][n][0], _valueRanges[type][n][1]) :
 				limitValue(color[n] / _valueRanges[type][n][1], 0 , 1);
 			}
 		}

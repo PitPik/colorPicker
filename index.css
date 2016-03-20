@@ -88,37 +88,37 @@ a {
 	background-color: #333;
 	border-right: 1px solid #555;
 }
-#rgbR {
+#rgbr {
 	background-color: #0ff;
 }
-#rgbG {
+#rgbg {
 	background-color: #f0f;
 }
-#rgbB {
+#rgbb {
 	background-color: #ff0;
 }
-#rgbR div {
+#rgbr div {
 	background-color: #c00;
 }
-#rgbG div {
+#rgbg div {
 	background-color: #0a0;
 }
-#rgbB div {
+#rgbb div {
 	background-color: #00f;
 }
-#cmyC div {
+#cmyc div {
 	background-color: #0ff;
 }
-#cmyM div {
+#cmym div {
 	background-color: #f0f;
 }
-#cmyY div {
+#cmyy div {
 	background-color: #ff0;
 }
 
-#rgbR:before, #rgbG:before, #rgbB:before,
-#hslH:before, #hslS:before, #hslL:before,
-#cmyC:before, #cmyM:before, #cmyY:before{
+#rgbr:before, #rgbg:before, #rgbb:before,
+#hslh:before, #hsls:before, #hsll:before,
+#cmyc:before, #cmym:before, #cmyy:before{
 	display: block;
 	float: left;
 	margin-left: -18px;
@@ -130,7 +130,7 @@ a {
 	line-height: 15px;
 	cursor: default;
 }
-#rgbR:after, #rgbG:after, #rgbB:after {
+#rgbr:after, #rgbg:after, #rgbb:after {
 	display: block;
 	float: right;
 	margin-top: -12px;
@@ -142,40 +142,40 @@ a {
 	line-height: 15px;
 	cursor: default;
 }
-#rgbR:before {
+#rgbr:before {
 	content: 'R';	
 }
-#rgbG:before {
+#rgbg:before {
 	content: 'G';	
 }
-#rgbB:before {
+#rgbb:before {
 	content: 'B';	
 }
-#rgbR:after {
+#rgbr:after {
 	content: 'C';
 }
-#rgbG:after {
+#rgbg:after {
 	content: 'M';
 }
-#rgbB:after {
+#rgbb:after {
 	content: 'Y';
 }
-#hslH:before {
+#hslh:before {
 	content: 'H';	
 }
-#hslS:before {
+#hsls:before {
 	content: 'S';	
 }
-#hslL:before {
+#hsll:before {
 	content: 'L';	
 }
-#cmyC:before {
+#cmyc:before {
 	content: 'C';	
 }
-#cmyM:before {
+#cmym:before {
 	content: 'M';	
 }
-#cmyY:before {
+#cmyy:before {
 	content: 'Y';	
 }
 

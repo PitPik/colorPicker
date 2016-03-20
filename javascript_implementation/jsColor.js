@@ -37,7 +37,7 @@
 				var options = this,
 					colorPicker = colorPickers.current;
 
-				if (action === 'toMemery') {
+				if (action === 'toMemory') {
 					var memos = colorPicker.nodes.memos,
 						backgroundColor = '',
 						opacity = 0,

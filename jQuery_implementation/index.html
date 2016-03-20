@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <meta charset='utf-8'>
-  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-  <meta http-equiv="Content-Language" content="en">
+	<head>
+	<meta charset='utf-8'>
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+	<meta http-equiv="Content-Language" content="en">
 
-  <link href="../index.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="jqColor.css" media="all" rel="stylesheet" type="text/css" />
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-      
-  <meta name="description" content="colorPicker - Advanced javaScript color picker and color conversion / calculation (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...); this is a jQuery implememntation example">
-  <title>colorPicker jQuery implementation example</title>
+	<link href="../index.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="jqColor.css" media="all" rel="stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+	<meta name="description" content="colorPicker - Advanced javaScript color picker and color conversion / calculation (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...); this is a jQuery implememntation example">
+	<title>colorPicker jQuery implementation example</title>
 </head>
 
 <body>
@@ -34,14 +34,30 @@ Calling the colorPicker on all inputs with the calssName 'color': <pre>$('input.
 <!-- <script type="text/javascript" src="jQueryColorPicker.min.js"></script> -->
 
 <script type="text/javascript">
-	var $colors = $('input.color').colorPicker({
-    customBG: '#222',
-    readOnly: true,
-    init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
-      elm.style.backgroundColor = elm.value;
-      elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
-    }
-  }).each(function(idx, elm) {
+var memoryColors = [
+		{r: 100, g: 200, b: 10,  a: 0.6},
+		{r: 80,  g: 100, b: 50,  a: 0.9},
+		{r: 70,  g: 80,  b: 10,  a: 0.9},
+		{r: 20,  g: 200, b: 60,  a: 0.9},
+		{r: 88,  g: 0,   b: 30,  a: 0.4},
+		{r: 100, g: 0,   b: 100, a: 0.6},
+		{r: 200, g: 0,   b: 0},
+		{r: 200, g: 30,  b: 100}
+	],
+	$myColorPicker = $('input.color').colorPicker({
+		customBG: '#222',
+		readOnly: true,
+		init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
+			elm.style.backgroundColor = elm.value;
+			elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
+		},
+		// memoryColors: memoryColors,
+		// actionCallback: function(event, type) {
+		// 	if (type === 'toMemory') {
+		// 		// $myColorPicker.renderMemory(memoryColors);
+		// 	}
+		// }
+	}).each(function(idx, elm) {
 		// $(elm).css({'background-color': this.value})
 	});
 </script>
