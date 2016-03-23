@@ -10,6 +10,9 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
+    <meta name="Keywords" content="ColorPicker, color picker, color chooser, color, picker, javaScript, java script, colors, rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, grayscale, contrast, readability, realtime" />
+    <meta name="author" content="Peter Dematté" />
+    <meta http-equiv="language" content="en" />
 	<meta name="description" content="colorPicker - Advanced javaScript color picker and color conversion / calculation (rgb, hsv, hsl, hex, cmyk, cmy, XYZ, Lab, alpha, WCAG 2.0, ...); this is a jQuery implememntation example">
 	<title>colorPicker jQuery implementation example</title>
 </head>
@@ -51,6 +54,9 @@ var memoryColors = [
 			elm.style.backgroundColor = elm.value;
 			elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
 		},
+		// renderCallback: function(colors, mode) {
+		// 	console.log(mode);
+		// }
 		// memoryColors: memoryColors,
 		// actionCallback: function(event, type) {
 		// 	if (type === 'toMemory') {
