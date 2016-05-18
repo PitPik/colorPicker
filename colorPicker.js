@@ -358,6 +358,7 @@
 				if (_data._cssFunc) {
 					processCSS(this.width === 1 && this.height === 1);
 				}
+				THIS.cssIsReady = true;
 			};
 			test.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 		}

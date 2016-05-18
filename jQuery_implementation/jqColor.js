@@ -113,7 +113,8 @@
 							) : $(colorPicker.nodes.colorPicker),
 							$appendTo = $(options.appendTo || document.body),
 							isStatic = /static/.test($appendTo.css('position')),
-							atrect = isStatic ? {left: 0, top: 0} : $appendTo[0].getBoundingClientRect();
+							atrect = isStatic ? {left: 0, top: 0} : $appendTo[0].getBoundingClientRect(),
+							waitTimer = 0;
 
 						options.color = extractValue(elm); // brings color to default on reset
 						$colorPicker.css({
@@ -129,9 +130,13 @@
 						}
 						colorPickers.current = colorPickers[index];
 						$appendTo.append($colorPicker);
-						setTimeout(function() { // compensating late style on onload in colorPicker
-							$colorPicker.show(colorPicker.color.options.animationSpeed);
-						}, 0);
+						waitTimer = setInterval(function() { // compensating late style on onload in colorPicker
+							if (colorPickers.current.cssIsReady) {
+								waitTimer = clearInterval(waitTimer);
+								$colorPicker.show(colorPicker.color.options.animationSpeed);
+							}
+						}, 10);
+						
 					});
 
 					$(window)[onOff]('mousedown.colorPicker', function(e) {
