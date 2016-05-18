@@ -361,6 +361,8 @@
 				THIS.cssIsReady = true;
 			};
 			test.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+		} else {
+			THIS.cssIsReady = true;
 		}
 
 		// HTML
