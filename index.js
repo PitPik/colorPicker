@@ -25,9 +25,8 @@
 	var testPatch = document.getElementById('testPatch'),
 		renderTestPatch = function(color) { // used in renderCallback of 'new ColorPicker'
 			var RGB = color.RND.rgb;
-
 			testPatch.style.cssText =
-				'background-color: rgba(' + RGB.r + ',' + RGB.g + ',' + RGB.b + ',' + color.alpha + ');' +
+				'background-color: ' + (myColor.color || myColor).toString() + ';' +
 				'color: ' + (color.rgbaMixBlack.luminance > 0.22 ? '#222' : '#ddd');
 			testPatch.firstChild.data = '#' + color.HEX;
 		};
@@ -58,7 +57,7 @@
 					Math.round(cBGColor.r * 255) + ',' +
 					Math.round(cBGColor.g * 255) + ',' +
 					Math.round(cBGColor.b * 255) + ');' +
-				'color: ' + 'rgba(' + RGB.r + ',' + RGB.g + ',' + RGB.b + ',' + color.alpha + ');';
+				'color: ' + (myColor.color || myColor).toString();
 			backGround.style.cssText =
 				'background-color: rgba(' +
 					bgColor.r + ',' +
@@ -77,9 +76,9 @@
 			var RND = color.RND;
 
 			colorValues.firstChild.data =
-				'rgba(' + RND.rgb.r  + ',' + RND.rgb.g  + ',' + RND.rgb.b  + ',' + color.alpha + ')' + "\n" +
+				(myColor.color || myColor).toString('rgb', true).replace(/, /g, ',') + "\n" +
 				'hsva(' + RND.hsv.h  + ',' + RND.hsv.s  + ',' + RND.hsv.v  + ',' + color.alpha + ')' + "\n" +
-				'hsla(' + RND.hsl.h  + ',' + RND.hsl.s  + ',' + RND.hsl.l  + ',' + color.alpha + ')' + "\n" +
+				(myColor.color || myColor).toString('hsl', true).replace(/, /g, ',') + "\n" +
 				'CMYK(' + RND.cmyk.c + ',' + RND.cmyk.m + ',' + RND.cmyk.y + ',' + RND.cmyk.k + ')' + "\n" +
 				'CMY('  + RND.cmy.c  + ',' + RND.cmy.m  + ',' + RND.cmy.y  + ')' + "\n" +
 				'Lab('  + RND.Lab.L  + ',' + RND.Lab.a  + ',' + RND.Lab.b  + ')'; // + "\n" +

@@ -59,6 +59,7 @@ var myColors = new Colors({ // all options have a default value...
     valueRanges: {rgb: {r: [0, 255], g: [0, 255], b: [0, 255]}, hsv:...}, // skip ranges if no conversion required
     customBG: '#808080' // the solid bgColor behind the chosen bgColor (saved color)
     convertCallback: function(colors, type){}, // callback function after color convertion for further calculations...
+    toString: function('rgb' || 'hsl' || 'hex' || '' -> 'rgb', forceAlpha) {},
     allMixDetails: false // if set to true, Colors deliveres some more mixed layer informations for all color layers
 });
 ```

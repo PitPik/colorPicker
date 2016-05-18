@@ -103,13 +103,16 @@
 							colorPicker = colorPickers[index] ||
 								(colorPickers[index] = createInstance(this, config)),
 							options = colorPicker.color.options,
-							colorPickerUI = colorPicker.nodes.colorPicker;
+							colorPickerUI = colorPicker.nodes.colorPicker,
+							appendTo = (options.appendTo || document.body),
+							isStatic = /static/.test(window.getComputedStyle(appendTo).position),
+							atrect = isStatic ? {left: 0, top: 0} : appendTo.getBoundingClientRect();
 
 						options.color = extractValue(elm); // brings color to default on reset
 						colorPickerUI.style.cssText = 
 							'position: absolute;' +
-							'left:' + (position.left + options.margin.left) + 'px;' +
-							'top:' + (position.top + +input.offsetHeight + options.margin.top) + 'px;';
+							'left:' + (position.left + options.margin.left - atrect.left) + 'px;' +
+							'top:' + (position.top + +input.offsetHeight + options.margin.top - atrect.top) + 'px;';
 
 						if (!multiple) {
 							options.input = elm;
@@ -118,7 +121,7 @@
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
-						(options.appendTo || document.body).appendChild(colorPickerUI);
+						appendTo.appendChild(colorPickerUI);
 						setTimeout(function() { // compensating late style on onload in colorPicker
 							colorPickerUI.style.display = 'block';
 						}, 0);

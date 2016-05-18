@@ -9,23 +9,20 @@
 						HSL = colors.RND.hsl,
 						AHEX = options.isIE8 ? (colors.alpha < 0.16 ? '0' : '') +
 							(Math.round(colors.alpha * 100)).toString(16).toUpperCase() + colors.HEX : '',
-						RGBInnerText = RGB.r + ', ' + RGB.g + ', ' + RGB.b,
-						RGBAText = 'rgba(' + RGBInnerText + ', ' + colors.alpha + ')',
 						isAlpha = colors.alpha !== 1 && !options.isIE8,
 						colorMode = $input.data('colorMode');
 
+					if (!options._instance) return;
+
 					$patch.css({
 						'color': (colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd'), // Black...???
-						'background-color': RGBAText,
+						'background-color': options._instance.toString(),
 						'filter' : (options.isIE8 ? 'progid:DXImageTransform.Microsoft.gradient(' + // IE<9
 							'startColorstr=#' + AHEX + ',' + 'endColorstr=#' + AHEX + ')' : '')
 					});
 
 					$input.val(colorMode === 'HEX' && !isAlpha ? '#' + (options.isIE8 ? AHEX : colors.HEX) :
-						colorMode === 'rgb' || (colorMode === 'HEX' && isAlpha) ?
-						(!isAlpha ? 'rgb(' + RGBInnerText + ')' : RGBAText) :
-						('hsl' + (isAlpha ? 'a(' : '(') + HSL.h + ', ' + HSL.s + '%, ' + HSL.l + '%' +
-							(isAlpha ? ', ' + colors.alpha : '') + ')')
+						options._instance.toString(colorMode, options.forceAlpha)
 					);
 
 					if (options.displayCallback) {
@@ -85,16 +82,20 @@
 							// 	return config.noAlpha ?
 							// 		colors.replace(/\,\d*\.*\d*\)/g, ',1)') : colors;
 							// })($.docCookies('colorPickerMemos'), config || {}),
+							// forceAlpha: true,
 							memoryColors: $.docCookies('colorPickerMemos' + ((config || {}).noAlpha ? 'NoAlpha' : '')),
 							size: $.docCookies('colorPickerSize') || 1,
 							renderCallback: renderCallback,
 							actionCallback: actionCallback
-						};
+						},
+						instance;
 
 					for (var n in config) {
 						initConfig[n] = config[n]; 
 					}
-					return new initConfig.klass(initConfig);
+					instance = new initConfig.klass(initConfig);
+					instance.color.options._instance = instance.color;
+					return instance;
 				},
 				doEventListeners = function(elm, multiple, off) {
 					var onOff = off ? 'off' : 'on';
@@ -109,13 +110,16 @@
 							$colorPicker = $.ui && options.draggable ?
 							$(colorPicker.nodes.colorPicker).draggable(
 								{cancel: '.' + options.CSSPrefix + 'app div'}
-							) : $(colorPicker.nodes.colorPicker);
+							) : $(colorPicker.nodes.colorPicker),
+							$appendTo = $(options.appendTo || document.body),
+							isStatic = /static/.test($appendTo.css('position')),
+							atrect = isStatic ? {left: 0, top: 0} : $appendTo[0].getBoundingClientRect();
 
 						options.color = extractValue(elm); // brings color to default on reset
 						$colorPicker.css({
 							'position': 'absolute',
-							'left': position.left + options.margin.left,
-							'top': position.top + $input.outerHeight(true) + options.margin.top
+							'left': position.left + options.margin.left -  atrect.left,
+							'top': position.top + $input.outerHeight(true) + options.margin.top - atrect.top
 						});
 						if (!multiple) {
 							options.input = elm;
@@ -124,7 +128,7 @@
 							colorPicker.saveAsBackground();
 						}
 						colorPickers.current = colorPickers[index];
-						$(options.appendTo || document.body).append($colorPicker);
+						$appendTo.append($colorPicker);
 						setTimeout(function() { // compensating late style on onload in colorPicker
 							$colorPicker.show(colorPicker.color.options.animationSpeed);
 						}, 0);

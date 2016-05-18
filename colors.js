@@ -155,6 +155,11 @@
 		return color;
 	};
 
+	Colors.prototype.toString = function(colorMode, forceAlpha) {
+		return ColorConverter.color2text((colorMode || 'rgb').toLowerCase(), this.colors, forceAlpha);
+	};
+
+
 	// ------------------------------------------------------ //
 	// ---------- Color calculation related stuff  ---------- //
 	// -------------------------------------------------------//
@@ -366,6 +371,23 @@
 			return color;
 		},
 
+		color2text: function(colorMode, colors, forceAlpha) {
+			var alpha = forceAlpha !== false && _math.round(colors.alpha * 100) / 100,
+				hasAlpha = typeof alpha === 'number' &&
+					forceAlpha !== false && (forceAlpha || alpha !== 1),
+				RGB = colors.RND.rgb,
+				HSL = colors.RND.hsl,
+				shouldBeHex = colorMode === 'hex' && hasAlpha,
+				isHex = colorMode === 'hex' && !shouldBeHex,
+				isRgb = colorMode === 'rgb' || shouldBeHex,
+				innerText = isRgb ? RGB.r + ', ' + RGB.g + ', ' + RGB.b :
+					!isHex ? HSL.h + ', ' + HSL.s + '%, ' + HSL.l + '%' :
+					'#' + colors.HEX;
+
+			return isHex ? innerText : (shouldBeHex ? 'rgb' : colorMode) + 
+					(hasAlpha ? 'a' : '') + '(' + innerText + (hasAlpha ? ', ' + alpha : '') + ')';
+		},
+
 		RGB2HEX: function(RGB) {
 			return (
 				(RGB.r < 16 ? '0' : '') + RGB.r.toString(16) +
@@ -375,13 +397,11 @@
 		},
 
 		HEX2rgb: function(HEX) {
-			var _parseInt = _parseint;
-
 			HEX = HEX.split(''); // IE7
 			return {
-				r: _parseInt(HEX[0] + HEX[HEX[3] ? 1 : 0], 16) / 255,
-				g: _parseInt(HEX[HEX[3] ? 2 : 1] + (HEX[3] || HEX[1]), 16) / 255,
-				b: _parseInt((HEX[4] || HEX[2]) + (HEX[5] || HEX[2]), 16) / 255
+				r: +('0x' + HEX[0] + HEX[HEX[3] ? 1 : 0]) / 255,
+				g: +('0x' + HEX[HEX[3] ? 2 : 1] + (HEX[3] || HEX[1])) / 255,
+				b: +('0x' + (HEX[4] || HEX[2]) + (HEX[5] || HEX[2])) / 255
 			};
 		},
 
