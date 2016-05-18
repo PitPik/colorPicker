@@ -124,7 +124,7 @@
 						colorPickers.current = colorPickers[index];
 						appendTo.appendChild(colorPickerUI);
 						waitTimer = setInterval(function() { // compensating late style on onload in colorPicker
-							if (colorPickers.current.cssIsReady) {console.log(colorPickers.current.cssIsReady)
+							if (colorPickers.current.cssIsReady) {
 								waitTimer = clearInterval(waitTimer);
 								colorPickerUI.style.display = 'block';
 							}
