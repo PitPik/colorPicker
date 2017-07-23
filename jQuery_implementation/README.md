@@ -3,10 +3,10 @@
 
 Some description follows soon...
 
-##Demo
+## Demo
 See **demo** at [dematte.at/cpn/jQuery_implementation](http://dematte.at/cpn/jQuery_implementation)
 
-##Usage
+## Usage
 
 ```javascript
     $('input.color').colorPicker();
