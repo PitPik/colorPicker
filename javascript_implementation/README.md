@@ -3,10 +3,10 @@
 
 Some description follows soon...
 
-##Demo
+## Demo
 See **demo** at [dematte.at/cpn/javaScript_implementation](http://dematte.at/cpn/javaScript_implementation)
 
-##Usage
+## Usage
 
 ```javascript
     jsColorPicker('input.color');
